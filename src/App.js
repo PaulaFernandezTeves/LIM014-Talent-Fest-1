@@ -1,7 +1,7 @@
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
-import {Login} from './firebase/components/Login';
+import {Login} from './components/Login';
 
 function App() {
   return (
