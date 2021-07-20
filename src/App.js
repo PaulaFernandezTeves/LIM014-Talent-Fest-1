@@ -1,11 +1,9 @@
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
-import {Login} from './components/Login';
+import { Login } from './components/Login';
 import { Home } from './components/Home';
-import { Component1 } from './components/home/Component1';
-import { Component2 } from './components/home/Component2';
-import { Component3 } from './components/home/Component3';
+import { Care } from './components/ViewCategory/Care';
 import { AuthProvider } from './context/AuthProvider';
 import {
   BrowserRouter as Router,
@@ -18,7 +16,7 @@ function App() {
   return (
     <Container>
       <div
-        className="d-flex align-items-center justify-content-center"
+        className="d-flex align-items-center justify-content-left"
         style={{ minHeight: "100vh" }}
       >
         <div className="w-100" style={{maxWidth:'500px'}}>
@@ -27,10 +25,7 @@ function App() {
             <Switch>
               <Route exact path='/' component={Login} />
               <PrivateRoute path='/home' component={Home} />
-              <PrivateRoute path='/mi-cultura' component={Component1} />
-              <PrivateRoute path='/capacitacion' component={Component2} />
-              <PrivateRoute path='/desarrollo' component={Component3} />
-              {/* <Route path='/home' component={Home} /> */}
+              <PrivateRoute path='/cuidado' component={Care} />
             </Switch>
           </AuthProvider>
         </Router>

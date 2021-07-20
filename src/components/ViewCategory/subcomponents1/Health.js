@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Component1a = () => {
+export const Health = () => {
   return (
     <div>
       componente 1 A

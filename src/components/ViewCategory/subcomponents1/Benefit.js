@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const Component2c = () => {
+export const Benefit = () => {
   return (
     <div>
-      componente 2 C
+      componente 1 C
     </div>
   )
 }

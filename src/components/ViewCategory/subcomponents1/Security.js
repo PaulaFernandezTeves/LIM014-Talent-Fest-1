@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const Component1c = () => {
+export const Security = () => {
   return (
     <div>
-      componente 1 C
+      componente 1 B
     </div>
   )
 }

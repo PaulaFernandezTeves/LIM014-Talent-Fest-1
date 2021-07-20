@@ -13,9 +13,8 @@ export const Header = () => {
           <img /* src={logo} */ alt="logo" className='.logo' />
         </figure>
         <ul className='d-flex justify-content-between'>
-          <Link to='/mi-cultura'>Mi cultura</Link>
+          <Link to='/cuidado'>Cuidado</Link>
           <Link to='/capacitacion'>Capacitación</Link>
-          <Link to='/desarrollo'>Desarrollo</Link>
         </ul> 
       </section>
     </>
