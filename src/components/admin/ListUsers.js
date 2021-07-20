@@ -3,24 +3,15 @@ import { getDataUser } from "../../firebase/firestore"
 
 export const ListUsers = () => {
 
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
 
-  const getUsers = async () => {
-    try {
-      const response = await getDataUser();
-      return response.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  const callback = (data) => {
+    setUsers(data)
+  }
 
   useEffect(() => {
-    getUsers();
-  }, [input])
-
+    getDataUser(callback);
+  }, [])
 
   return (
     <>
@@ -36,23 +27,21 @@ export const ListUsers = () => {
                 <th>Name</th>
                 <th>Perfil</th>
                 <th>Rol</th>
+                <th> </th>
+                <th> </th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td> userId </td>
-                <td> gmail </td>
-                <td> userId </td>
-              </tr>
-              {/* {users.map((user, index) => (
-                <tr key={index}>
-                  <td>{user._id}</td>
-                  <td>{user.email}</td>
-                  <td>{user.roles.admin === true ? "true" : "false"}</td>
-                  <td onClick={() => deleteUsers(user._id)}>🗑</td>
+              {users.map((user) => (
+                <tr key={user.userId}>
+                  <td>{user.name}</td>
+                  <td>{user.perfil}</td>
+                  <td>{user.rol}</td>
+                  <td>🗑</td>
+                  {/* <td onClick={() => deleteUsers(user._id)}>🗑</td> */}
                   <td>✏</td>
                 </tr>
-              ))} */}
+              ))}
             </tbody>
           </table>
         </section>

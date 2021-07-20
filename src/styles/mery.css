@@ -1,0 +1,32 @@
+.sectionlogin{
+  background-color: #874487;
+  width: 100vw;
+  height: 100vh;
+}
+.logoperson{
+  max-width: 50%;
+}
+.logoperson img{
+  max-width: 100%;
+}
+#buttonlogin{
+  background-color: #C74A34;
+  border: none;
+  outline: none;
+  font-weight: bold;
+}
+.mainimg{
+  max-width: 45%;
+  height: 100%;
+}
+.mainimg img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cardlogin{
+  max-width:70%;
+}
+.article1{
+  max-width: 55%;
+}
