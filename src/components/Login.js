@@ -55,10 +55,10 @@ export const Login = () => {
           </figure>
         </article>
         <figure className='merymainimg'>
+
           <img className='h-0' src={loginpic} alt="" />
         </figure>
-      </section> 
-     
+      </section>     
     </>
   );
 }
