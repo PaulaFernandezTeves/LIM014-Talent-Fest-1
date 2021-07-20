@@ -1,5 +1,9 @@
-// import { auth } from './config'
+import { auth } from './config'
 
-// export const login = (email, password) => {
-//   return auth.signInWithEmailAndPassword(email, password);
-// }
+export const loginFb = (email, password) => {
+  return auth.signInWithEmailAndPassword(email, password);
+}
+
+export const logoutFb = () => {
+  return auth.signOut();
+};
