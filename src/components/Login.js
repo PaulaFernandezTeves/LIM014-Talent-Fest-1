@@ -11,9 +11,10 @@ import logofooter from '../images/logofooter.png';
 export const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const {login} = useAuth();
+  const {login, currentUser } = useAuth();
   let history = useHistory();
 
+  if (currentUser) history.push("/home");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,11 +22,12 @@ export const Login = () => {
     console.log(emailRef.current.value, passwordRef.current.value);
     try {
       await login(emailRef.current.value, passwordRef.current.value);
-      history.push('/home')
+      return history.push('/home')
     } catch (error) {
       console.log('error no entro a la cuenta')
     }
   }
+
 
   return (
     <>

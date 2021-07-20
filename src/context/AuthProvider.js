@@ -10,7 +10,9 @@ export const useAuth = () => { //con esto podemos USAR todas las fn y estados de
 
 export const AuthProvider = ({ children }) => {
 
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(localStorage.getItem("user"))
+  );
 
   const login = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password);
@@ -19,7 +21,12 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       console.log('usuario logged', user);
-      setCurrentUser(user);
+      if(user) {
+        localStorage.setItem("user", JSON.stringify(user));
+        setCurrentUser(user)
+      } else {
+        localStorage.clear("user")
+      };
     });
     return unsubscribe;
   }, []);

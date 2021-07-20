@@ -6,15 +6,18 @@ import { Login } from './components/Login';
 import { Home } from './components/Home';
 import { Care } from './components/ViewCategory/Care';
 import { AuthProvider } from './context/AuthProvider';
+import { useAuth } from './context/AuthProvider'
 import { ListUsers } from './components/admin/ListUsers'
 import {
   BrowserRouter as Router,
   Route,
   Switch,
+  Redirect
 } from "react-router-dom";
 import { PrivateRoute } from './components/PrivateRoute'
 
 function App() {
+
   return (
     <>
       <Router>

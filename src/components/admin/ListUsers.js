@@ -24,7 +24,7 @@ export const ListUsers = () => {
           <table className="table table-sm table-hover w-100 mt-3 mx-2">
             <thead>
               <tr>
-                <th>Name</th>
+                <th>Colaborador</th>
                 <th>Perfil</th>
                 <th>Rol</th>
                 <th> </th>
@@ -34,7 +34,7 @@ export const ListUsers = () => {
             <tbody>
               {users.map((user) => (
                 <tr key={user.userId}>
-                  <td>{user.name}</td>
+                  <td>{user.colaborador}</td>
                   <td>{user.perfil}</td>
                   <td>{user.rol}</td>
                   <td>🗑</td>
