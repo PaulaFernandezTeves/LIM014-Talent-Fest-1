@@ -1,13 +1,15 @@
 import React from 'react';
 import { Header } from './home/Header';
-import { Main } from './home/Main';
+import { Carrousel } from '../components/home/Carrousel';
+//import { Main } from './home/Main';
 import { Footer } from './home/Footer'
 
 export const Home = () => {
   return (
     <>
       <Header />
-      <Main />
+      <Carrousel />
+      {/* <Main /> */}
       <Footer />
     </>
   );
