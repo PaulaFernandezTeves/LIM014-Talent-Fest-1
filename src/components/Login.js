@@ -29,12 +29,12 @@ export const Login = () => {
 
   return (
     <>
-      <section className='sectionlogin d-flex'>
-        <article className='article1 align-self-center'>
-          <figure className='logoperson mx-auto mb-4'>
+      <section className='merysectionlogin d-flex'>
+        <article className='meryarticle1 align-self-center'>
+          <figure className='merylogoperson mx-auto mb-4'>
             <img src={logopersona} alt="" />
           </figure>
-          <Card className='cardlogin mx-auto mb-4'>
+          <Card className='merycardlogin mx-auto mb-4'>
             <Card.Body>
               <h2 className="text-center mb-4">Ingreso</h2>
               <Form onSubmit={handleSubmit}>
@@ -46,15 +46,15 @@ export const Login = () => {
                   <Form.Label>Password</Form.Label>
                   <Form.Control type="password" ref={passwordRef} required></Form.Control>
                 </Form.Group>
-                <Button id='buttonlogin' className='w-50 mt-4' type='submit'>INGRESAR</Button>
+                <Button id='merybuttonlogin' className='w-50 mt-4' type='submit'>INGRESAR</Button>
               </Form>
             </Card.Body>
           </Card>
-          <figure className='logoperson mx-auto'>
+          <figure className='merylogoperson mx-auto'>
             <img src={logofooter} alt="" />
           </figure>
         </article>
-        <figure className='mainimg'>
+        <figure className='merymainimg'>
           <img className='h-0' src={loginpic} alt="" />
         </figure>
       </section> 
