@@ -6,10 +6,13 @@ import { Login } from './components/Login';
 import { Home } from './components/Home';
 //import { Care } from './components/ViewCategory/Care';
 import { AuthProvider } from './context/AuthProvider';
+import { useAuth } from './context/AuthProvider'
+import { ListUsers } from './components/admin/ListUsers'
 import {
   BrowserRouter as Router,
   Route,
   Switch,
+  Redirect
 } from "react-router-dom";
 import { PrivateRoute } from './components/PrivateRoute';
 import {Health} from './components/ViewCategory/subcomponents1/Health';
@@ -22,8 +25,7 @@ function App() {
     <>
       <Router>
         <AuthProvider>
-          <Switch>
-            
+          <Switch>            
             {/* poner la condicion de si es un onjeto o no del current user */}
             <Route exact path='/' component={Login} />
             <PrivateRoute path='/home' component={Home} />
