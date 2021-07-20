@@ -1,16 +1,17 @@
 import React from 'react';
-import { useRouteMatch, Switch, Route, Link } from 'react-router-dom';
-// import { Header } from './Header';
-import { Health } from './subcomponents1/Health';
-import { Security } from './subcomponents1/Security';
-import { Benefit } from './subcomponents1/Benefit';
+// import { useRouteMatch, Switch, Route, Link } from 'react-router-dom';
+// // import { Header } from './Header';
+// import { Health } from './subcomponents1/Health';
+// import { Security } from './subcomponents1/Security';
+// import { Benefit } from './subcomponents1/Benefit';
 
 export const Care = () => {
-  let { path, url } = useRouteMatch();
+  // let { path, url } = useRouteMatch();
 
   return (
     <div>
-      <ul>
+      caree ex
+      {/* <ul>
         <li>
           <Link to={`${url}/salud`}>Salud</Link>
         </li>
@@ -37,7 +38,7 @@ export const Care = () => {
         <Route path={`${path}/beneficios`}>
           <Benefit />
         </Route>
-      </Switch>
+      </Switch> */}
     </div>
   );
 }

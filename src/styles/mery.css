@@ -1,32 +1,48 @@
-.sectionlogin{
+/* LOGIN VIEW */
+.merysectionlogin{
   background-color: #874487;
   width: 100vw;
   height: 100vh;
 }
-.logoperson{
+.merylogoperson{
   max-width: 50%;
 }
-.logoperson img{
+.merylogoperson img{
   max-width: 100%;
 }
-#buttonlogin{
+#merybuttonlogin{
   background-color: #C74A34;
   border: none;
   outline: none;
   font-weight: bold;
 }
-.mainimg{
+.merymainimg{
   max-width: 45%;
   height: 100%;
 }
-.mainimg img{
+.merymainimg img{
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.cardlogin{
+.merycardlogin{
   max-width:70%;
 }
-.article1{
+.meryarticle1{
   max-width: 55%;
+}
+
+/* HEADER VIEW */
+.meryheader{
+  width: 100vw;
+  background-color: #FFCC00;
+}
+.meryimgheader{
+  max-width: 15%;
+}
+.meryimgheader img{
+  width: 100%;
+}
+#merylinkheader{
+  color: #874487,
 }
