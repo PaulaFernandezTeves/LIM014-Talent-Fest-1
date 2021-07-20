@@ -5,6 +5,7 @@ import { Login } from './components/Login';
 import { Home } from './components/Home';
 import { Care } from './components/ViewCategory/Care';
 import { AuthProvider } from './context/AuthProvider';
+import { ListUsers } from './components/admin/ListUsers'
 import {
   BrowserRouter as Router,
   Route,
@@ -26,6 +27,7 @@ function App() {
               <Route exact path='/' component={Login} />
               <PrivateRoute path='/home' component={Home} />
               <PrivateRoute path='/cuidado' component={Care} />
+              <PrivateRoute path='/list' component={ListUsers}/>
             </Switch>
           </AuthProvider>
         </Router>

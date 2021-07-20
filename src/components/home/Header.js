@@ -14,7 +14,8 @@ export const Header = () => {
         </figure>
         <ul className='d-flex justify-content-between'>
           <Link to='/cuidado'>Cuidado</Link>
-          <Link to='/capacitacion'>Capacitación</Link>
+          {/*esta temporal para probar las vista listUser*/}
+          <Link to='/list'>Usuarios</Link>
         </ul> 
       </section>
     </>
