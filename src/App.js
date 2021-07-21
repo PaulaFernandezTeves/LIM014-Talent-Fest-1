@@ -26,7 +26,6 @@ function App() {
       <Router>
         <AuthProvider>
           <Switch>
-            {/* poner la condicion de si es un onjeto o no del current user */}
             <Route exact path="/" component={Login} />
             <PrivateRoute path="/home" component={Home} />
             <PrivateRoute path="/mi-trabajo" component={MyWork} />

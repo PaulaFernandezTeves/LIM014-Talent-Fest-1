@@ -13,8 +13,7 @@ export const ListUsers = () => {
   useEffect(() => {
     getDataUser(callback);
   }, [])
-
-
+  
   return (
     <>
       <Header />
