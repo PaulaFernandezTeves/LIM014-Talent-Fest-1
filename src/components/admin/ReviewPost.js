@@ -1,10 +1,13 @@
 import React from 'react';
-import { UpdateModal } from "./UpdateModal";
+import { ModalReviewPost } from "./ModalReviewPost";
+import { Header } from '../home/Header';
 
 export function ReviewPost() {
     return (
         <>
-          <UpdateModal />           
+          <Header />
+            COMPONENTE DE REVIEW POST QUE ES UNA TABLA DE POSTS Y TENDRA UN MODAL PARA QUE ADMIN APRUEBE, RECHCE Y TMB EDITE
+          <ModalReviewPost />           
         </>
     )
 }

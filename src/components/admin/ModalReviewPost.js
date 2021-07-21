@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Modal, Dropdown } from "react-bootstrap";
 
-export const UpdateModal = () => {
+export const ModalReviewPost = () => {
     const [show, setShow] = useState(false);
   
     const handleClose = () => setShow(false);
@@ -68,7 +68,6 @@ export const UpdateModal = () => {
             <Dropdown.Toggle id="dropdown-basic" style={mystyle}> 
             Categorías
             </Dropdown.Toggle>
-
             <Dropdown.Menu>
             <Dropdown.Item href="#/action-1" style={categories}>Salud</Dropdown.Item>
             <Dropdown.Item href="#/action-2" style={categories}>Seguridad</Dropdown.Item>
