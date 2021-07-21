@@ -4,6 +4,7 @@ import { Container } from "react-bootstrap";
 import { Login } from './components/Login';
 import { Home } from './components/Home';
 import { Care } from './components/ViewCategory/Care';
+import { ReviewPost } from "./components/admin/ReviewPost";
 import { AuthProvider } from './context/AuthProvider';
 import {
   BrowserRouter as Router,
@@ -26,6 +27,7 @@ function App() {
               <Route exact path='/' component={Login} />
               <PrivateRoute path='/home' component={Home} />
               <PrivateRoute path='/cuidado' component={Care} />
+              <Route path='/admin' component={ReviewPost } />
             </Switch>
           </AuthProvider>
         </Router>
