@@ -1,14 +1,14 @@
 import React from "react";
-import { Carousel } from "react-bootstrap";
-import Carousel1 from "../../images/CarruselSalud.jpg";
-import Peru from "../../images/FiestaPatrias.jpg";
-import Curso1 from "../../images/Curso.jpg";
+// import { Carousel } from "react-bootstrap";
+// import Carousel1 from "../../images/CarruselSalud.jpg";
+// import Peru from "../../images/FiestaPatrias.jpg";
+// import Curso1 from "../../images/Curso.jpg";
 
 export const Carrousel = () => {
 
   return (
     <>
-      <section>
+      {/* <section>
         <Carousel>
           <Carousel.Item interval={1000}>
             <img
@@ -49,7 +49,7 @@ export const Carrousel = () => {
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
-      </section>
+      </section> */}
     </>
   );
 };

@@ -1,7 +1,6 @@
 import { db } from "./config";
  
-export const getDataUser = (callback) => {
- 
+export const getDataUser = (callback) => { 
   return (
     db
       .collection("users")
@@ -14,6 +13,25 @@ export const getDataUser = (callback) => {
           });
         });
         callback(users);
+      })
+  );
+};
+
+export const createPost = (object) => db.collection('post').add(object);
+
+export const getPosts = (callback) => { 
+  return (
+    db
+      .collection("post")
+      .onSnapshot((querySnapshot) => {
+        const posts = [];
+        querySnapshot.forEach((doc) => {
+          posts.push({
+            userId: doc.userId,
+            ...doc.data(),
+          });
+        });
+        callback(posts);
       })
   );
 };

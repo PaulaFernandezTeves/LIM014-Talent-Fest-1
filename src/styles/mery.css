@@ -1,3 +1,47 @@
+/* COLORS */
+.azul{
+  color: #003366;
+}
+.azulclaro{
+  color: #0578BE;
+}
+.amarillo{
+  color: #FFCC00;
+}
+.amarillohelp{
+  color: #E5A812;
+}
+.verdehelp{
+  color: #99CC66;
+}
+.celestehelp{
+  color: #3399CC;
+}
+.rojohelp{
+  color: #C74A34;
+}
+.morado{
+  color: #874487;
+}
+.gris{
+  color: #192D38;
+}
+.gris1{
+  color: #192D38;
+}
+.gris2{
+  color: #495961;
+}
+.gris3{
+  color: #83929B;
+}
+.gris4{
+  color: #BFC9D0;
+}
+.gris5{
+  color: #ECF2F6;
+}
+
 /* LOGIN VIEW */
 .merysectionlogin{
   background-color: #874487;
@@ -77,12 +121,4 @@
 .merylogoheader{
   width: 100%;
 }
-/* .merylinkjob a{
-  width: 100%;
-  text-decoration: none;
-  color: #003366;
-  font-size: 1.2rem;
-  margin-right: 3rem;
-  font-weight: bold;
-  text-align: center;
-} */
+/* MAIN */
