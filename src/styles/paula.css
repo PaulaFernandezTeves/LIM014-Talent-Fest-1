@@ -35,3 +35,13 @@
   #add-photo-container input {
     display: none;
 }
+
+.photo {
+  border-top-left-radius: 17px;
+  border-top-right-radius: 17px;
+}
+
+.card-text, .card-title{
+  text-align: center;
+  margin-top: 10px;
+}
