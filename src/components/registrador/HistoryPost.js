@@ -38,6 +38,7 @@ export const HistoryPost = () => {
         </button>
         <ModalCreatePost 
           show={show}
+          setShow={setShow}
           handleClose={handleClose}
         />
         <table className="table table-sm table-hover w-100 mt-3 mx-2">
@@ -69,7 +70,6 @@ export const HistoryPost = () => {
           </tbody>
         </table>
       </section>
-
     </>
   )
 }
