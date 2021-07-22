@@ -1,7 +1,7 @@
+/* MODAL*/
 
 
-
-
+/* ADMINISTRADOR*/
 #add-photo-container input {
   background-color: "#0D0B6E";
 }
@@ -32,6 +32,7 @@
     margin: 0 20px 0 0;
   }
 
+  /* SALUD*/
   #add-photo-container input {
     display: none;
 }
@@ -53,3 +54,8 @@
     margin-top: 150px;
     padding-right: 190px;
 }
+
+.btn-sucess{
+  margin-right: 300px;
+}
+

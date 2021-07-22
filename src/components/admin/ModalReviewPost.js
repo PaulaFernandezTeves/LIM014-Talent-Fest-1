@@ -1,25 +1,28 @@
-import React, {useState} from 'react'
-import { Modal} from "react-bootstrap";
+import React, {useState, useRef } from 'react'
+import { Modal, Dropdown } from "react-bootstrap";
+import "../../styles/paula.css";
+import iconfoto from "../../images/fotos.png";
 
 export const ModalReviewPost = () => {
     const [show, setShow] = useState(false);
-  
+    const [imageSource, setImageSource] = useState(iconfoto);
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    // const mystyle = {
-    //   color: "white",
-    //   backgroundColor: "#0D0B6E",
-    //   margin: "5px 43px 5px",
-    //   marginBottom:"60px"
-    // };
+    const mystyle = {
+      color: "white",
+      backgroundColor: "#0D0B6E",
+      margin: "5px 43px 5px",
+      marginBottom:"60px"
+    };
 
-    // const categories = {
-    //   backgroundColor: "#108AB0",
-    //   borderRadius:"3px",
-    //   padding:"5px 10px",
-    //   textAlign: "center",
-    // }
+    const categories = {
+      backgroundColor: "#108AB0",
+      borderRadius:"3px",
+      padding:"5px 10px",
+      textAlign: "center",
+    }
 
     const cancel = {
       color: "white",
@@ -49,19 +52,34 @@ export const ModalReviewPost = () => {
       marginRight: "40px",
     };
     
-    //  constructor(props) {
-    //    super(props);
-    //    this.state= {
-    //      images : [],
-    //      pages : 0,
-    //      hideMore : false,
-    //      imgSrc: null
-    //    }
-    //  }
-    
+let previewImg = useRef(null);
+let inputFile = useRef(null);
+
+function onChangeFile(){
+
+    let $inputFile = inputFile.current.files[0];
+    console.log($inputFile);
+    let $previewImg = previewImg.current;
+    let $readFile = new FileReader();
+
+    // if ($inputFile){
+    //   $readFile.readAsDataURL($inputFile);
+    //   $readFile.onloadend = function(){
+    //     $previewImg.src = $readFile.result;
+    //   };
+    // } else {
+    //   $previewImg.src= "";
+    // }
+
+
+
+    console.log("hola")
+
+}
+
     return (
       <>
-         <button
+        <button
         className="btn-finalizar d-block mt-4"
         id="btnFinaly"
         onClick={handleShow}
@@ -76,23 +94,20 @@ export const ModalReviewPost = () => {
           keyboard={false}
         >
           <Modal.Header>
-          <textarea id='text-post' placeholder='Publicando..' spellcheck='false' required ></textarea>
+            <div>
+              <input type="text" placeholder="Agrega un mensaje" className= "Upload__form-inputtext" name="title"></input>
+            </div>
           </Modal.Header>
-          <Modal.Body  className="modalDialog add-new-photo first" id="add-photo">
-            {/* <img src="https://lh3.googleusercontent.com/proxy/DSeeZ4iLSG7301Y_nofbUHSAxNeNTIEe56JYFpd7DzP3lj0qrTC3eF_j4hE1XcG2pftmBnrMGXgPKMfRHZTTfeQDSwgw-HXJ03TBGoMizeHzzRdyrsS00L5qiOl8jTbJuMfXc1ToBTGFYvYsRWUaxkD2z1pJw01B1odOFqaZJosl1FnmlSCIowA" alt="" width="80%" style={{margin:"30px "}}/> */}
+          <Modal.Body  className="modalDialog add-new-photo first" id="add-photo">            
+            <div className="Upload__form-container-img">
+                <img src={imageSource} alt="" id={previewImg}></img>
+            </div>
             
-            
-         <div className="add-new-photo first" id="add-photo">
-         <input type="file" multiple id="add-new-photo" name="images[]" style={{backgroundColor:"#0D0B6E"}}></input>
-          <i className="far fa-camera" style={{backgroundColor:"#FCAC04"}}></i>
+         <div id="add-photo">
+         <input type="file" ref={inputFile} name="images[]" style={{backgroundColor:"#0D0B6E"}} className="Upload__form-inputfile" onChange={onChangeFile}></input>
          </div>
-          
-         
-         
-            {/* <input type="file" name="file" style={{margin:"20px 25px"}}></input> */}
-              
-          </Modal.Body>
-          {/* <Dropdown>
+         </Modal.Body>
+          <Dropdown>
             <Dropdown.Toggle id="dropdown-basic" style={mystyle}> 
             Categorías
             </Dropdown.Toggle>
@@ -101,7 +116,7 @@ export const ModalReviewPost = () => {
             <Dropdown.Item href="#/action-2" style={categories}>Seguridad</Dropdown.Item>
             <Dropdown.Item href="#/action-3" style={categories}>Beneficios</Dropdown.Item>
             </Dropdown.Menu>
-          </Dropdown> */}
+          </Dropdown>
           <Modal.Footer>
             <button style={cancel} onClick={handleClose}>
               Cancelar

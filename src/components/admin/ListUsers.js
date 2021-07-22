@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getDataUser } from "../../firebase/firestore";
-import { Header } from "../home/Header";
+// import { Header } from "../home/Header";
+import { HeaderListUser } from '../admin/HeaderListUser';
 
 export const ListUsers = () => {
 
@@ -13,10 +14,13 @@ export const ListUsers = () => {
   useEffect(() => {
     getDataUser(callback);
   }, [])
+
+  
   
   return (
     <>
-      <Header />
+      {/* <Header /> */}
+      <HeaderListUser />
       <section className="container-fluid p-3 w-100 col">
         <h3 className="w-100 text-center ">Lista de usuarios</h3>
         <div className="d-flex w-100 justify-content-end">

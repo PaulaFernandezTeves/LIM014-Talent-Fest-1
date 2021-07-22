@@ -1,6 +1,7 @@
 import React from "react";
 import { ModalReviewPost } from "./ModalReviewPost";
-import { Header } from '../home/Header';
+// import { Header } from '../home/Header';
+import { HeaderAdmin } from '../admin/HeaderAdmin';
 import { Button} from "react-bootstrap";
 import '../../styles/paula.css'
 
@@ -22,12 +23,13 @@ export function ReviewPost() {
     return (
         <>
         
-      <Header />
+      {/* <Header /> */}
+      <HeaderAdmin />
       <section className="w-100 mt-4">
       <div>
-      <nav class="style-nav">
-      <div class="search-box">
-        <input type="type" id="keyword" autocomplete="off" placeholder="Buscar" /><i class="fas fa-search" ></i>
+      <nav className="style-nav">
+      <div className="search-box">
+        <input type="type" id="keyword" autoComplete="off" placeholder="Buscar" /><i className="fas fa-search" ></i>
       </div>
       </nav>
       <Button style={crearBtn} className="crear-btn">+ Crear Publicación</Button>{' '}
