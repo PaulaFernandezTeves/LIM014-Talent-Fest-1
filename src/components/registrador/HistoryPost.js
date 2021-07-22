@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Header } from '../home/Header';
-import { ModalCreatePost} from '../registrador/ModalCreatePost'
+import { ModalCreatePostRegister} from './ModalCreatePostRegister';
+import {ModalEditPostRegister} from './ModalEditPostRegister'
 import { getPosts } from '../../firebase/firestore'
 
 export const HistoryPost = () => {
@@ -36,7 +37,7 @@ export const HistoryPost = () => {
             >
           <b>Post</b>
         </button>
-        <ModalCreatePost 
+        <ModalCreatePostRegister
           show={show}
           setShow={setShow}
           handleClose={handleClose}
@@ -64,7 +65,11 @@ export const HistoryPost = () => {
                 <td style={good}>{post.status}</td>  
                 <td >{post.profile}</td>            
                 <td>🗑</td>
-                <td>✏</td>
+                <td>
+                  <ModalEditPostRegister
+                      post={post}
+                  />
+                </td>
               </tr>
             ))}
           </tbody>

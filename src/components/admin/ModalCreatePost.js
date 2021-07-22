@@ -1,23 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Modal, Dropdown, InputGroup, FormControl } from "react-bootstrap";
 import { useAuth } from '../../context/AuthProvider';
 import { createPost } from '../../firebase/firestore';
 
 export const ModalCreatePost = (props) => {
-
-  const mystyle = {
-    color: "white",
-    backgroundColor: "#0D0B6E",
-    margin: "5px 43px 5px",
-    marginBottom:"60px"
-  };
-
-  const categories = {
-    backgroundColor: "#108AB0",
-    borderRadius:"3px",
-    padding:"5px 10px",
-    textAlign: "center",
-  }
 
   const cancel = {
     color: "white",
@@ -41,34 +27,37 @@ export const ModalCreatePost = (props) => {
   //ESTADO INICIAL DE REGISTRO DE POSTS
     const { currentUser } = useAuth();
     //console.log(currentUser)
-    const [ category, setCategory] = React.useState('')
-    const [ subcategory, setSubcategory] = React.useState('')
-    const [ title, setTitle] = React.useState('')
-    const [ subtitle, setSubtitle] = React.useState('')
-    const [ content, setContent] = React.useState('')
-    const [ moreContent, setMoreContent] = React.useState('')
-    const [ comment, setComment] = React.useState('')
-    const [ manager, setManager] = React.useState('')
-    const [ ejecut, setEjecut] = React.useState('')
-    const [ operat, setOperat] = React.useState('')
-    const [ practi, setPracti] = React.useState('')
+    const [ category, setCategory] = useState('')
+    const [ subcategory, setSubcategory] = useState('')
+    const [ title, setTitle] = useState('')
+    const [ subtitle, setSubtitle] = useState('')
+    const [ content, setContent] = useState('')
+    const [ moreContent, setMoreContent] = useState('')
+    const [ comment, setComment] = useState('')
+    const [ manager, setManager] = useState({})
+    const [ ejecut, setEjecut] = useState({})
+    const [ operat, setOperat] =  useState({})
+    const [ practi, setPracti] = useState({})
 
   //ESTADO INICIAL DE REGISTRO DE POSTS
-  const addPost = () =>{
-    const initialState = {
-      owner: currentUser.email,
-      title: title,
-      subtitle: subtitle,
-      content: content,
-      moreContent: moreContent,
-      comment: comment,
-      category: category,
-      subcategory: subcategory,
-      status: "pending",
-      profile: [manager, ejecut,operat, practi],
-      img: '',
-    }
-    createPost(initialState);
+  const initialState = {
+    owner: currentUser.email,
+    title: title,
+    subtitle: subtitle,
+    content: content,
+    moreContent: moreContent,
+    comment: comment,
+    category: category,
+    subcategory: subcategory,
+    status: "publicado",
+    profile: [manager, ejecut,operat, practi],
+    img: '',
+  }
+
+  const publishPost = async() =>{
+    await createPost(initialState);
+    // console.log(data)
+    console.log(initialState)
     props.handleClose();
   } 
 
@@ -85,15 +74,15 @@ export const ModalCreatePost = (props) => {
         </Modal.Header>
         <Modal.Body  className="modalDialog">
           <h5>Título</h5>   
-          <input id='text-post' placeholder='Publicando..' spellcheck='false' onChange={(e)=> setTitle(e.target.value)} required ></input>
+          <input onChange={(e) => setTitle(e.target.value)} required ></input>
           <h5>Sub Título</h5> 
-          <input id='text-post' placeholder='Publicando..' spellcheck='false'  onChange={(e)=> setSubtitle(e.target.value)} required ></input>
+          <input onChange={(e) => setSubtitle(e.target.value)} required ></input>
           <h5>Contenido del Post</h5>
-          <textarea id='text-post' placeholder='Publicando..' spellcheck='false' onChange={(e)=> setContent(e.target.value)} required ></textarea>
+          <textarea onChange={(e) => setContent(e.target.value)} required ></textarea>
           <h5>Más información del post</h5>
-          <textarea id='text-post' placeholder='Publicando..' spellcheck='false' onChange={(e)=> setMoreContent(e.target.value)} required ></textarea>
+          <textarea onChange={(e) => setMoreContent(e.target.value)} required ></textarea>
           <h5>Comentarios </h5>
-          <textarea id='text-post' placeholder='Publicando..' spellcheck='false' onChange={(e)=> setComment(e.target.value)} required ></textarea>
+          <textarea onChange={(e) => setComment(e.target.value)}  required ></textarea>
           <img src="https://lh3.googleusercontent.com/proxy/DSeeZ4iLSG7301Y_nofbUHSAxNeNTIEe56JYFpd7DzP3lj0qrTC3eF_j4hE1XcG2pftmBnrMGXgPKMfRHZTTfeQDSwgw-HXJ03TBGoMizeHzzRdyrsS00L5qiOl8jTbJuMfXc1ToBTGFYvYsRWUaxkD2z1pJw01B1odOFqaZJosl1FnmlSCIowA" alt="" width="80%" style={{margin:"30px "}}/>
           <input type="file" name="file" style={{margin:"20px 25px"}}></input>              
         </Modal.Body>
@@ -174,20 +163,20 @@ export const ModalCreatePost = (props) => {
         <article>
           <h6><b>Perfiles</b></h6>
           <InputGroup className="mb-2">
-            <InputGroup.Checkbox onClick={()=>setManager('Administrativos')} aria-label="Checkbox for following text input" />
-            <FormControl /* ref='administrativos' */value='Administrativos' aria-label="Text input with checkbox" />
+            <InputGroup.Checkbox onClick={()=>setManager({type: 'Administrativos', value:true })} aria-label="Checkbox for following text input" />
+            <FormControl value='Administrativos' aria-label="Text input with checkbox" />
           </InputGroup>
           <InputGroup className="mb-3">
-            <InputGroup.Checkbox onClick={()=>setEjecut('Ejecutivos')} aria-label="Checkbox for following text input" />
-            <FormControl /* ref='administrativos' */value='Ejecutivos' aria-label="Text input with checkbox" />
+            <InputGroup.Checkbox onClick={()=>setEjecut({type: 'Ejecutivos', value:true })} aria-label="Checkbox for following text input" />
+            <FormControl value='Ejecutivos' aria-label="Text input with checkbox" />
           </InputGroup>
           <InputGroup className="mb-3">
-            <InputGroup.Checkbox onClick={()=>setOperat('Operadores')} aria-label="Checkbox for following text input" />
-            <FormControl /* ref='administrativos' */value='Operadores' aria-label="Text input with checkbox" />
+            <InputGroup.Checkbox onClick={()=>setOperat({type: 'Operadores', value:true })} aria-label="Checkbox for following text input" />
+            <FormControl value='Operadores' aria-label="Text input with checkbox" />
           </InputGroup>
           <InputGroup className="mb-3">
-            <InputGroup.Checkbox onClick={()=>setPracti('Practicantes')} aria-label="Checkbox for following text input" />
-            <FormControl /* ref='administrativos' */value='Practicantes' aria-label="Text input with checkbox" />
+            <InputGroup.Checkbox onClick={()=>setPracti({type: 'Practicantes', value:true })} aria-label="Checkbox for following text input" />
+            <FormControl value='Practicantes' aria-label="Text input with checkbox" />
           </InputGroup>
         </article>
       </div>
@@ -195,7 +184,8 @@ export const ModalCreatePost = (props) => {
         <button style={cancel} onClick={props.handleClose}>
           Cancelar
         </button>
-        <button style={post} onClick={()=>addPost()}>Enviar</button>
+        <button style={post} /*  onClick={()=>addPost()}  */>Rechazar</button>
+        <button style={post} onClick={()=>publishPost()}>Publicar</button>
       </Modal.Footer>
     </Modal>
     </>

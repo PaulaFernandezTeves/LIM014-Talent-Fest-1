@@ -1,23 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Modal, Dropdown, InputGroup, FormControl } from "react-bootstrap";
 import { useAuth } from '../../context/AuthProvider';
 import { createPost } from '../../firebase/firestore';
 
-export const ModalReviewPost = (props) => {
-
-  const mystyle = {
-    color: "white",
-    backgroundColor: "#0D0B6E",
-    margin: "5px 43px 5px",
-    marginBottom:"60px"
-  };
-
-  const categories = {
-    backgroundColor: "#108AB0",
-    borderRadius:"3px",
-    padding:"5px 10px",
-    textAlign: "center",
-  }
+export const ModalCreatePostRegister = (props) => {
 
   const cancel = {
     color: "white",
@@ -41,17 +27,17 @@ export const ModalReviewPost = (props) => {
   //ESTADO INICIAL DE REGISTRO DE POSTS
     const { currentUser } = useAuth();
     //console.log(currentUser)
-    const [ category, setCategory] = React.useState('')
-    const [ subcategory, setSubcategory] = React.useState('')
-    const [ title, setTitle] = React.useState('')
-    const [ subtitle, setSubtitle] = React.useState('')
-    const [ content, setContent] = React.useState('')
-    const [ moreContent, setMoreContent] = React.useState('')
-    const [ comment, setComment] = React.useState('')
-    const [ manager, setManager] = React.useState('')
-    const [ ejecut, setEjecut] = React.useState('')
-    const [ operat, setOperat] = React.useState('')
-    const [ practi, setPracti] = React.useState('')
+    const [ category, setCategory] = useState('')
+    const [ subcategory, setSubcategory] = useState('')
+    const [ title, setTitle] = useState('')
+    const [ subtitle, setSubtitle] = useState('')
+    const [ content, setContent] = useState('')
+    const [ moreContent, setMoreContent] = useState('')
+    const [ comment, setComment] = useState('')
+    const [ manager, setManager] = useState('')
+    const [ ejecut, setEjecut] = useState('')
+    const [ operat, setOperat] = useState('')
+    const [ practi, setPracti] = useState('')
 
   //ESTADO INICIAL DE REGISTRO DE POSTS
   const addPost = () =>{
@@ -64,7 +50,7 @@ export const ModalReviewPost = (props) => {
       comment: comment,
       category: category,
       subcategory: subcategory,
-      status: "publicado",
+      status: "pending",
       profile: [manager, ejecut,operat, practi],
       img: '',
     }
@@ -195,8 +181,7 @@ export const ModalReviewPost = (props) => {
         <button style={cancel} onClick={props.handleClose}>
           Cancelar
         </button>
-        <button style={post} /* onClick={()=>addPost()} */>Rechazar</button>
-        <button style={post} onClick={()=>addPost()}>Publicar</button>
+        <button style={post} onClick={()=>addPost()}>Enviar</button>
       </Modal.Footer>
     </Modal>
     </>

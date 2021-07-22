@@ -1,5 +1,5 @@
-// REVISION Y EDICION DEL ADMIN
-
+// import { getElementError } from "@testing-library/react";
+// import { database } from "firebase-admin";
 import React, { useState, useEffect } from "react";
 import {
   Modal,
@@ -8,11 +8,11 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import { updateStatusPost, updateStatusPostRegister } from '../../firebase/firestore'
+import { updateStatusPostRegister } from '../../firebase/firestore'
 // import { useAuth } from '../../context/AuthProvider';
 // import { createPost } from '../../firebase/firestore';
 
-export const ModalEditPost = (props) => {
+export const ModalEditPostRegister = (props) => {
   const cancel = {
     color: "white",
     backgroundColor: "#FCAC04",
@@ -98,17 +98,13 @@ export const ModalEditPost = (props) => {
   //   console.log("click", e)
   // }
 
-  const rejectPost = () => {
-    datos.status='rejected'
+  const updatePostRegist = () => {
+    datos.status='pending'
     console.log(datos)
-    updateStatusPost(datos.postId, datos)
+    updateStatusPostRegister(datos.postId, datos)
     setShow(false)
   }
 
-  const publishedPost = () => {
-    datos.status='published'
-    updateStatusPostRegister(datos.postId, datos)
-  }
 
   return (
     <>
@@ -220,7 +216,7 @@ export const ModalEditPost = (props) => {
 
           <InputGroup className="mb-2">
             <InputGroup.Checkbox
-              defaultCheck={datos.profile[0].value}
+              defaultCheck={adminCheck}
               onChange={()=>handleChangeCheck("Administrativos")}
               name="Administrativos"
               className="checkGroup"
@@ -234,7 +230,7 @@ export const ModalEditPost = (props) => {
           <InputGroup className="mb-3">
             <InputGroup.Checkbox
               aria-label="Checkbox for following text input"
-              defaultCheck={datos.profile[1].value}
+              defaultCheck={executiveCheck}
               onChange={()=>handleChangeCheck("Ejecutivos")}
               className="checkGroup"
               name="Ejecutivos"
@@ -247,7 +243,7 @@ export const ModalEditPost = (props) => {
           <InputGroup className="mb-3">
             <InputGroup.Checkbox
               aria-label="Checkbox for following text input"
-              defaultCheck={datos.profile[2].value}
+              defaultCheck={operatorCheck}
               onChange={()=>handleChangeCheck("Operadores")}
               className="checkGroup"
               name="Operadores"
@@ -260,7 +256,7 @@ export const ModalEditPost = (props) => {
           <InputGroup className="mb-3">
             <InputGroup.Checkbox
               aria-label="Checkbox for following text input"
-              defaultCheck={datos.profile[3].value}
+              defaultCheck={practiCheck}
               onChange={()=>handleChangeCheck("Practicantes")}
               className="checkGroup"
               name="Practicantes"
@@ -275,10 +271,7 @@ export const ModalEditPost = (props) => {
           <button style={cancel} onClick={handleClose}>
             Cancelar
           </button>
-          <button style={stylePost} onClick={()=>rejectPost()} >
-            Rechazar
-          </button>
-          <button style={stylePost} onClick={()=> publishedPost()}>Publicar</button>
+          <button style={stylePost} onClick={()=> updatePostRegist()}>Enviar</button>
         </Modal.Footer>
       </Modal>
     </>
