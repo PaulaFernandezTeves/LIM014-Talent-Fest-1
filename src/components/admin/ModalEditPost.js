@@ -3,7 +3,7 @@ import { Modal, Dropdown, InputGroup, FormControl } from "react-bootstrap";
 import { useAuth } from '../../context/AuthProvider';
 import { createPost } from '../../firebase/firestore';
 
-export const ModalReviewPost = (props) => {
+export const ModalEditPost = (props) => {
 
   const mystyle = {
     color: "white",
@@ -85,15 +85,15 @@ export const ModalReviewPost = (props) => {
         </Modal.Header>
         <Modal.Body  className="modalDialog">
           <h5>Título</h5>   
-          <input id='text-post' placeholder='Publicando..' spellcheck='false' onChange={(e)=> setTitle(e.target.value)} required ></input>
+          <input id='text-post' placeholder='Publicando..' spellcheck='false' onChange={(e)=> setTitle(e.target.value)} required >{props.objEdit.title}</input>
           <h5>Sub Título</h5> 
-          <input id='text-post' placeholder='Publicando..' spellcheck='false'  onChange={(e)=> setSubtitle(e.target.value)} required ></input>
+          <input id='text-post' placeholder='Publicando..' spellcheck='false'  onChange={(e)=> setSubtitle(e.target.value)} required >{props.objEdit.subtitle}</input>
           <h5>Contenido del Post</h5>
-          <textarea id='text-post' placeholder='Publicando..' spellcheck='false' onChange={(e)=> setContent(e.target.value)} required ></textarea>
+          <textarea id='text-post' placeholder='Publicando..' spellcheck='false' onChange={(e)=> setContent(e.target.value)} required >{props.objEdit.content}</textarea>
           <h5>Más información del post</h5>
-          <textarea id='text-post' placeholder='Publicando..' spellcheck='false' onChange={(e)=> setMoreContent(e.target.value)} required ></textarea>
+          <textarea id='text-post' placeholder='Publicando..' spellcheck='false' onChange={(e)=> setMoreContent(e.target.value)} required >{props.objEdit.moreContent}</textarea>
           <h5>Comentarios </h5>
-          <textarea id='text-post' placeholder='Publicando..' spellcheck='false' onChange={(e)=> setComment(e.target.value)} required ></textarea>
+          <textarea id='text-post' placeholder='Publicando..' spellcheck='false' onChange={(e)=> setComment(e.target.value)} required >{props.objEdit.comment}</textarea>
           <img src="https://lh3.googleusercontent.com/proxy/DSeeZ4iLSG7301Y_nofbUHSAxNeNTIEe56JYFpd7DzP3lj0qrTC3eF_j4hE1XcG2pftmBnrMGXgPKMfRHZTTfeQDSwgw-HXJ03TBGoMizeHzzRdyrsS00L5qiOl8jTbJuMfXc1ToBTGFYvYsRWUaxkD2z1pJw01B1odOFqaZJosl1FnmlSCIowA" alt="" width="80%" style={{margin:"30px "}}/>
           <input type="file" name="file" style={{margin:"20px 25px"}}></input>              
         </Modal.Body>
