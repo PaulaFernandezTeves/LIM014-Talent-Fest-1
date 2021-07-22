@@ -2,19 +2,36 @@
 
 
 
-
-#text-post {
-  position: absolute;
-  margin-top: -130px;
-  margin-left: 45px;
-  width: 70%;
-  height: 10%;
-  text-align: center;
-  padding: 35px;
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.28);
-  box-sizing: border-box;
-  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+#add-photo-container input {
+  background-color: "#0D0B6E";
 }
 
+.search-box
+{   position: relative;
+    display:block;
+    height: 58.62px;
+    width: 330px;
+    margin: 10px;
+    padding:10px 10px;
+    background-color:rgba(196, 196, 196, 0.45);
+    border-radius: 3px;
+    border: 1px solid #E3B309;
+    box-sizing: border-box;
+    cursor: pointer;
+}
 
+.style-nav{
+  display:flex;
+  /* flex-flow:row wrap;
+  align-items: center; */
+  justify-content: center;
+  margin-top: 50px  0;
+  }
+
+  #keyword{
+    margin: 0 20px 0 0;
+  }
+
+  #add-photo-container input {
+    display: none;
+}
