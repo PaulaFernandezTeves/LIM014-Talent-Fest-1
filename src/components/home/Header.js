@@ -20,15 +20,17 @@ export const Header = () => {
     fontSize: "1.2rem",
     marginRight: "3rem",
     fontWeight: "bold",
+    aligncontent: 'center',
   }
+  
  
   return (
     <>
       <header className="meryheader d-flex justify-content-between px-5 pe-5">
-        <ul className="d-flex justify-content-between align-self-center">
+        <ul className="d-flex justify-content-between align-self-center" style={{marginBottom:'0',}}>
           <Link style={merylink}>Cuidado</Link>
         </ul>
-        <figure className="meryimgheader d-flex align-items-center">
+        <figure className="meryimgheader d-flex align-items-center"  style={{marginBottom:'0'}} >
           <Link to={"/"} onClick={() => logOut()} style={merylink}>
             Salir
           </Link>
@@ -37,8 +39,8 @@ export const Header = () => {
       </header>
       <section className="merysubnav">
         <nav className="px-5 pt-3 pb-2">
-          <ul className="d-flex justify-content-between">
-            <li style={meryli}>
+          <ul className="d-flex justify-content-between align-self-center" style={{marginBottom:'0',}} >
+            <li style={meryli} >
               <Link to="/cuidado/salud" style={merylink}>
                 Salud
               </Link>
@@ -68,9 +70,7 @@ export const Header = () => {
                 aria-describedby="basic-addon2"
               />
             </InputGroup>
-            <button className="merylinkjob" onClick={()=> history.push('/mi-trabajo')}>Para mi trabajo</button>
-            {/* <button className="merylinkjob" onClick={()=> history.push('/mi-trabajo')}>Admin</button> */}
-            {/* <button className="merylinkjob" onClick={()=> history.push('/mi-trabajo')}>Registrador</button> */}
+            <button className="merylinkjob" style={{maxWidth:'15%',}} onClick={()=> history.push('/mi-trabajo')}>Para mi trabajo</button>
             <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic">
                 Administrador

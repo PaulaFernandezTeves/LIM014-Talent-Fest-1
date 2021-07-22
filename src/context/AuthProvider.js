@@ -1,6 +1,7 @@
 import React, {createContext, useContext, useState, useEffect} from 'react';
 import { auth } from '../firebase/config';
 import { loginFb, logoutFb } from '../firebase/auth';
+import { useHistory } from "react-router-dom";
 
 
 const AuthContext = createContext();
@@ -10,14 +11,25 @@ export const useAuth = () => { //con esto podemos USAR todas las fn y estados de
 };
 
 export const AuthProvider = ({ children }) => {
+  let history = useHistory();
 
+  //FUNCIONES DE AUTH
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("user"))
   );
 
   const login = (email, password) => loginFb(email, password);
   
-  const logOut = () => logoutFb() 
+  const logOut = () => {
+    logoutFb()
+      .then(() => {
+        setCurrentUser(null);
+        history.push("/")
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
