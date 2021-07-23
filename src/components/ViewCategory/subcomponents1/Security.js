@@ -12,7 +12,7 @@ export const Security = () => {
       <section className='p-5'>
         <h2 className='text-center mb-5 azul'>DÍAS SIN ACCIDENTES</h2> 
         <div className='BriTimer'><Timer/></div>
-        <article className='d-flex flex-wrap justify-content-between mx-auto' style={{  maxWidth: '60%' }}>
+{/*         <article className='d-flex flex-wrap justify-content-between mx-auto' style={{  maxWidth: '60%' }}>
           <Card border=" border-4" style={{ width: '25rem', borderColor: "#83929B", borderRadius:'17px', height:'16rem'}} className='mb-4'>
             <Card.Body>
               <Card.Text style={{fontWeight:'bold', color:'#874487', fontSize:'1.2rem', textAlign:'center' }}>
@@ -33,7 +33,7 @@ export const Security = () => {
               <i class="fas fa-user-circle"></i>
             </figure>
           </Card> 
-        </article>
+        </article> */}
       </section>
       <section style={{ background: '#ECF2F6'}} className='p-5' id="video1">
         <h2 className='text-center mb-5 azul'>GANADORES CAMPAÑA MEDIO AMBIENTE</h2>

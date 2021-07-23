@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import { ModalCreatePost } from "./ModalCreatePost";
 // import { Header } from '../home/Header';
 import { HeaderAdmin } from './HeaderAdmin';
@@ -17,7 +17,8 @@ import { getPosts, deletePost } from '../../firebase/firestore'
  
   //----------------LLAMANDO POSTS DEL REGISTRADOR-----------------
   const [posts, setPosts] = useState([]);
- 
+  console.log(posts)
+
   const callback = (data) => {
     console.log(data)
     setPosts(data)
@@ -33,7 +34,10 @@ import { getPosts, deletePost } from '../../firebase/firestore'
   const handleClose1 = () => setShow1(false);
   const handleShow1 = () => setShow1(true);
 
-  const fneDeletePost = (id) =>{
+  const fneDeletePost = (e) =>{
+    e.preventDefault();
+    const id = e.target.getAttribute('data-id');
+    console.log(id)
     deletePost(id)
     setShow1(false)
   }
@@ -83,6 +87,7 @@ import { getPosts, deletePost } from '../../firebase/firestore'
               <th>Categoría</th>
               <th>Sub Categoría</th>
               <th>Estado</th>
+              <th>Fecha</th>
               <th>Editar</th>
               <th>Eliminar</th>
             </tr>
@@ -101,21 +106,25 @@ import { getPosts, deletePost } from '../../firebase/firestore'
                      ? <td style={{color:  'green'}}><b>{post.status}</b></td>
                     : <td style={{color: 'red'}}><b>{post.status}</b></td>
                 }                  
-                {/* //<td>{post.profile}</td> */}
+                
+                <td>{post.date}</td>
                 <td>
                   <ModalEditPost
                       post={post}
                   />
                 </td>
-                <td onClick={handleShow1}/* onClick={()=>fneDeletePost(post.postId)} */>🗑</td>
-                <Modal show={show1} onHide={handleClose1}>
+                <td /* onClick={handleShow1} data-id={post.postId} onClick={fneDeletePost}*/ >
+                <button data-id={post.postId} onClick={fneDeletePost}>🗑</button> </td>
+                {/* <Modal show={show1} onHide={handleClose1}>
                   <Modal.Body style={{margin: ' 0 auto'}}><b>¿Deseas eliminar la publicación?</b></Modal.Body>
                   <Modal.Footer>
-                    <Button variant="primary" style={{margin: ' 0 auto', background:'red', borderColor:'red'}} onClick={()=>fneDeletePost(post.postId)}>
-                      <b>Eliminar</b>
+                    <Button variant="primary" data-id={post.postId} style={{margin: ' 0 auto', background:'red', borderColor:'red'}} 
+                      onClick={fneDeletePost}>
+                      Eliminar
                     </Button>
+                    <button data-id={post.postId} onClick={fneDeletePost}>eliminar2</button>
                   </Modal.Footer>
-                </Modal>
+                </Modal> */}
               </tr>
             )): <>No hay posts </> }
           </tbody>

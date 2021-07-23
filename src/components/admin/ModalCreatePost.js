@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { Modal, Dropdown, InputGroup, FormControl } from "react-bootstrap";
 import { useAuth } from '../../context/AuthProvider';
-import { createPost } from '../../firebase/firestore';
+import { createPost, datePostDB, orderDate } from '../../firebase/firestore';
 
 
 import "../../styles/paula.css";
@@ -46,20 +46,25 @@ export const ModalCreatePost = (props) => {
 
   //ESTADO INICIAL DE REGISTRO DE POSTS
   const publishPost = () =>{
-  const initialState = {
-    owner: currentUser.email,
-    title: title,
-    subtitle: subtitle,
-    content: content,
-    moreContent: moreContent,
-    comment: comment,
-    category: category,
-    subcategory: subcategory,
-    status: "publicado",
-    profile: [manager, ejecut,operat, practi],
-    img: '',
-  }
+    
+    const initialState = {
+      owner: currentUser.email,
+      title: title,
+      subtitle: subtitle,
+      content: content,
+      moreContent: moreContent,
+      comment: comment,
+      category: category,
+      subcategory: subcategory,
+      status: "publicado",
+      profile: [manager, ejecut,operat, practi],
+      img: '',
+      date: datePostDB(),
+      orderDate: orderDate(),
+      /* postId: postId, */
+    }
     createPost(initialState);
+    //console.log(createPost(initialState))
     props.handleClose();
   } 
 

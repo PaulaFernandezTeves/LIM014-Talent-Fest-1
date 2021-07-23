@@ -31,6 +31,7 @@ export const Header = () => {
     // }
   
     useEffect(() => {
+      console.log(currentUser)
       getUser(currentUser.uid).then((user)=>{
         console.log(user.data())
         setRol(user.data().rol)})
@@ -85,7 +86,7 @@ export const Header = () => {
             <button className="merylinkjob" style={{maxWidth:'15%',}} onClick={()=> history.push('/mi-trabajo')}>Para mi trabajo</button>
             
             {
-              "Loading" && rol === 'admin'
+              rol === 'admin'
               ?             
               <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -100,17 +101,18 @@ export const Header = () => {
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-              :
-              <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  Registrador
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item>
-                    <Link to='/registrador/historial-post'>Posts</Link>                 
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+              : rol === 'registrador'
+                ? <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                      Registrador
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item>
+                        <Link to='/registrador/historial-post'>Posts</Link>                 
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                : null  
             } 
           </ul>
         </nav>

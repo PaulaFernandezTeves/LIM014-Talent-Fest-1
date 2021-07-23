@@ -31,7 +31,7 @@ export const ModalEditPost = (props) => {
   
   const { post } = props;
   const [datos, setDatos] = useState(post);
-  console.log(datos);
+  console.log(post);
 
    const handleInputChange = (event) => {
      setDatos({
@@ -82,11 +82,12 @@ export const ModalEditPost = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const rejectPost = () => {
-    datos.status='rechazado';
-    datos.profile=[manager, ejecut, operat, practi]// cfijarse si cambiaaaaaaa!!
-    console.log(datos)
-    updateStatusPost(datos.postId, datos)
+  const rejectPost = (e) => {
+    e.preventDefault()
+    post.status='rechazado';
+    post.profile=[manager, ejecut, operat, practi]// cfijarse si cambiaaaaaaa!!
+    console.log(post)
+    updateStatusPost(post.postId, post)
     setShow(false)
   }
 
@@ -94,8 +95,8 @@ export const ModalEditPost = (props) => {
     
     datos.status='publicado'
     datos.profile=[manager, ejecut, operat, practi]
-    console.log(datos)
-    updateStatusPostRegister(datos.postId, datos) //ahora enviar los nuevos datos
+    console.log(post)
+    updateStatusPostRegister(post.postId, post) //ahora enviar los nuevos datos
   }
  
 
@@ -122,7 +123,7 @@ export const ModalEditPost = (props) => {
             spellcheck="false"
             onChange={handleInputChange}
             name="title"
-            defaultValue={datos.title}
+            defaultValue={post.title}
           />
           <h5>Sub Título</h5>
           <input
@@ -131,7 +132,7 @@ export const ModalEditPost = (props) => {
             spellcheck="false"
             onChange={handleInputChange}
             name="subtitle"
-            defaultValue={datos.subtitle}
+            defaultValue={post.subtitle}
             required
           >
           </input>
@@ -142,7 +143,7 @@ export const ModalEditPost = (props) => {
             spellcheck="false"
             onChange={handleInputChange}
             name="content"
-            defaultValue={datos.content}
+            defaultValue={post.content}
             required
           >
           </textarea>
@@ -153,7 +154,7 @@ export const ModalEditPost = (props) => {
             spellcheck="false"
             onChange={handleInputChange}
             name="moreContent"
-            defaultValue={datos.moreContent}
+            defaultValue={post.moreContent}
             required
           >
             {/* {props.objEdit.moreContent} */}
@@ -165,7 +166,7 @@ export const ModalEditPost = (props) => {
             spellcheck="false"
             onChange={handleInputChange}
             name="comment"
-            defaultValue={datos.comment}
+            defaultValue={post.comment}
             required
           >
             {/* {props.objEdit.comment} */}
@@ -264,7 +265,7 @@ export const ModalEditPost = (props) => {
           <button style={cancel} onClick={handleClose}>
             Cancelar
           </button>
-          <button style={stylePost} onClick={()=>rejectPost()} >
+          <button style={stylePost} onClick={rejectPost} >
             Rechazar
           </button>
           <button style={stylePost} onClick={()=> publishedPost()}>Publicar</button>

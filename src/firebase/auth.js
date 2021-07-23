@@ -12,3 +12,4 @@ export const createUser = (email, password) => {
   // Crear usuario con correo electrónico y contraseña
   return auth.createUserWithEmailAndPassword(email, password);
 };
+export const getIdUser =()=> auth.currentUser
