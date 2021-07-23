@@ -32,7 +32,7 @@ export const ListUsers = () => {
         <div className="d-flex w-100 justify-content-end">
         </div>
         <table className="table table-sm table-hover w-100 mt-3 mx-2">
-          <thead>
+          <thead style={{background:"#0D0B6E"}}>
             <tr>
               <th>Colaborador</th>
               <th>Perfil</th>
