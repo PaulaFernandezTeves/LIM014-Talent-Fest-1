@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getDataUser, deleteUser } from "../../firebase/firestore";
-import { Header } from "../home/Header";
 import { ModalUpdateUser } from "./ModalUpdateUser"
+import { ModalCreateUser } from "./ModalCreateUser";
+import { HeaderAdmin } from './HeaderAdmin';
 
 export const ListUsers = () => {
 
@@ -22,14 +23,14 @@ export const ListUsers = () => {
     }
   }
 
-
   return (
     <>
-      <Header />
+      <HeaderAdmin/>
       <section className="container-fluid p-3 w-100 col">
         <h3 className="w-100 text-center ">Lista de usuarios</h3>
-        <button> + Añadir usuario</button>
-        <div className="d-flex w-100 justify-content-end"></div>
+        <ModalCreateUser />
+        <div className="d-flex w-100 justify-content-end">
+        </div>
         <table className="table table-sm table-hover w-100 mt-3 mx-2">
           <thead>
             <tr>
@@ -48,9 +49,7 @@ export const ListUsers = () => {
                 <td>{user.rol}</td>
                 <td onClick={() => deleteUsers(user.userId)}>🗑</td>
                 <td>
-                  <ModalUpdateUser
-                    user={user}
-                  />
+                  <ModalUpdateUser user={user} />
                 </td>
               </tr>
             ))}

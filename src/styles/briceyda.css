@@ -1,0 +1,68 @@
+.formCreateUser {
+  text-align: left;
+}
+
+.formCreateUser label {
+  display: block;
+  color: #020121;
+  margin-bottom: 5px;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.formCreateUser .btn-submit {
+  background-color: #003366;
+  border: solid 1.2px #003366;
+  margin-top: 20px;
+  padding: 5px;
+  width: 150px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.section input {
+  width: 90%;
+  height: 40px;
+  border: 2px solid #40668c;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 18px;
+  padding: 5px 12px;
+}
+
+.section input:hover {
+  border: 2px solid #003366;
+}
+
+.section input:focus {
+  outline: #40668c;
+  /* box-shadow: 1px 7px 15px -5px rgba(16, 119, 228, 0.5); */
+}
+
+.section {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.section-dropdown {
+  display: flex;
+  justify-content: center;
+}
+
+.section-dropdown .dropdown-rol {
+  margin-right: 50px;
+}
+
+.section-dropdown p {
+  text-align: center;
+  margin: 5px 0;
+  background-color: #bfccd9;
+  border-radius: 2px;
+  font-weight: bolder;
+}
+
+.modal-footer button {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}

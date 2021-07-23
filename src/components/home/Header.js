@@ -9,7 +9,6 @@ import { getUser } from '../../firebase/firestore'
  
 export const Header = () => {
   let history = useHistory();
-  //let { path, url } = useRouteMatch();
  
   const {logOut, currentUser} = useAuth();
   console.log(currentUser)

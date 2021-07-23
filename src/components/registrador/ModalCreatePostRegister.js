@@ -54,7 +54,7 @@ export const ModalCreatePostRegister = (props) => {
       comment: comment,
       category: category,
       subcategory: subcategory,
-      status: "pending",
+      status: "pendiente",
       profile: [manager, ejecut,operat, practi],
       img: '',
     }

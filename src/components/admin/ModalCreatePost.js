@@ -1,7 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Modal, Dropdown, InputGroup, FormControl } from "react-bootstrap";
 import { useAuth } from '../../context/AuthProvider';
 import { createPost } from '../../firebase/firestore';
+
+
+import "../../styles/paula.css";
+import iconfoto from "../../images/fotos.png";
+
 
 export const ModalCreatePost = (props) => {
 
@@ -58,6 +63,28 @@ export const ModalCreatePost = (props) => {
     props.handleClose();
   } 
 
+  let previewImg = useRef(null);
+  let imageRef= useRef(null);
+  
+  //FUNCION CARGAR FOTO
+  function onChangeFile(){
+
+      let $imageRef = imageRef.current.files[0];
+      // console.log($imageRef);
+      let $previewImg = previewImg.current;
+      let $readFile = new FileReader();
+  
+      if ($imageRef){
+        $readFile.readAsDataURL($imageRef);
+        $readFile.onloadend = function(){
+          $previewImg.src = $readFile.result;
+        };
+      } else {
+        $previewImg.src= "";
+      }
+      console.log("hola")
+  }
+
   return (
     <>
       <Modal
@@ -79,10 +106,20 @@ export const ModalCreatePost = (props) => {
           <h5>Más información del post</h5>
           <textarea onChange={(e) => setMoreContent(e.target.value)} required ></textarea>
           <h5>Comentarios </h5>
-          <textarea onChange={(e) => setComment(e.target.value)}  required ></textarea>
-          <img src="https://lh3.googleusercontent.com/proxy/DSeeZ4iLSG7301Y_nofbUHSAxNeNTIEe56JYFpd7DzP3lj0qrTC3eF_j4hE1XcG2pftmBnrMGXgPKMfRHZTTfeQDSwgw-HXJ03TBGoMizeHzzRdyrsS00L5qiOl8jTbJuMfXc1ToBTGFYvYsRWUaxkD2z1pJw01B1odOFqaZJosl1FnmlSCIowA" alt="" width="80%" style={{margin:"30px "}}/>
-          <input type="file" name="file" style={{margin:"20px 25px"}}></input>              
+          <textarea onChange={(e) => setComment(e.target.value)}  required ></textarea>        
         </Modal.Body>
+
+        <Modal.Body  className="modalDialog add-new-photo first" id="add-photo">            
+            <figure className="Upload__form-container-im"  style={{maxWidth:'45%', height:'45%'}}>
+                <img src={iconfoto} alt="" ref={previewImg} fluid  style={{width:'100%', height:'100%' , objectFit:'contain'}}/>
+            </figure>
+            
+            <div id="add-photo">
+              <input type="file"  ref={imageRef} name="images[]" style={{backgroundColor:"#E5E5E5"}} className="Upload__form-inputfile" onChange={onChangeFile}></input>
+            </div>
+         </Modal.Body>
+
+
       <article>
         {/* <p><b>Vista: {category}</b></p>
         <p><b>Sección: {subcategory}</b></p> */}

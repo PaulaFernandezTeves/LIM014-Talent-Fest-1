@@ -12,6 +12,7 @@ export const getDataUser = (callback) => {
     callback(users);
   });
 };
+
 export const getUser = (id) => { 
   return db.collection('users').doc(id).get()
 }
@@ -23,9 +24,18 @@ export const editUser = (userId, perfil,rol) => {
   .update({ perfil, rol });
 };
 
-
 export const deleteUser = (userId) => {
   return db.collection("users").doc(userId).delete();
+};
+
+export const propertyUser = (userId, colaborador, email, perfil, rol) => {
+  return db.collection("users").doc(userId).set({
+    userId,
+    colaborador,
+    email,
+    perfil,
+    rol,
+  });
 };
 
 export const createPost = (object) => db.collection("post").add(object);
@@ -58,3 +68,6 @@ db
   .doc(idPost)
   .update({...payload});    
 
+  export const deletePost = (postId) => {
+    return db.collection("post").doc(postId).delete();
+  };

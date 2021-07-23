@@ -83,7 +83,7 @@ export const ModalEditPost = (props) => {
   const handleShow = () => setShow(true);
 
   const rejectPost = () => {
-    datos.status='rejected';
+    datos.status='rechazado';
     datos.profile=[manager, ejecut, operat, practi]// cfijarse si cambiaaaaaaa!!
     console.log(datos)
     updateStatusPost(datos.postId, datos)
@@ -92,7 +92,7 @@ export const ModalEditPost = (props) => {
 
   const publishedPost = () => {
     
-    datos.status='published'
+    datos.status='publicado'
     datos.profile=[manager, ejecut, operat, practi]
     console.log(datos)
     updateStatusPostRegister(datos.postId, datos) //ahora enviar los nuevos datos
@@ -101,8 +101,8 @@ export const ModalEditPost = (props) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        ✏
+      <Button /* variant="primary" */ onClick={handleShow}>
+        <i className="fas fa-edit"></i>
       </Button>
 
       <Modal
@@ -130,7 +130,7 @@ export const ModalEditPost = (props) => {
             placeholder="Publicando.."
             spellcheck="false"
             onChange={handleInputChange}
-            name="subTitle"
+            name="subtitle"
             defaultValue={datos.subtitle}
             required
           >

@@ -89,7 +89,7 @@ export const ModalEditPostRegister = (props) => {
 
 
   const updatePostRegist = () => {
-    datos.status='pending'
+    datos.status='pendiente'
     console.log(datos)
     updateStatusPostRegister(datos.postId, datos)
     setShow(false)
@@ -97,8 +97,8 @@ export const ModalEditPostRegister = (props) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        ✏
+      <Button /* variant="primary" */ onClick={handleShow} style={{backgroundColor:'white', border:'white'}}>
+         <i className="fas fa-edit text-dark"></i>
       </Button>
 
       <Modal
@@ -106,25 +106,25 @@ export const ModalEditPostRegister = (props) => {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        
       >
         <Modal.Header>
-          <h3>Nueva Publicación</h3>
+          <h3>Editar Publicación</h3>
         </Modal.Header>
         <Modal.Body className="modalDialog">
           <h5>Título</h5>
           <input
             id="text-post"
-            placeholder="Publicando.."
-            spellcheck="false"
+            style={{width:'100%', padding:'5px 10px', marginBottom:'20px'}}
             onChange={handleInputChange}
             name="title"
             defaultValue={datos.title}
+            required
           />
           <h5>Sub Título</h5>
           <input
             id="text-post"
-            placeholder="Publicando.."
-            spellcheck="false"
+            style={{width:'100%', padding:'5px 10px', marginBottom:'20px'}}
             onChange={handleInputChange}
             name="subtitle"
             defaultValue={datos.subtitle}
@@ -134,8 +134,7 @@ export const ModalEditPostRegister = (props) => {
           <h5>Contenido del Post</h5>
           <textarea
             id="text-post"
-            placeholder="Publicando.."
-            spellcheck="false"
+            style={{width:'100%', padding:'5px 10px', marginBottom:'20px'}}
             onChange={handleInputChange}
             name="content"
             defaultValue={datos.content}
@@ -145,8 +144,7 @@ export const ModalEditPostRegister = (props) => {
           <h5>Más información del post</h5>
           <textarea
             id="text-post"
-            placeholder="Publicando.."
-            spellcheck="false"
+            style={{width:'100%', padding:'5px 10px', marginBottom:'20px'}}
             onChange={handleInputChange}
             name="moreContent"
             defaultValue={datos.moreContent}
@@ -157,8 +155,7 @@ export const ModalEditPostRegister = (props) => {
           <h5>Comentarios </h5>
           <textarea
             id="text-post"
-            placeholder="Publicando.."
-            spellcheck="false"
+            style={{width:'100%', padding:'5px 10px', marginBottom:'20px'}}
             onChange={handleInputChange}
             name="comment"
             defaultValue={datos.comment}
@@ -178,79 +175,101 @@ export const ModalEditPostRegister = (props) => {
             style={{ margin: "20px 25px" }}
           ></input>
         </Modal.Body>
-        <article>
-          <p><b>Vista: {category}</b></p>
-          <p><b>Sección: {subcategory}</b></p>
-        </article>
-        <div className='d-flex justify-content-beetwen'>
-          <article>
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                VISTA
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-3" onClick={()=>setCategory('Home')} >HOME</Dropdown.Item>
-                  <Dropdown.Item href="#/action-1" onClick={()=>setCategory('Salud')}>SALUD</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2" onClick={()=>setCategory('Seguridad')} >SEGURIDAD</Dropdown.Item>
-                  <Dropdown.Item href="#/action-3" onClick={()=>setCategory('Beneficios')} >BENEFICIOS</Dropdown.Item>                
-              </Dropdown.Menu>
-            </Dropdown>
-            { category === 'Home' ?        
-                <Dropdown>
-                  <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    HOME
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                      <Dropdown.Item href="#/action-1" onClick={()=>setSubcategory('Para Ti')}>Sección - Para Ti</Dropdown.Item>
-                      <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('Noticias Destacadas')}>Sección - Noticias Destacadas del Mes</Dropdown.Item>
-                      <Dropdown.Item href="#/action-3" onClick={()=>setSubcategory('Cumpleaños')}>Sección - Cumpleaños</Dropdown.Item>
-                      <Dropdown.Item href="#/action-3" onClick={()=>setSubcategory('Otros Reconocimientos')}>Sección - Otros Reconocimientos</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-                :<></>   
+
+        <div style={{padding:'5px 20px'}}>
+          <article className='d-flex mb-3'>
+            <div className='me-5'>
+              <h5>VISTA</h5>
+              <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  VISTA
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-3" onClick={()=>setCategory('Home')} >HOME</Dropdown.Item>
+                    <Dropdown.Item href="#/action-1" onClick={()=>setCategory('Salud')}>SALUD</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2" onClick={()=>setCategory('Seguridad')} >SEGURIDAD</Dropdown.Item>
+                    <Dropdown.Item href="#/action-3" onClick={()=>setCategory('Beneficios')} >BENEFICIOS</Dropdown.Item>                
+                </Dropdown.Menu>
+              </Dropdown>
+              <p><b>{category}</b></p>
+            </div>
+            { category === 'Home' ? 
+                <div> 
+                  <h5>SECCIÓN</h5>       
+                  <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                      HOME
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="#/action-1" onClick={()=>setSubcategory('Para Ti')}>Sección - Para Ti</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('Noticias Destacadas')}>Sección - Noticias Destacadas del Mes</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3" onClick={()=>setSubcategory('Cumpleaños')}>Sección - Cumpleaños</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3" onClick={()=>setSubcategory('Otros Reconocimientos')}>Sección - Otros Reconocimientos</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                  <p><b>{subcategory}</b></p>
+                </div> 
+                :<></>                
             } 
-            { category === 'Salud' ?        
-                <Dropdown>
-                  <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    SALUD
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                      <Dropdown.Item href="#/action-1" onClick={()=>setSubcategory('Vacunación')}>Sección - Cronograma de Vacunación</Dropdown.Item>
-                      <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('Recomendaciones')}>Sección - Recomendaciones</Dropdown.Item>
-                      <Dropdown.Item href="#/action-3" onClick={()=>setSubcategory('Nutrición')}>Sección - Atención Nutricional</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-                :<></>   
+            { category === 'Salud' ?
+              <div> 
+                <h5>SECCION</h5>         
+                  <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                      SALUD
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="#/action-1" onClick={()=>setSubcategory('Vacunación')}>Sección - Cronograma de Vacunación</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('Recomendaciones')}>Sección - Recomendaciones</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3" onClick={()=>setSubcategory('Nutrición')}>Sección - Atención Nutricional</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                  <p><b>{subcategory}</b></p>
+                </div>  
+              :<></>   
             } 
             {
               category === 'Seguridad' ?
-              <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  SEGURIDAD
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1" onClick={()=>setSubcategory('Sin Accidentes')}>Sección - Días sin accidentes</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('Ganadores de Campaña del Medio Ambiente')}>Sección - Ganadores de campaña del Medio Ambiente</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+              <div> 
+                <h5>SECCION</h5> 
+                <Dropdown>
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    SEGURIDAD
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                      <Dropdown.Item href="#/action-1" onClick={()=>setSubcategory('Sin Accidentes')}>Sección - Días sin accidentes</Dropdown.Item>
+                      <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('Ganadores de Campaña del Medio Ambiente')}>Sección - Ganadores de campaña del Medio Ambiente</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+                <p><b>{subcategory}</b></p>
+              </div>
               :<></>
             }
             {
               category === 'Beneficios' ?
-              <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  BENEFICIOS
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1" onClick={()=>setSubcategory('Becas')}>Sección - Becas</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('Fallecimiento')}>Sección - Fallecimiento</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('Autoseguro Médico')}>Sección - Autoseguro Médico Familiar</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('Linajes Peruanos')}>Sección - Linajes Peruanos</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('ICPNA')}>Sección - ICPNA</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+              <div> 
+                <h5>SECCION</h5> 
+                <Dropdown>
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    BENEFICIOS
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                      <Dropdown.Item href="#/action-1" onClick={()=>setSubcategory('Becas')}>Sección - Becas</Dropdown.Item>
+                      <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('Fallecimiento')}>Sección - Fallecimiento</Dropdown.Item>
+                      <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('Autoseguro Médico')}>Sección - Autoseguro Médico Familiar</Dropdown.Item>
+                      <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('Linajes Peruanos')}>Sección - Linajes Peruanos</Dropdown.Item>
+                      <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('ICPNA')}>Sección - ICPNA</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+                <p><b>{subcategory}</b></p>
+              </div>  
               :<></>
             }
+          </article>
+
+          <article style={{padding:'5px 5px'}}>
+            <p><b>{category}</b></p>
+            <p><b>{subcategory}</b></p>
           </article>
 
           <article>
