@@ -1,6 +1,5 @@
 import React from "react";
 import { ModalReviewPost } from "./ModalReviewPost";
-// import { Header } from '../home/Header';
 import { HeaderAdmin } from '../admin/HeaderAdmin';
 import { Button} from "react-bootstrap";
 import '../../styles/paula.css'
@@ -22,8 +21,6 @@ export function ReviewPost() {
 
     return (
         <>
-        
-      {/* <Header /> */}
       <HeaderAdmin />
       <section className="w-100 mt-4">
       <div>
@@ -33,13 +30,11 @@ export function ReviewPost() {
       </div>
       </nav>
       <Button style={crearBtn} className="crear-btn">+ Crear Publicación</Button>{' '}
-    
       </div>
       </section>
       <section className="container-fluid p-3 w-100 col">
         <h3 className="w-100 text-center ">Historial de publicaciones</h3>
         <div className="d-flex w-100 justify-content-end">
-         
         </div>
         <table className="table table-sm table-hover w-100 mt-3 mx-2" >
           <thead style={newPost}>

@@ -7,15 +7,8 @@ import '../../styles/paula.css';
 
 
 export const HeaderListUser = () => {
-
-    //     let history = useHistory();
-    //   //let { path, url } = useRouteMatch();
      
       const {logOut} = useAuth();
-     
-    //   const meryli = {
-    //     listStyle: "none",
-    //   }
       const merylink = {
         textDecoration: "none",
         color: "white",
@@ -66,7 +59,6 @@ export const HeaderListUser = () => {
               </Link>
             </figure>
           </header>
-    
             </>
     
         )

@@ -5,10 +5,10 @@ import { Button, Dropdown } from "react-bootstrap";
 import logoheader from '../../images/logoheader.png'
 import '../../styles/paula.css';
 
-export const HeaderAdmin = () => {
-
-  const {logOut} = useAuth();
+export const HeaderHistorialPost = () => {
  
+  const {logOut} = useAuth();
+
   const merylink = {
     textDecoration: "none",
     color: "white",
@@ -41,14 +41,11 @@ export const HeaderAdmin = () => {
         </ul>
         <Dropdown style={{marginTop:'20px', marginLeft:'780px'}}>
             <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Administrador
+                Registrador
             </Dropdown.Toggle>
             <Dropdown.Menu>
-            <Dropdown.Item >
-                <Link to='/administrador/usuarios'>Usuarios</Link>                 
-            </Dropdown.Item>
             <Dropdown.Item>
-                <Link to='/administrador/revision-post'>Revisión de Posts</Link>      
+                <Link to='/registrador/historial-post'>Posts</Link>                 
             </Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
@@ -59,6 +56,6 @@ export const HeaderAdmin = () => {
             </Link>
             </figure>
       </header>
-    </>
+        </>
     )
 }

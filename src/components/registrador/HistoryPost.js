@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import { Header } from '../home/Header';
-import { ModalCreatePost} from '../registrador/ModalCreatePost'
-import { getPosts } from '../../firebase/firestore'
+// import { Header } from '../home/Header';
+import { ModalCreatePost} from '../registrador/ModalCreatePost';
+import { getPosts } from '../../firebase/firestore';
+import { HeaderHistorialPost } from '../registrador/HeaderHistorialPost';
 
 export const HistoryPost = () => {
   const good = {
@@ -26,7 +27,8 @@ export const HistoryPost = () => {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
+      <HeaderHistorialPost />
       <section className="container-fluid p-3 w-100 col">
         <h3 className="w-100 text-center ">Lista de Publicaciones</h3>
         <button
