@@ -1,48 +1,42 @@
-import React from "react";
+import '../../../utils/simplyCountdown.min.js';
+// eslint-disable-next-line no-unused-vars
+import React,{useEffect, Component} from "react";
 import '../../../styles/brighit.css'
 
-const Timer = () => {
-    const [time, setTime] = React.useState(0);
-    const [timerOn, setTimerOn] = React.useState(false);
+// eslint-disable-next-line no-undef
+export const Timer = () => {
+    useEffect(() => {
+        // eslint-disable-next-line no-undef
+        simplyCountdown('#timer', {
+            year: 2021, // required
+            month: 7, // required
+            day: 10, // required
+            hours: 0, // Default is 0 [0-23] integer
+            minutes: 0, // Default is 0 [0-59] integer
+            seconds: 0, // Default is 0 [0-59] integer
+            words: { //words displayed into the countdown
+                days: { singular: 'day', plural: 'days' },
+                hours: { singular: 'hour', plural: 'hours' },
+                minutes: { singular: 'minute', plural: 'minutes' },
+                seconds: { singular: 'second', plural: 'seconds' }
+            },
+            plural: true, //use plurals
+            inline: false, //set to true to get an inline basic countdown like : 24 days, 4 hours, 2 minutes, 5 seconds
+            inlineClass: 'simply-countdown-inline', //inline css span class in case of inline = true
+            // in case of inline set to false
+            enableUtc: false, //Use UTC or not - default : false
+            onEnd: function() { return; }, //Callback on countdown end, put your own function here
+            refresh: 1000, // default refresh every 1s
+            sectionClass: 'simply-section', //section css class
+            amountClass: 'simply-amount', // amount css class
+            wordClass: 'simply-word', // word css class
+            zeroPad: false,
+            countUp: true
+        });
+    }, [])
 
-    React.useEffect(() => {
-        let interval = null;
-
-        if (timerOn) {
-        interval = setInterval(() => {
-            setTime((prevTime) => prevTime + 10);
-        }, 10);
-        } else if (!timerOn) {
-        clearInterval(interval);
-        }
-
-        return () => clearInterval(interval);
-    }, [timerOn]);
-
-    return (
-        <div className="Timers">
-        <div id="display">
-            <span>{("0" + Math.floor((time / (60000*60*24)))).slice(-3)} DÍAS </span>
-            <span>{("0" + Math.floor((time / (60000*60)) % 24)).slice(-2)} HORAS </span>
-            <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)} MINUTOS </span> {/*  6000 ES UN SEGUNDO Y HAY 60 SEGUNDOS EN 1 MINUTO Y (1000 MILISEGUNDOS POR 60)=1 MIN  / Y 60 POR QUE HAY 60  */}
-            <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}</span> {/*  1000 ES UN SEGUNDO Y HAY 60 SEGUNDOS EN 1 MINUTO */}
-            {/* <span>{("0" + ((time / 10) % 100)).slice(-2)}</span> */}
-        </div>
-
-        <div id="buttons">
-            {!timerOn && time === 0 && (
-            <button onClick={() => setTimerOn(true)}>Start</button>
-            )}
-            {/* {timerOn && <button onClick={() => setTimerOn(false)}>Stop</button>} */}
-            {timerOn && time > 0 && (
-            <button onClick={() => setTime(0)}>Reset</button>
-            )}
-            {/* {!timerOn && time > 0 && (
-            <button onClick={() => setTimerOn(true)}>Resume</button>
-            )} */}
-        </div>
-        </div>
-    );
-};
-
-export default Timer;
+return (
+<>
+<div className='BriTimer' id="timer" style={{display: 'flex'}}></div>
+</>
+)}

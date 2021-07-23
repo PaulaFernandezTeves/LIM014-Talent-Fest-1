@@ -42,10 +42,9 @@ export const Benefit = () => {
                 <img src={becas} alt ="" style={{width:"25rem", height:"23rem", borderRadius:'17px', margin:"0"}} className="photo "></img>
                 </Card.Text> 
                 <div className="description">
+                  <h4>Becas Perú</h4>
                 <p className="text-secondary">
-                "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
-                <br></br>
-                "lorem"
+                "Becas para hijos de nuestro personal con más de 5 años laborando ."
               </p>
               </div>
               <Button variant="primary" onClick={handleShow} style={{backgroundColor: "#0D0B6E", padding:"5px 10px", maxWidth:"20%", height: "fit-content", marginTop:"150px"}}>Ver más</Button>
@@ -56,8 +55,7 @@ export const Benefit = () => {
                 keyboard={false}
               >
                 <Modal.Body >
-                  I will not close if you click outside me. Don't even try to press
-                  escape key.
+                    En casos de fallecimiento de un familiar directo contamos con algunos beneficios que ayudarán a sobrellevarlo.
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={handleClose}>Close</Button>
@@ -105,44 +103,7 @@ export const Benefit = () => {
           : null  
       }
 
-      {/* AUTOSEGUROS */}
-      {perfil==='Administrativos'|| perfil ==='Operativos' || perfil ==='Ejecutivos'
-        ?
-          <section className='p-5'>
-            <h2 className='text-center mb-5 azul'>AUTOSEGURO MÉDICO FAMILIAR</h2>
-            <article className='d-flex flex-wrap justify-content-between mx-auto' style={{  maxWidth: '80%' }}>
-        
-              <Card.Text style={{fontWeight:'bold', color:'#874487', fontSize:'1.2rem', textAlign:'center' }}>
-              <img src={autoseguro} alt ="" style={{width:"25rem", height:"23rem", borderRadius:'17px', margin:"0"}} className="photo "></img>
-              </Card.Text>    
-              <div className="description">
-              <p className="text-secondary">
-              "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
-              <br></br>
-              "lorem"
-            </p>
-            </div>
-            <Button variant="primary" onClick={handleShow} style={{backgroundColor: "#0D0B6E", padding:"5px 10px", maxWidth:"20%", height: "fit-content", marginTop:"150px"}}>Ver más</Button>
-            <Modal
-              show={show}
-              onHide={handleClose}
-              backdrop="static"
-              keyboard={false}
-            >
-              <Modal.Body >
-                I will not close if you click outside me. Don't even try to press
-                escape key.
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>Close</Button>
-              </Modal.Footer>
-            </Modal>
-              </article>
-          </section>
-        :null
-      }
-
-       {/* AUTOSEGUROS - TODOS*/}
+       {/* LINAHES - TODOS*/}
       <section className='p-5' style={{ background: '#ECF2F6'}}>
         <h2 className='text-center mb-5 azul'>LINAJES PERUANOS</h2>
         <article className='d-flex flex-wrap justify-content-between mx-auto' style={{  maxWidth: '80%' }}>
@@ -176,9 +137,12 @@ export const Benefit = () => {
       </section>
 
       {/* ICPNA - TODOS*/}
-      <section className='p-5'>
-        <h2 className='text-center mb-5 azul'>ICPNA</h2>
-        <article className='d-flex flex-wrap justify-content-between mx-auto' style={{  maxWidth: '80%' }}>
+      {
+        /* perfil==='Administrativos'|| perfil ==='Operativos' || perfil ==='Ejecutivos' || perfil ==='Practicantes' */
+        /* ? */
+        <section className='p-5'>
+          <h2 className='text-center mb-5 azul'>ICPNA</h2>
+          <article className='d-flex flex-wrap justify-content-between mx-auto' style={{  maxWidth: '80%' }}>
               <Card.Text style={{fontWeight:'bold', color:'#874487', fontSize:'1.2rem', textAlign:'center' }}>
               <img src={icpna} alt ="" style={{width:"25rem", height:"23rem", borderRadius:'17px', margin:"0"}} className="photo "></img>
               </Card.Text>  
@@ -204,8 +168,10 @@ export const Benefit = () => {
                 <Button variant="secondary" style={{backgroundColor: "#0D0B6E"}} onClick={handleClose}>Close</Button>
               </Modal.Footer>
             </Modal>    
-        </article>
-      </section>
+            </article>
+          </section>
+         /*  : null */
+      }
     </>
   )
 }

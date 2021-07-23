@@ -37,54 +37,65 @@
   border-top-right-radius: 17px;
   padding: 0;
 }
+.video1{
+  padding-top: 35px;
+}
 .briSection{
   text-align: center;
-margin-left: 7%;
-background-color: transparent;
+  margin-left: 7%;
+  background-color: transparent;
 }
 
 .briVideo{
-object-fit: contain;
+  object-fit: contain;
+  align-items: center;
+  align-content: center;
+  padding-bottom: 25px;
+
 } 
+.briVideo div{
+  align-items: center;
+  text-align: center;
+}
 
 /*Timer */
-
-.Timers {
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  background-color:#003366,
-  }
-
-#display {
-  margin-bottom: 20px;
-}
-#display span {
-  font-size: 36px;
-}
-#buttons button:nth-child(2) {
-  margin-left: 8px;
+#Timer {
+  /* display: flex; */
+  background-color: rgb(215, 218, 221);
+	justify-content: center;
+  padding-bottom: 5px;
+  padding-top:5px;
+	margin-bottom: 100px;
+  columns: 4;
 }
 
-button {
-  font-size: 16px;
-  background-color: rgb(217, 60, 35);
-  color: #fff;
-  border-radius: 8px;
-  border: none;
-  padding: 6px 12px;
-  cursor: pointer;
+.simply-section {
+	background: rgb(194, 207, 219);
+	width: 20%;
+	height: 100%;
+	margin: 0 30px;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  margin-bottom: 40px;
 }
-button:hover {
-  background-color: rgb(173, 47, 28);
+
+
+.simply-amount {
+	display: block;
+	font-size: 50px;
+	font-weight: 700;
+  align-items: center;
+	text-align: center;
+  margin-top: 5px;
 }
-button:active {
-  background-color: rgb(130, 35, 21);
-}
-button:focus {
-  outline: 0;
-} 
- .BriTimer{
-  background-color: black;
-  color:cornsilk;
+
+.simply-word {
+	font-weight: 300;
+	font-size: 30px;
+  align-items: center;
+	text-align: center;
+  margin-bottom: 15px;
+  height: 15px;
 }
