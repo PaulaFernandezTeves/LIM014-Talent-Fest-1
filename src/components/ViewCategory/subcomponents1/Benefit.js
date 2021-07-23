@@ -8,7 +8,6 @@ import icpna from '../../../images/icpna.png';
 
 export const Benefit = () => {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
@@ -27,7 +26,6 @@ export const Benefit = () => {
               "lorem"
             </p>
             </div>
-
             <Button variant="primary" onClick={handleShow} style={{backgroundColor: "#0D0B6E", padding:"5px 10px", maxWidth:"20%", height: "fit-content", marginTop:"150px"}}>Ver más</Button>
       <Modal
         show={show}
@@ -59,7 +57,6 @@ export const Benefit = () => {
               "lorem"
             </p>
             </div>
-
             <Button variant="primary" onClick={handleShow} style={{backgroundColor: "#0D0B6E", padding:"5px 10px", maxWidth:"20%", height: "fit-content", marginTop:"150px"}}>Ver más</Button>
       <Modal
         show={show}
@@ -91,7 +88,6 @@ export const Benefit = () => {
               "lorem"
             </p>
             </div>
-
             <Button variant="primary" onClick={handleShow} style={{backgroundColor: "#0D0B6E", padding:"5px 10px", maxWidth:"20%", height: "fit-content", marginTop:"150px"}}>Ver más</Button>
       <Modal
         show={show}
@@ -112,7 +108,6 @@ export const Benefit = () => {
       <section className='p-5' style={{ background: '#ECF2F6'}}>
         <h2 className='text-center mb-5 azul'>LINAJES PERUANOS</h2>
         <article className='d-flex flex-wrap justify-content-between mx-auto' style={{  maxWidth: '80%' }}>
-        
               <Card.Text style={{fontWeight:'bold', color:'#874487', fontSize:'1.2rem', textAlign:'center' }}>
               <img src={linaje} alt ="" style={{width:"25rem", height:"23rem", borderRadius:'17px', margin:"0"}} className="photo "></img>
               </Card.Text>    
@@ -154,7 +149,6 @@ export const Benefit = () => {
               "lorem"
             </p>
             </div>
-
             <Button variant="primary" onClick={handleShow} style={{backgroundColor: "#0D0B6E", padding:"5px 10px", maxWidth:"20%", height: "fit-content", marginTop:"150px"}}>Ver más</Button>
       <Modal
         show={show}

@@ -93,7 +93,7 @@ export const Main = () => {
               </Card.Text>
             </Card.Body>
             <figure className='mx-auto'>
-              <i class="fas fa-user-circle"></i>
+              <i className="fas fa-user-circle"></i>
             </figure>
           </Card> 
           <Card border=" border-4" style={{ width: '25rem', borderColor: "#83929B", borderRadius:'17px', height:'16rem'}} className='mb-4'>
@@ -103,7 +103,7 @@ export const Main = () => {
                 </Card.Text>
               </Card.Body>
             <figure className='mx-auto'>
-              <i class="fas fa-user-circle"></i>
+              <i className="fas fa-user-circle"></i>
             </figure>
           </Card> 
         </article>
