@@ -19,30 +19,6 @@ export const ModalReviewPost = () => {
     // }
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-
-//     const handleUpload = () => {
-//       const uploadTask = storage.ref(`fotos/${image.name}`).put(image);
-//       uploadTask.on(
-//         "state_changed",
-//         snapshot => {},
-//         error => {
-//           console.log(error);
-//         },
-//         () => {
-//           storage
-//             .ref("images")
-//             .child(image.name)
-//             .getDownloadURL()
-//             .then(url => {
-//               console.log(url);
-//             });
-//         }
-//       );
-//     };
-
-// console.log('image:', image);
-
     const mystyle = {
       color: "white",
       backgroundColor: "#0D0B6E",
@@ -90,7 +66,7 @@ let imageRef= useRef(null);
 function onChangeFile(){
 // console.log(imageRef);
 // console.log(previewImg);
-    let $imageRef = setImage(imageRef.current.files[0]);
+    let $imageRef = imageRef.current.files[0];
     // console.log($imageRef);
     let $previewImg = previewImg.current;
     let $readFile = new FileReader();
