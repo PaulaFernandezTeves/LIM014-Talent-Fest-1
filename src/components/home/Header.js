@@ -42,38 +42,38 @@ export const Header = () => {
         <ul className="d-flex justify-content-between align-self-center" style={{marginBottom:'0',}}>
           <Link style={merylink}>Cuidado</Link>
         </ul>
-        <figure className="meryimgheader d-flex align-items-center"  style={{marginBottom:'0'}} >
-          <Link to={"/"} onClick={() => logOut()} style={merylink}>
+        <figure className="meryimgheader d-flex align-items-center"  style={{marginBottom:'0', marginRight:'200px'}} fluid>
+          <Link to={"/"} onClick={() => logOut()} style={merylink} >
             Salir
           </Link>
-          <img src={logoheader} alt="logo" className="merylogoheader" />
+          <img src={logoheader} alt="logo" className="merylogoheader" fluid/>
         </figure>
       </header>
-      <section className="merysubnav">
+      <section className="merysubnav" md>
         <nav className="px-5 pt-3 pb-2">
-          <ul className="d-flex justify-content-between align-self-center" style={{marginBottom:'0',}} >
-            <li style={meryli} >
+          <ul className="d-flex justify-content-between align-self-center" style={{marginBottom:'0', marginRight:'150px'}} >
+            <li style={meryli} fluid>
               <Link to="/cuidado/salud" style={merylink}>
                 Salud
               </Link>
             </li>
-            <li style={meryli}>
+            <li style={meryli} md>
               <Link to="/cuidado/seguridad" style={merylink}>
                 Seguridad
               </Link>
             </li>
-            <li style={meryli}>
+            <li style={meryli} md>
               <Link to="/cuidado/beneficios" style={merylink}>
                 Beneficios
               </Link>
             </li>
-            <InputGroup
+            <InputGroup md
               className="mb-3 me-3 input-group m-auto"
               id="searchNancy"
               // onChange={(e) => handleChange(e)}
             >
               <InputGroup.Text className="border-0 bg-transparent text-danger">
-                <i className="fas fa-search"></i>
+                <i className="fas fa-search" fluid></i>
               </InputGroup.Text>
               <FormControl
                 className="border-0 bg-white rounded-pill"

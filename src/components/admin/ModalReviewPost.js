@@ -2,7 +2,7 @@ import React, {useState, useRef } from 'react'
 import { Modal, Dropdown } from "react-bootstrap";
 import "../../styles/paula.css";
 import iconfoto from "../../images/fotos.png";
-import { storage } from '../../firebase/config';
+// import { storage } from '../../firebase/config';
 
 export const ModalReviewPost = () => {
     const [show, setShow] = useState(false);
@@ -16,24 +16,20 @@ export const ModalReviewPost = () => {
     //   await imageRef.put(image)
     //   setImageSource(await imageRef.getDownloadURL())
     // }
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
     const mystyle = {
       color: "white",
       backgroundColor: "#0D0B6E",
       margin: "5px 43px 5px",
       marginBottom:"60px"
     };
-
     const categories = {
       backgroundColor: "#108AB0",
       borderRadius:"3px",
       padding:"5px 10px",
       textAlign: "center",
     }
-
     const cancel = {
       color: "white",
       backgroundColor: "#FCAC04",
@@ -107,7 +103,7 @@ function onChangeFile(){
           </Modal.Header>
           <Modal.Body  className="modalDialog add-new-photo first" id="add-photo">            
             <div className="Upload__form-container-im">
-                <img src={iconfoto} alt="" ref={previewImg} ></img>
+                <img src={iconfoto} alt="" ref={previewImg} fluid></img>
             </div>
             
          <div id="add-photo">

@@ -5,6 +5,7 @@ import becas from '../../../images/becas.png';
 import autoseguro from '../../../images/autoseguro.png';
 import linaje from '../../../images/linajeperuano.png';
 import icpna from '../../../images/icpna.png';
+import '../../../styles/paula.css';
 
 export const Benefit = () => {
   const [show, setShow] = useState(false);
@@ -64,11 +65,11 @@ export const Benefit = () => {
         backdrop="static"
         keyboard={false}
       >
-        <Modal.Body >
+        <Modal.Body md>
           I will not close if you click outside me. Don't even try to press
           escape key.
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer md>
           <Button variant="secondary" onClick={handleClose}>Close</Button>
         </Modal.Footer>
       </Modal>     
@@ -89,6 +90,11 @@ export const Benefit = () => {
             </p>
             </div>
             <Button variant="primary" onClick={handleShow} style={{backgroundColor: "#0D0B6E", padding:"5px 10px", maxWidth:"20%", height: "fit-content", marginTop:"150px"}}>Ver más</Button>
+            <div style={{textAlign:'center'}}>
+              <br />
+              {/* <a href='https://www.siderperu.com.pe/sites/pe_gerdau/files/PDF/MemAn19SIDERPERU1906.pdf' target='_blank'></a><button>Ir a PDF</button> */}
+              <Button href="https://www.siderperu.com.pe/sites/pe_gerdau/files/PDF/MemAn19SIDERPERU1906.pdf" target='_blank'>Link</Button>
+            </div>
       <Modal
         show={show}
         onHide={handleClose}

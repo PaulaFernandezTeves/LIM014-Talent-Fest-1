@@ -94,6 +94,7 @@
 /* SUBNAV */
 .merysubnav nav{
   background-color: #874487;
+  width: 100vw; 
 }
 #searchNancy {
   height: 40px;
@@ -119,6 +120,6 @@
   padding-left: 0px;
 }
 .merylogoheader{
-  width: 100%;
+  width: 80%;
 }
 /* MAIN */
