@@ -40,6 +40,12 @@ export const Header = () => {
   return (
     <>
       <header className="meryheader d-flex justify-content-between px-5 pe-5">
+          <figure className="meryimgheader d-flex align-items-center"  style={{marginBottom:'0'}} >
+          <Link to={"/home"} style={merylink}>
+          <i className="fas fa-home" style={{color:'#0D0B6F', fontSize:'30px'}}></i>           
+          </Link>
+        </figure>
+
         <ul className="d-flex justify-content-between align-self-center" style={{marginBottom:'0',}}>
           <Link style={merylink}>Cuidado</Link>
         </ul>
@@ -50,6 +56,7 @@ export const Header = () => {
           <img src={logoheader} alt="logo" className="merylogoheader" />
         </figure>
       </header>
+
       <section className="merysubnav">
         <nav className="px-5 pt-3 pb-2">
           <ul className="d-flex justify-content-between align-self-center" style={{marginBottom:'0',}} >

@@ -26,26 +26,9 @@ export const Main = () => {
               <Card.Text style={{ color: '#003366', fontWeight:'bold', textAlign:'center' }}>
                 Cronograma de capacitación
               </Card.Text>
-              <div><button className="briCardBtn" onClick={handleShow}> Conoce más <i class="fas fa-arrow-circle-right"></i></button>
-            <Modal
-                show={show}
-                onHide={handleClose}
-                backdrop="static"
-                keyboard={false}
-              >
-                <Modal.Body  className='d-flex'>
-                  <figure style={{ width: '14rem', borderRadius:'17px', height:'13rem' }}>
-                    <img src="https://i.ytimg.com/vi/Y4Cvt6VLqd8/maxresdefault.jpg" alt="" style={{width:'100%'}}/>
-                  </figure>
-                  <div className=''>
-                    <h5>Capacitación de inicio de año</h5>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore culpa quae in nisi? Hic, accusamus? Autem officia tenetur nulla totam?</p>
-                  </div>
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose}>Close</Button>
-                </Modal.Footer>
-              </Modal>
+              <div>
+              <a className="briCardBtn" target="_blank" href="https://www.formate.pe/informacion-SIDERPERU-cursos-online-gratis-construccion-3196.html" rel="noreferrer">Conoce más<i class="fas fa-arrow-circle-right"></i></a>
+            
         </div>
             </Card.Body>
           </Card>
@@ -59,22 +42,9 @@ export const Main = () => {
               <Card.Text style={{ color: '#003366', fontWeight:'bold', textAlign:'center' }}>
                 Convocatorias internas
               </Card.Text>
-                <div><button className="briCardBtn" onClick={handleShow}/* style={{color:'#FFCC00', fontWeight:'bold', background:'white', borderColor:'transparent'}} */> Conoce más <i class="fas fa-arrow-circle-right"></i></button>
-                <Modal
-                  show={show}
-                  onHide={handleClose}
-                  backdrop="static"
-                  keyboard={false}
-                >
-                  <Modal.Body >
-                    I will not close if you click outside me. Don't even try to press
-                    escape key.
-                  </Modal.Body>
-                  <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>Close</Button>
-                  </Modal.Footer>
-                </Modal>
-                </div>
+                <div>
+                  <a className="briCardBtn" target="_blank" href="https://www.siderperu.com.pe/convocatorias-vigentes" rel="noreferrer">Conoce más<i class="fas fa-arrow-circle-right"></i></a>
+                 </div>
             </Card.Body>
           </Card>
           <Card border="gris3 border-3" style={{ width: '14rem', borderRadius:'17px', height:'13rem' }} className='mb-4'>
@@ -87,21 +57,9 @@ export const Main = () => {
               <Card.Text style={{ color: '#003366', fontWeight:'bold', textAlign:'center' }}>
                 Beneficios
               </Card.Text>
-                <div><button className="briCardBtn" onClick={handleShow}> Conoce más <i className="fas fa-arrow-circle-right"></i></button>
-                <Modal
-                  show={show}
-                  onHide={handleClose}
-                  backdrop="static"
-                  keyboard={false}
-                >
-                  <Modal.Body >
-                    I will not close if you click outside me. Don't even try to press
-                    escape key.
-                  </Modal.Body>
-                  <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>Close</Button>
-                  </Modal.Footer>
-                </Modal></div>
+              <div>
+                  <a className="briCardBtn" target="_blank" href="https://campus.siderperu.pe/" rel="noreferrer">Conoce más<i class="fas fa-arrow-circle-right"></i></a>
+              </div>
             </Card.Body>
           </Card>
           <Card border="gris3 border-3" style={{ width: '14rem', borderRadius:'17px', height:'13rem' }} className='mb-4'>
@@ -114,21 +72,9 @@ export const Main = () => {
               <Card.Text style={{ color: '#003366', fontWeight:'bold', textAlign:'center'}}>
                 Actividad
               </Card.Text>
-              <div><button className="briCardBtn" onClick={handleShow}> Conoce más <i className="fas fa-arrow-circle-right"></i></button>
-              <Modal
-                  show={show}
-                  onHide={handleClose}
-                  backdrop="static"
-                  keyboard={false}
-                >
-                  <Modal.Body >
-                    I will not close if you click outside me. Don't even try to press
-                    escape key.
-                  </Modal.Body>
-                  <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>Close</Button>
-                  </Modal.Footer>
-                </Modal></div>
+              <div>
+                  <a className="briCardBtn" target="_blank" href="https://www.siderperu.com.pe/conocenos/contactenos" rel="noreferrer">Conoce más<i class="fas fa-arrow-circle-right"></i></a>
+               </div>
             </Card.Body>
           </Card>         
         </article>
