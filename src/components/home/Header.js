@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import logoheader from '../../images/logoheader.png'
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from '../../context/AuthProvider';
 import { FormControl, InputGroup } from "react-bootstrap";
 import { Dropdown } from "react-bootstrap";
+import { getUser } from '../../firebase/firestore'
+
  
 export const Header = () => {
   let history = useHistory();
-  //let { path, url } = useRouteMatch();
  
-  const {logOut} = useAuth();
- 
+  const {logOut, currentUser} = useAuth();
+  console.log(currentUser)
   const meryli = {
     listStyle: "none",
   }
@@ -22,7 +23,18 @@ export const Header = () => {
     fontWeight: "bold",
     aligncontent: 'center',
   }
+    //llamando a los usuarios
+    const [rol, setRol] = useState('');
+    console.log(rol)
+    // const callback = (data) => {
+    //   setUsers(data)
+    // }
   
+    useEffect(() => {
+      getUser(currentUser.uid).then((user)=>{
+        console.log(user.data())
+        setRol(user.data().rol)})
+    }, [])
  
   return (
     <>
@@ -71,29 +83,35 @@ export const Header = () => {
               />
             </InputGroup>
             <button className="merylinkjob" style={{maxWidth:'15%',}} onClick={()=> history.push('/mi-trabajo')}>Para mi trabajo</button>
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Administrador
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item >
-                  <Link to='/administrador/usuarios'>Usuarios</Link>                 
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Link to='/administrador/revision-post'>Revisión de Posts</Link>      
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Registrador
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item>
-                  <Link to='/registrador/historial-post'>Posts</Link>                 
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            
+            {
+              "Loading" && rol === 'admin'
+              ?             
+              <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  Administrador
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item >
+                    <Link to='/administrador/usuarios'>Usuarios</Link>                 
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link to='/administrador/revision-post'>Revisión de Posts</Link>      
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              :
+              <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  Registrador
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item>
+                    <Link to='/registrador/historial-post'>Posts</Link>                 
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            } 
           </ul>
         </nav>
       </section>

@@ -1,55 +1,76 @@
 import React, {useEffect, useState} from 'react';
-import { ModalReviewPost } from "./ModalReviewPost";
-import { Header } from '../home/Header';
-import { getPosts } from '../../firebase/firestore'
-// import { HistoryPost } from '../registrador/HistoryPost';
+import { ModalCreatePost } from "./ModalCreatePost";
+// import { Header } from '../home/Header';
+import { HeaderAdmin } from './HeaderAdmin';
+import { getPosts, deletePost } from '../../firebase/firestore'
  import { ModalEditPost } from '../admin/ModalEditPost'
+ import { Modal, Button, InputGroup,FormControl } from "react-bootstrap";;
 
-export function ReviewPost() {
-  const good = {
-    color: "white",
-    backgroundColor:"green",
-  };
 
+ export function ReviewPost() {
+ 
   //-------------------- SETTEO PARA MODAL ---------------------
   const [show, setShow] = React.useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
-  //-------------------- SETTEO PARA MODAL EDIT ---------------------
-  const [show2, setShow2] = React.useState(false);
-  const handleClose2 = () => setShow(false);
-  const handleShow2 = () => setShow(true);
 
+ 
   //----------------LLAMANDO POSTS DEL REGISTRADOR-----------------
   const [posts, setPosts] = useState([]);
-
+ 
   const callback = (data) => {
+    console.log(data)
     setPosts(data)
   }
-
+ 
   useEffect(() => {
     getPosts(callback);
   }, []) 
-  //----------------EDITANDO DATOS DEL MODAL -----------------
-  const [ objEdit, setObjEdit] = useState({})
-  const updatePostModal =(objPost) => {
-    handleShow2();
-    setObjEdit(objPost);
+
+  //----------------MODAL ELMINAR POST-----------------
+  const [show1, setShow1] = useState(false);
+
+  const handleClose1 = () => setShow1(false);
+  const handleShow1 = () => setShow1(true);
+
+  const fneDeletePost = (id) =>{
+    deletePost(id)
+    setShow1(false)
   }
+
   return (
     <>
-      <Header />
-      <section className="container-fluid p-3 w-100 col">
-        <h3 className="w-100 text-center ">Lista de Publicaciones</h3>
-        <button
-          className="btn-finalizar d-block mt-4"
-          id="btnFinaly"
-          onClick={handleShow}
-            >
-          <b>Post</b>
-        </button>
-        <ModalReviewPost 
+      <HeaderAdmin/>
+      <section className="container-fluid p-3 w-100 col px-5">
+        <h3 className="w-100 text-center my-4 mb-5">Lista de Publicaciones</h3>
+        
+        <div className='d-flex justify-content-between'>
+          <InputGroup
+            className="mb-3 me-3 input-group " style={{background:'#E5E5E5'}}
+            id="searchNancy"
+            // onChange={(e) => handleChange(e)}
+          >
+            <InputGroup.Text className="border-0 bg-transparent text-danger">
+              <i className="fas fa-search text-dark"></i>
+            </InputGroup.Text>
+            <FormControl
+              className="border-0 rounded-pill"
+              style={{background:'#E5E5E5'}}
+              placeholder="Buscar"
+              aria-label="Buscar"
+              aria-describedby="basic-addon2"
+            />
+          </InputGroup>   
+             
+          <button  style={{borderRadius:'11px', padding:'5px 25px', background:'#0d6efd', border:'#0d6efd', color:'white', float:'right', marginBottom:'15px'}}
+            className="btn-finalizar d-block mb-4 me-5" 
+            id="btnFinaly"
+            onClick={handleShow}
+          >
+            <b>Crear Post</b>
+          </button>
+        </div>
+        <ModalCreatePost
           show={show}
           setShow={setShow}
           handleClose={handleClose}
@@ -62,33 +83,44 @@ export function ReviewPost() {
               <th>Categoría</th>
               <th>Sub Categoría</th>
               <th>Estado</th>
-              <th>Perfil del Trabajador</th>
-              <th> </th>
-              <th> </th>
+              <th>Editar</th>
+              <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
-            {posts.map((post, index) =>(
+            { posts.length> 0 ? posts.map((post, index) => (
               <tr key={index}>
                 <td>{post.owner}</td>
                 <td>📑{post.title}</td>
                 <td>{post.category}</td>
-                <td>{post.subcategory}</td>    
-                <td style={good}>{post.status}</td>  
-                <td >{post.profile}</td>            
-                <td>🗑</td>
-                <td onClick={()=>updatePostModal(post)}>✏</td>
+                <td>{post.subcategory}</td>
+                {
+                  post.status ==='pendiente' 
+                  ? <td style={{color: '#B8860B'}}><b>{post.status}</b></td>
+                  :  post.status ==='publicado'
+                     ? <td style={{color:  'green'}}><b>{post.status}</b></td>
+                    : <td style={{color: 'red'}}><b>{post.status}</b></td>
+                }                  
+                {/* //<td>{post.profile}</td> */}
+                <td>
+                  <ModalEditPost
+                      post={post}
+                  />
+                </td>
+                <td onClick={handleShow1}/* onClick={()=>fneDeletePost(post.postId)} */>🗑</td>
+                <Modal show={show1} onHide={handleClose1}>
+                  <Modal.Body style={{margin: ' 0 auto'}}><b>¿Deseas eliminar la publicación?</b></Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="primary" style={{margin: ' 0 auto', background:'red', borderColor:'red'}} onClick={()=>fneDeletePost(post.postId)}>
+                      <b>Eliminar</b>
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
               </tr>
-            ))}
+            )): <>No hay posts </> }
           </tbody>
         </table>
-        <ModalEditPost 
-          show2={show2}
-          setShow2={setShow2}
-          handleClose2={handleClose2}
-          objEdit={objEdit}
-        />
       </section>
     </>
-  )
+  );
 }

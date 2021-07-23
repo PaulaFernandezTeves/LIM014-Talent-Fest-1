@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { getDataUser } from "../../firebase/firestore";
-import { Header } from "../home/Header";
+import { getDataUser, deleteUser } from "../../firebase/firestore";
+import { ModalUpdateUser } from "./ModalUpdateUser"
+import { ModalCreateUser } from "./ModalCreateUser";
+import { HeaderAdmin } from './HeaderAdmin';
 
 export const ListUsers = () => {
 
@@ -13,14 +15,21 @@ export const ListUsers = () => {
   useEffect(() => {
     getDataUser(callback);
   }, [])
-  
+
+
+  const deleteUsers = async (userId) => {
+    if(window.confirm("Usted está seguro de eliminar este usuario?")) {
+      await deleteUser(userId);
+    }
+  }
+
   return (
     <>
-      <Header />
+      <HeaderAdmin/>
       <section className="container-fluid p-3 w-100 col">
         <h3 className="w-100 text-center ">Lista de usuarios</h3>
+        <ModalCreateUser />
         <div className="d-flex w-100 justify-content-end">
-          {/* <ModalAddUsers getUsers={getUsers} /> */}
         </div>
         <table className="table table-sm table-hover w-100 mt-3 mx-2">
           <thead>
@@ -38,9 +47,10 @@ export const ListUsers = () => {
                 <td>{user.colaborador}</td>
                 <td>{user.perfil}</td>
                 <td>{user.rol}</td>
-                <td>🗑</td>
-                {/* <td onClick={() => deleteUsers(user._id)}>🗑</td> */}
-                <td>✏</td>
+                <td onClick={() => deleteUsers(user.userId)}>🗑</td>
+                <td>
+                  <ModalUpdateUser user={user} />
+                </td>
               </tr>
             ))}
           </tbody>
