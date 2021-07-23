@@ -2,10 +2,6 @@ import React, {createContext, useContext, useState, useEffect} from 'react';
 import { auth } from '../firebase/config';
 import { loginFb, logoutFb } from '../firebase/auth';
 import { useHistory } from "react-router-dom";
-<<<<<<< HEAD
-=======
-
->>>>>>> baa416e (update 4)
 
 
 const AuthContext = createContext();
@@ -16,10 +12,6 @@ export const useAuth = () => { //con esto podemos USAR todas las fn y estados de
 
 export const AuthProvider = ({ children }) => {
   let history = useHistory();
-<<<<<<< HEAD
-=======
-
->>>>>>> baa416e (update 4)
 
   //FUNCIONES DE AUTH
   const [currentUser, setCurrentUser] = useState(
@@ -38,10 +30,6 @@ export const AuthProvider = ({ children }) => {
         console.log(err);
       });
   };
-<<<<<<< HEAD
-=======
-
->>>>>>> baa416e (update 4)
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {

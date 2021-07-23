@@ -3,7 +3,12 @@ import {Header} from '../../home/Header';
 import { Card } from "react-bootstrap";
 import '../../../styles/paula.css';
 import recomendaciones from '../../../images/Recomendaciones.png';
-import alimentacion from '../../../images/nutricion.png';
+import vacunacion from '../../../images/vacunacion.png';
+import cronograma from '../../../images/cronograma.png';
+import recomendacion from '../../../images/recomendacion.png';
+import cita from '../../../images/cita.png';
+import nutricion from '../../../images/nutricion.png';
+
 
 export const Health = () => {
   return (
@@ -13,7 +18,7 @@ export const Health = () => {
         <h2 className='text-center mb-5 azul'>CRONOGRAMA DE VACUNACIÓN</h2>
         <article className='d-flex flex-wrap justify-content-between mx-auto' style={{  maxWidth: '60%' }}>
           <Card  style={{ width: '27rem', borderRadius:'17px', height:'25rem'}} className='mb-4'>
-            <img src="https://pbs.twimg.com/media/E5yHD5WUYAosoNn.jpg" alt ="" style={{width:"26.5rem", height:"75%"}}  className="photo"></img>
+            <img src={vacunacion} alt ="" style={{width:"26.5rem", height:"75%"}}  className="photo"></img>
               <h4 className="card-title">Vacunación</h4>
                 <p className="card-text text-secondary">
                   "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
@@ -22,7 +27,7 @@ export const Health = () => {
               {/* </Card.Text> */}        
           </Card> 
           <Card  style={{ width: '27rem', borderRadius:'17px', height:'25rem'}} className='mb-4'>            
-            <img src="https://pbs.twimg.com/media/Etoo7BEXIAAngj_.jpg:large" alt ="" style={{width:"26.5rem", height:"75%"}} className="photo"></img>
+            <img src={cronograma} alt ="" style={{width:"26.5rem", height:"75%"}} className="photo"></img>
               <h4 className="card-title">Informacion sobre la vacuna</h4>
                 <p className="card-text text-secondary">
               "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
@@ -41,7 +46,7 @@ export const Health = () => {
             </p>
           </Card> 
           <Card style={{ width: '27rem', borderRadius:'17px', height:'25rem'}} className='mb-4'>
-            <img src="https://pbs.twimg.com/media/Etoo7BEXIAAngj_.jpg:large" alt ="" style={{width:"26.5rem", height:"75%"}}  className="photo"></img>
+            <img src={recomendacion} alt ="" style={{width:"26.5rem", height:"75%"}}  className="photo"></img>
               <h4 className="card-title">Te recomendamos</h4>
                 <p className="card-text text-secondary">
               "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
@@ -53,14 +58,14 @@ export const Health = () => {
         <h2 className='text-center mb-5 azul'>ATENCIÓN NUTRICIONAL</h2>
         <article className='d-flex flex-wrap justify-content-between mx-auto' style={{  maxWidth: '60%' }}>
         <Card  style={{ width: '27rem',  borderRadius:'17px', height:'25rem'}} className='mb-4'>
-            <img src={alimentacion} alt ="" style={{width:"26.5rem", height:"75%"}} className="photo"></img>
+            <img src={cita} alt ="" style={{width:"26.5rem", height:"75%"}} className="photo"></img>
               <h4 className="card-title">Cuida tu alimentación</h4>
                 <p className="card-text text-secondary">
               "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
             </p>
           </Card> 
           <Card  style={{ width: '27rem', borderRadius:'17px', height:'25rem'}} className='mb-4'>            
-            <img src="https://pbs.twimg.com/media/Etoo7BEXIAAngj_.jpg:large" alt ="" style={{width:"26.5rem", height:"75%"}} className="photo"></img>
+            <img src={nutricion} alt ="" style={{width:"26.5rem", height:"75%"}} className="photo"></img>
               <h4 className="card-title">Receta del día</h4>
                 <p className="card-text text-secondary">
               "Lorem ipsum dolor sit amet consectetur.

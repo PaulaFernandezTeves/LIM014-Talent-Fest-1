@@ -76,7 +76,7 @@ import { getPosts, deletePost } from '../../firebase/firestore'
           handleClose={handleClose}
         />
         <table className="table table-sm table-hover w-100 mt-3 mx-2">
-          <thead>
+        <thead style={{background:'#0D0B6F', color:'white', paddingTop:'50px', paddingBottom:'50px'}} >
             <tr>
               <th>Registrador</th>
               <th>Publicación</th>

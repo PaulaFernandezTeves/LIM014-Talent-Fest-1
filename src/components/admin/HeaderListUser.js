@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { useAuth } from '../../context/AuthProvider';
 import { Button, Dropdown } from "react-bootstrap";
-import logoheader from '../../images/logoheader.png'
 import '../../styles/paula.css';
 
 
@@ -33,13 +32,13 @@ export const HeaderListUser = () => {
             <header className="meryheader d-flex justify-content-between px-5 pe-5">
             <figure className="meryimgheader d-flex align-items-center"  style={{marginBottom:'0'}} >
             <Link to={"/home"} style={merylink}>
-            <img src={logoheader} alt="logo" className="merylogoheader" />            
+            <i className="fas fa-home" style={{color:'#0D0B6F', fontSize:'30px'}}></i>      
             </Link>
             </figure>
             <ul className="d-flex justify-content-between align-self-center" style={{marginBottom:'0',}}>
               <Link style={merylink}>¡Hola Luisa!</Link>
             </ul>
-            <Dropdown style={{marginTop:'20px', marginLeft:'780px'}}>
+            <Dropdown style={{marginTop:'20px', marginLeft:'800px'}}>
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
                     Administrador
                   </Dropdown.Toggle>
@@ -54,6 +53,7 @@ export const HeaderListUser = () => {
                 </Dropdown>
             <Button style={crearBtn} className="crear-btn">Publicaciones pendientes</Button>{' '}
             <figure className="meryimgheader d-flex align-items-center"  style={{marginBottom:'0'}} >
+            <i className="far fa-bell" style={{color:'#0D0B6F', fontSize:'27px', marginRight:'30px', fontWeight:'bold'}}></i>
               <Link to={"/"} onClick={() => logOut()} style={merylink}>
                 Salir
               </Link>

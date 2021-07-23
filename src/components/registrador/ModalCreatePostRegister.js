@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Modal, Dropdown, InputGroup, FormControl } from "react-bootstrap";
 import { useAuth } from '../../context/AuthProvider';
-import { createPost } from '../../firebase/firestore';
+import { createPost } from '../../firebase/firestore'
 
 export const ModalCreatePostRegister = (props) => {
 

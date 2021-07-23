@@ -2,10 +2,11 @@ import React, {useState, useRef } from 'react'
 import { Modal, Dropdown } from "react-bootstrap";
 import "../../styles/paula.css";
 import iconfoto from "../../images/fotos.png";
-// import { storage } from '../../firebase/config';
+import { storage } from '../../firebase/config';
 
 export const ModalReviewPost = () => {
     const [show, setShow] = useState(false);
+    const [image, setImage] = useState(null);
     // const [imageSource, setImageSource] = useState(undefined);
     // const initialStateValue = {description:"", image:imageSource}
     // const [value, setValue] = useState(initialStateValue)
@@ -18,6 +19,30 @@ export const ModalReviewPost = () => {
     // }
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+
+//     const handleUpload = () => {
+//       const uploadTask = storage.ref(`fotos/${image.name}`).put(image);
+//       uploadTask.on(
+//         "state_changed",
+//         snapshot => {},
+//         error => {
+//           console.log(error);
+//         },
+//         () => {
+//           storage
+//             .ref("images")
+//             .child(image.name)
+//             .getDownloadURL()
+//             .then(url => {
+//               console.log(url);
+//             });
+//         }
+//       );
+//     };
+
+// console.log('image:', image);
+
     const mystyle = {
       color: "white",
       backgroundColor: "#0D0B6E",
@@ -65,7 +90,7 @@ let imageRef= useRef(null);
 function onChangeFile(){
 // console.log(imageRef);
 // console.log(previewImg);
-    let $imageRef = imageRef.current.files[0];
+    let $imageRef = setImage(imageRef.current.files[0]);
     // console.log($imageRef);
     let $previewImg = previewImg.current;
     let $readFile = new FileReader();
@@ -80,6 +105,13 @@ function onChangeFile(){
     }
     console.log("hola")
 }
+
+const handleChange = e =>{
+  if(e.target.files[0]){
+    setImage(e.target.files[0]);
+  }
+}
+
     return (
       <>
         <button
@@ -103,11 +135,11 @@ function onChangeFile(){
           </Modal.Header>
           <Modal.Body  className="modalDialog add-new-photo first" id="add-photo">            
             <div className="Upload__form-container-im">
-                <img src={iconfoto} alt="" ref={previewImg} fluid></img>
+                <img src={iconfoto} alt=""></img>
             </div>
-            
+            {/* ref={imageRef} */}
          <div id="add-photo">
-         <input type="file"  ref={imageRef} name="images[]" style={{backgroundColor:"#0D0B6E"}} className="Upload__form-inputfile" onChange={onChangeFile}></input>
+         <input type="file"   name="images[]" style={{backgroundColor:"#0D0B6E"}} className="Upload__form-inputfile" onChange={onChangeFile}></input>
          </div>
          </Modal.Body>
           <Dropdown>
@@ -125,7 +157,7 @@ function onChangeFile(){
               Cancelar
             </button>
             <button style={rechazar} onClick={handleClose}>Rechazar</button>
-            <button style={post} onClick={handleClose}>Publicar</button>
+            <button style={post} onClick={handleChange}>Publicar</button>
           </Modal.Footer>
         </Modal>
       </>

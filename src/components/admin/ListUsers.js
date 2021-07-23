@@ -33,7 +33,7 @@ export const ListUsers = () => {
         </div>
         <table className="table table-sm table-hover w-100 mt-3 mx-2">
           <thead style={{background:"#0D0B6E"}}>
-            <tr>
+          <tr style={{background:'#0D0B6F', color:'white'}} className='py-5'>
               <th>Colaborador</th>
               <th>Perfil</th>
               <th>Rol</th>
