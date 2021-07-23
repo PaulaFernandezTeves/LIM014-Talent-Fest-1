@@ -1,4 +1,3 @@
-/* MODAL*/
 
 
 /* ADMINISTRADOR*/
@@ -59,3 +58,9 @@
   margin-right: 300px;
 }
 
+@media (max-width:768px) {
+  .meryheader {
+    height: 50px;
+  }
+
+}
