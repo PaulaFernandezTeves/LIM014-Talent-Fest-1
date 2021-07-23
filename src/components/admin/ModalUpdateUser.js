@@ -27,19 +27,21 @@ export const ModalUpdateUser = (props) => {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        ✏
+        <i className="fas fa-edit"></i>
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>
             Editar información del colaborador {persona.colaborador}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="inputPerfil">Perfil </label>
+          <form className="formUpdateUser" onSubmit={handleSubmit}>
+            <div className="sectiontwo">
+              <div>
+                <label> Perfil </label>
+              </div>
               <input
                 name="perfil"
                 type="text"
@@ -51,8 +53,10 @@ export const ModalUpdateUser = (props) => {
                 }}
               />
             </div>
-            <div>
-              <label htmlFor="inputRol">Rol</label>
+            <div className="sectiontwo">
+              <div>
+                <label htmlFor="inputRol">Rol</label>
+              </div>
               <input
                 name="rol"
                 type="text"
@@ -64,7 +68,11 @@ export const ModalUpdateUser = (props) => {
                 }}
               />
             </div>
-            <button variant="primary" type="submit">
+            <button
+              id="btn-submit-update"
+              variant="primary"
+              type="submit"
+            >
               Save Changes
             </button>
           </form>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Card, Modal, Button} from "react-bootstrap";
+import cumpleanos from '../../images/cumpleanos.png'
  
 
 export const Main = () => {
@@ -13,7 +14,7 @@ export const Main = () => {
     <>
  
       {/* PARA TI */}
-      
+
       <section className='p-5'>
         <h2 className='text-center mb-5 azul'>PARA TI</h2>
         <article className='d-flex flex-wrap justify-content-between mx-auto'  style={{ maxWidth: '70%' }} >
@@ -140,9 +141,9 @@ export const Main = () => {
           <Card  style={{ width: '27rem', borderRadius:'17px', height:'25rem', objectFit:'contain'}} className='mb-4'>
               {/* <Card.Text style={{fontWeight:'bold', color:'#874487', fontSize:'1.2rem', textAlign:'center' }} className="card-body"> */}
               <img  src="https://3.imimg.com/data3/WD/WX/MY-4426420/ss304-steel-wire-rod-250x250.jpg" alt ="" style={{height:"75%", margin:"0"}} className="briNoticia"></img>
-              <h4 className="card-title">RÉCORD LAMINACIÓN LARGA </h4>
+              <h4 className="card-title">RÉCORD LAMINACIÓN LARGOS </h4>
                 <p className="card-text text-secondary">
-              "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
+                "Hemos logrado el récord máximo de producción en comparaciónd e los últimos 4 años."
             </p>
     
               {/* </Card.Text> */}        
@@ -151,7 +152,7 @@ export const Main = () => {
             <img src="https://img.freepik.com/vector-gratis/ilustracion-plana-fiestas-patrias-peru_23-2148968396.jpg?size=626&ext=jpg" alt ="" style={{ height:"75%", margin:"0"}} className="briNoticia"></img>
               <h4 className="card-title">FIESTAS PATRIAS</h4>
                 <p className="card-text text-secondary">
-              "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
+              "Celebremos a lo grande nuestro Bicentenario del Perú."
             </p>
           </Card> 
         </article>
@@ -161,25 +162,15 @@ export const Main = () => {
       <section className='p-5'>
         <h2 className='text-center mb-5 azul'>RECONOCIMIENTOS DE LA SEMANA</h2>
         <article className='d-flex flex-wrap justify-content-between mx-auto' style={{  maxWidth: '60%' }}>
-          <Card border=" border-4" style={{ width: '25rem', borderColor: "#83929B", borderRadius:'17px', height:'16rem'}} className='mb-4'>
-            <Card.Body>
-              <Card.Text style={{fontWeight:'bold', color:'#874487', fontSize:'1.2rem', textAlign:'center' }}>
-                ¡Están de cumpleaños!
-              </Card.Text>
-            </Card.Body>
-            <figure className='mx-auto'>
-              <i class="fas fa-user-circle"></i>
-            </figure>
-          </Card> 
-          <Card border=" border-4" style={{ width: '25rem', borderColor: "#83929B", borderRadius:'17px', height:'16rem'}} className='mb-4'>
-            <Card.Body>
-                <Card.Text style={{fontWeight:'bold', color:'#874487', fontSize:'1.2rem', textAlign:'center' }}>
-                  ¡Están de Quinquenio!
-                </Card.Text>
-              </Card.Body>
-            <figure className='mx-auto'>
-              <i class="fas fa-user-circle"></i>
-            </figure>
+        <Card  style={{ width: '50rem', borderRadius:'17px', height:'25rem', objectFit:'contain'}} className='mb-4 mx-auto'>
+              {/* <Card.Text style={{fontWeight:'bold', color:'#874487', fontSize:'1.2rem', textAlign:'center' }} className="card-body"> */}
+              <img  src={cumpleanos} alt ="" style={{height:"75%", margin:"0"}} className="briNoticia"></img>
+              <h4 className="card-title">"5 años laborando juntos"  </h4>
+                <p className="card-text text-secondary">
+                "Nos sentimos orgullosos de ser parte de este gran equipo"
+            </p>
+    
+              {/* </Card.Text> */}        
           </Card> 
         </article>
     </section>

@@ -19,7 +19,7 @@ export const ModalCreateUser = () => {
 
   const removeValue = () => {
     setShow(false);
-    window.location.reload();
+    // window.location.reload();
   }
 
   const handleSubmit = async (event) => {
@@ -36,7 +36,17 @@ export const ModalCreateUser = () => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button
+        onClick={handleShow}
+        style={{
+          borderRadius: "11px",
+          padding: "5px 25px",
+          background: "#0D0B6F",
+          border: "#0d6efd",
+          color: "white",
+          marginBottom: "15px",
+        }}
+      >
         + Añadir usuario
       </Button>
 
