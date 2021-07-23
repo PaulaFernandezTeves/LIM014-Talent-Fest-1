@@ -57,3 +57,4 @@ db
   .collection("post")
   .doc(idPost)
   .update({...payload});    
+

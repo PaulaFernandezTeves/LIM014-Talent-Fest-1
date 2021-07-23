@@ -33,7 +33,7 @@ export const Header = () => {
   
     useEffect(() => {
       getUser(currentUser.uid).then((user)=>{
-        // console.log(user.data())
+        console.log(user.data())
         setRol(user.data().rol)})
     }, [])
  
@@ -86,7 +86,7 @@ export const Header = () => {
             <button className="merylinkjob" style={{maxWidth:'15%',}} onClick={()=> history.push('/mi-trabajo')}>Para mi trabajo</button>
             
             {
-              rol === 'admin'
+              "Loading" && rol === 'admin'
               ?             
               <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">

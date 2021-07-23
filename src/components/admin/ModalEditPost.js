@@ -3,14 +3,11 @@
 import React, { useState, useEffect } from "react";
 import {
   Modal,
-  // Dropdown,
   InputGroup,
   FormControl,
   Button,
 } from "react-bootstrap";
 import { updateStatusPost, updateStatusPostRegister } from '../../firebase/firestore'
-// import { useAuth } from '../../context/AuthProvider';
-// import { createPost } from '../../firebase/firestore';
 
 export const ModalEditPost = (props) => {
   const cancel = {
@@ -34,11 +31,9 @@ export const ModalEditPost = (props) => {
   
   const { post } = props;
   const [datos, setDatos] = useState(post);
-  console.log(datos.postId);
+  console.log(datos);
 
    const handleInputChange = (event) => {
-     // console.log(event.target.name)
-     // console.log(event.target.value)
      setDatos({
        ...datos,
        [event.target.name]: event.target.value,
@@ -46,45 +41,38 @@ export const ModalEditPost = (props) => {
    };
 
    //FN TRAER VALORES INPUT CHECKBOX
-   useEffect(() => {
-      // const getCheck = document.querySelectorAll(".checkGroup");
-      // console.log(getCheck)
-      // getCheck.forEach((check) => {
-      //   const value =   datos.some((profile)=>{
-      //       return profile === check.name;
-      //   });
 
-      //   console.log(check)  
-      //   if(value) return check.setAttribute("check", true );
-      // })
-      console.log(datos.profile)
-   }, [])
 
-   const [adminCheck, setAdminCheck ] = useState(false)
-   const [executiveCheck, setExecutiveCheck] = useState(false)
-   const [operatorCheck, setOperatorCheck ] = useState(false)
-   const [practiCheck, setPractiCheck] = useState(false)
+   const [ manager, setManager] = useState({type: 'Administrativos', value:false })
+   const [ ejecut, setEjecut] = useState({type: 'Ejecutivos', value:false })
+   const [ operat, setOperat] =  useState({type: 'Operativos', value:false })
+   const [ practi, setPracti] = useState({type: 'Practicantes', value:false })
 
    const handleChangeCheck = (key) => {
     switch (key) {
       case 'Administrativos':
-        setAdminCheck(true)
+        setManager({type: 'Administrativos', value: !manager.value})
       break;
       case 'Operativos':
-        setExecutiveCheck(true)
+        setOperat({type: 'Operativos', value: !operat.value })
       break;
       case 'Ejecutivos':
-        setOperatorCheck(true)
+        setEjecut({type: 'Ejecutivos', value: !ejecut.value })
       break;
       case 'Practicantes':
-        setPractiCheck(true)
-        break;    
-    
+        setPracti({type: 'Practicantes', value: !practi.value })
+        break;        
       default:
         break;
     }      
    }
-
+    useEffect(() => {
+      console.log(datos.profile);
+      setManager(datos.profile[0])
+      setEjecut(datos.profile[1])
+      setOperat(datos.profile[2])
+      setPracti(datos.profile[3])
+    }, [])
 
   //ESTADO INICIAL DE REGISTRO DE POSTS
      
@@ -94,21 +82,22 @@ export const ModalEditPost = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // const handleCheckbox = (e) => {
-  //   console.log("click", e)
-  // }
-
   const rejectPost = () => {
-    datos.status='rejected'
+    datos.status='rejected';
+    datos.profile=[manager, ejecut, operat, practi]// cfijarse si cambiaaaaaaa!!
     console.log(datos)
     updateStatusPost(datos.postId, datos)
     setShow(false)
   }
 
   const publishedPost = () => {
+    
     datos.status='published'
-    updateStatusPostRegister(datos.postId, datos)
+    datos.profile=[manager, ejecut, operat, practi]
+    console.log(datos)
+    updateStatusPostRegister(datos.postId, datos) //ahora enviar los nuevos datos
   }
+ 
 
   return (
     <>
@@ -220,7 +209,7 @@ export const ModalEditPost = (props) => {
 
           <InputGroup className="mb-2">
             <InputGroup.Checkbox
-              defaultCheck={datos.profile[0].value}
+              defaultChecked={manager.value}
               onChange={()=>handleChangeCheck("Administrativos")}
               name="Administrativos"
               className="checkGroup"
@@ -234,7 +223,7 @@ export const ModalEditPost = (props) => {
           <InputGroup className="mb-3">
             <InputGroup.Checkbox
               aria-label="Checkbox for following text input"
-              defaultCheck={datos.profile[1].value}
+              defaultChecked={ejecut.value}
               onChange={()=>handleChangeCheck("Ejecutivos")}
               className="checkGroup"
               name="Ejecutivos"
@@ -247,8 +236,8 @@ export const ModalEditPost = (props) => {
           <InputGroup className="mb-3">
             <InputGroup.Checkbox
               aria-label="Checkbox for following text input"
-              defaultCheck={datos.profile[2].value}
-              onChange={()=>handleChangeCheck("Operadores")}
+              defaultChecked={operat.value}
+              onChange={()=>handleChangeCheck("Operativos")}
               className="checkGroup"
               name="Operadores"
             />
@@ -260,7 +249,7 @@ export const ModalEditPost = (props) => {
           <InputGroup className="mb-3">
             <InputGroup.Checkbox
               aria-label="Checkbox for following text input"
-              defaultCheck={datos.profile[3].value}
+              defaultChecked={practi.value}
               onChange={()=>handleChangeCheck("Practicantes")}
               className="checkGroup"
               name="Practicantes"

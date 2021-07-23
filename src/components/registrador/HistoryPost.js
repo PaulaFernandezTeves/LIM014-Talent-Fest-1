@@ -63,7 +63,7 @@ export const HistoryPost = () => {
                 <td>{post.category}</td>
                 <td>{post.subcategory}</td>    
                 <td style={good}>{post.status}</td>  
-                <td >{post.profile}</td>            
+                {/* <td >{post.profile}</td>  */}           
                 <td>🗑</td>
                 <td>
                   <ModalEditPostRegister

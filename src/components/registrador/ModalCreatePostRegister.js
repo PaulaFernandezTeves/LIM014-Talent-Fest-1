@@ -34,10 +34,14 @@ export const ModalCreatePostRegister = (props) => {
     const [ content, setContent] = useState('')
     const [ moreContent, setMoreContent] = useState('')
     const [ comment, setComment] = useState('')
-    const [ manager, setManager] = useState('')
-    const [ ejecut, setEjecut] = useState('')
-    const [ operat, setOperat] = useState('')
-    const [ practi, setPracti] = useState('')
+    // const [ manager, setManager] = useState('')
+    // const [ ejecut, setEjecut] = useState('')
+    // const [ operat, setOperat] = useState('')
+    // const [ practi, setPracti] = useState('')
+    const [ manager, setManager] = useState({type: 'Administrativos', value:false })
+    const [ ejecut, setEjecut] = useState({type: 'Ejecutivos', value:false })
+    const [ operat, setOperat] =  useState({type: 'Operativos', value:false })
+    const [ practi, setPracti] = useState({type: 'Practicantes', value:false })
 
   //ESTADO INICIAL DE REGISTRO DE POSTS
   const addPost = () =>{
@@ -71,15 +75,15 @@ export const ModalCreatePostRegister = (props) => {
         </Modal.Header>
         <Modal.Body  className="modalDialog">
           <h5>Título</h5>   
-          <input id='text-post' placeholder='Publicando..' spellcheck='false' onChange={(e)=> setTitle(e.target.value)} required ></input>
+          <input id='text-post' onChange={(e)=> setTitle(e.target.value)} required ></input>
           <h5>Sub Título</h5> 
-          <input id='text-post' placeholder='Publicando..' spellcheck='false'  onChange={(e)=> setSubtitle(e.target.value)} required ></input>
+          <input id='text-post' onChange={(e)=> setSubtitle(e.target.value)} required ></input>
           <h5>Contenido del Post</h5>
-          <textarea id='text-post' placeholder='Publicando..' spellcheck='false' onChange={(e)=> setContent(e.target.value)} required ></textarea>
+          <textarea id='text-post' onChange={(e)=> setContent(e.target.value)} required ></textarea>
           <h5>Más información del post</h5>
-          <textarea id='text-post' placeholder='Publicando..' spellcheck='false' onChange={(e)=> setMoreContent(e.target.value)} required ></textarea>
+          <textarea id='text-post' onChange={(e)=> setMoreContent(e.target.value)} required ></textarea>
           <h5>Comentarios </h5>
-          <textarea id='text-post' placeholder='Publicando..' spellcheck='false' onChange={(e)=> setComment(e.target.value)} required ></textarea>
+          <textarea id='text-post' onChange={(e)=> setComment(e.target.value)} required ></textarea>
           <img src="https://lh3.googleusercontent.com/proxy/DSeeZ4iLSG7301Y_nofbUHSAxNeNTIEe56JYFpd7DzP3lj0qrTC3eF_j4hE1XcG2pftmBnrMGXgPKMfRHZTTfeQDSwgw-HXJ03TBGoMizeHzzRdyrsS00L5qiOl8jTbJuMfXc1ToBTGFYvYsRWUaxkD2z1pJw01B1odOFqaZJosl1FnmlSCIowA" alt="" width="80%" style={{margin:"30px "}}/>
           <input type="file" name="file" style={{margin:"20px 25px"}}></input>              
         </Modal.Body>
@@ -157,23 +161,23 @@ export const ModalCreatePostRegister = (props) => {
             :<></>
           }
           </article>
-        <article>
+          <article>
           <h6><b>Perfiles</b></h6>
           <InputGroup className="mb-2">
-            <InputGroup.Checkbox onClick={()=>setManager('Administrativos')} aria-label="Checkbox for following text input" />
-            <FormControl /* ref='administrativos' */value='Administrativos' aria-label="Text input with checkbox" />
+            <InputGroup.Checkbox onClick={()=>setManager({type: 'Administrativos', value:true })} aria-label="Checkbox for following text input" />
+            <FormControl value='Administrativos' aria-label="Text input with checkbox" />
           </InputGroup>
           <InputGroup className="mb-3">
-            <InputGroup.Checkbox onClick={()=>setEjecut('Ejecutivos')} aria-label="Checkbox for following text input" />
-            <FormControl /* ref='administrativos' */value='Ejecutivos' aria-label="Text input with checkbox" />
+            <InputGroup.Checkbox onClick={()=>setEjecut({type: 'Ejecutivos', value:true })} aria-label="Checkbox for following text input" />
+            <FormControl value='Ejecutivos' aria-label="Text input with checkbox" />
           </InputGroup>
           <InputGroup className="mb-3">
-            <InputGroup.Checkbox onClick={()=>setOperat('Operadores')} aria-label="Checkbox for following text input" />
-            <FormControl /* ref='administrativos' */value='Operadores' aria-label="Text input with checkbox" />
+            <InputGroup.Checkbox onClick={()=>setOperat({type: 'Operadores', value:true })} aria-label="Checkbox for following text input" />
+            <FormControl value='Operadores' aria-label="Text input with checkbox" />
           </InputGroup>
           <InputGroup className="mb-3">
-            <InputGroup.Checkbox onClick={()=>setPracti('Practicantes')} aria-label="Checkbox for following text input" />
-            <FormControl /* ref='administrativos' */value='Practicantes' aria-label="Text input with checkbox" />
+            <InputGroup.Checkbox onClick={()=>setPracti({type: 'Practicantes', value:true })} aria-label="Checkbox for following text input" />
+            <FormControl value='Practicantes' aria-label="Text input with checkbox" />
           </InputGroup>
         </article>
       </div>

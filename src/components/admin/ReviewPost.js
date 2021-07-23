@@ -20,12 +20,13 @@ export function ReviewPost() {
   //----------------LLAMANDO POSTS DEL REGISTRADOR-----------------
   const [posts, setPosts] = useState([]);
  
-  /* const callback = (data) => {
+  const callback = (data) => {
+    console.log(data)
     setPosts(data)
-  } */
+  }
  
   useEffect(() => {
-    /* getPosts(callback); */
+    getPosts(callback);
   }, []) 
 
   return (
@@ -66,7 +67,7 @@ export function ReviewPost() {
                 <td>{post.category}</td>
                 <td>{post.subcategory}</td>
                 <td style={good}>{post.status}</td>
-                <td>{post.profile}</td>
+                {/* //<td>{post.profile}</td> */}
                 <td>🗑</td>
                 <td>
                   <ModalEditPost

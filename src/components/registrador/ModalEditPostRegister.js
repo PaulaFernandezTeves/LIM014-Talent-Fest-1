@@ -1,16 +1,12 @@
-// import { getElementError } from "@testing-library/react";
-// import { database } from "firebase-admin";
 import React, { useState, useEffect } from "react";
 import {
   Modal,
-  // Dropdown,
   InputGroup,
+  Dropdown,
   FormControl,
   Button,
 } from "react-bootstrap";
 import { updateStatusPostRegister } from '../../firebase/firestore'
-// import { useAuth } from '../../context/AuthProvider';
-// import { createPost } from '../../firebase/firestore';
 
 export const ModalEditPostRegister = (props) => {
   const cancel = {
@@ -37,53 +33,50 @@ export const ModalEditPostRegister = (props) => {
   console.log(datos.postId);
 
    const handleInputChange = (event) => {
-     // console.log(event.target.name)
-     // console.log(event.target.value)
      setDatos({
        ...datos,
        [event.target.name]: event.target.value,
      });
    };
 
-   //FN TRAER VALORES INPUT CHECKBOX
-   useEffect(() => {
-      // const getCheck = document.querySelectorAll(".checkGroup");
-      // console.log(getCheck)
-      // getCheck.forEach((check) => {
-      //   const value =   datos.some((profile)=>{
-      //       return profile === check.name;
-      //   });
 
-      //   console.log(check)  
-      //   if(value) return check.setAttribute("check", true );
-      // })
-      console.log(datos.profile)
-   }, [])
+  //  const [adminCheck, setAdminCheck ] = useState(false)
+  //  const [executiveCheck, setExecutiveCheck] = useState(false)
+  //  const [operatorCheck, setOperatorCheck ] = useState(false)
+  //  const [practiCheck, setPractiCheck] = useState(false)
+  const [ category, setCategory] = useState('')
+  const [ subcategory, setSubcategory] = useState('')
 
-   const [adminCheck, setAdminCheck ] = useState(false)
-   const [executiveCheck, setExecutiveCheck] = useState(false)
-   const [operatorCheck, setOperatorCheck ] = useState(false)
-   const [practiCheck, setPractiCheck] = useState(false)
+  const [ manager, setManager] = useState({type: 'Administrativos', value:false })
+  const [ ejecut, setEjecut] = useState({type: 'Ejecutivos', value:false })
+  const [ operat, setOperat] =  useState({type: 'Operativos', value:false })
+  const [ practi, setPracti] = useState({type: 'Practicantes', value:false })
 
-   const handleChangeCheck = (key) => {
+  const handleChangeCheck = (key) => {
     switch (key) {
       case 'Administrativos':
-        setAdminCheck(true)
+        setManager({type: 'Administrativos', value: !manager.value})
       break;
       case 'Operativos':
-        setExecutiveCheck(true)
+        setOperat({type: 'Operativos', value: !operat.value })
       break;
       case 'Ejecutivos':
-        setOperatorCheck(true)
+        setEjecut({type: 'Ejecutivos', value: !ejecut.value })
       break;
       case 'Practicantes':
-        setPractiCheck(true)
-        break;    
-    
+        setPracti({type: 'Practicantes', value: !practi.value })
+        break;        
       default:
         break;
     }      
-   }
+  }
+  useEffect(() => {
+    console.log(datos.profile);
+    setManager(datos.profile[0])
+    setEjecut(datos.profile[1])
+    setOperat(datos.profile[2])
+    setPracti(datos.profile[3])
+  }, [])
 
 
   //ESTADO INICIAL DE REGISTRO DE POSTS
@@ -94,9 +87,6 @@ export const ModalEditPostRegister = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // const handleCheckbox = (e) => {
-  //   console.log("click", e)
-  // }
 
   const updatePostRegist = () => {
     datos.status='pending'
@@ -104,7 +94,6 @@ export const ModalEditPostRegister = (props) => {
     updateStatusPostRegister(datos.postId, datos)
     setShow(false)
   }
-
 
   return (
     <>
@@ -137,7 +126,7 @@ export const ModalEditPostRegister = (props) => {
             placeholder="Publicando.."
             spellcheck="false"
             onChange={handleInputChange}
-            name="subTitle"
+            name="subtitle"
             defaultValue={datos.subtitle}
             required
           >
@@ -190,33 +179,87 @@ export const ModalEditPostRegister = (props) => {
           ></input>
         </Modal.Body>
         <article>
-          <p>{/* <b>Vista: {category}</b> */}</p>
-          <p>{/* <b>Sección: {subcategory}</b> */}</p>
+          <p><b>Vista: {category}</b></p>
+          <p><b>Sección: {subcategory}</b></p>
         </article>
-        <article>
-          <h6>
-            <b>Perfiles</b>
-          </h6>
-          {/* {
-            datos.profile.map((perfil) => 
-            <InputGroup className="mb-2">
-              <InputGroup.Checkbox
-                defaultCheck={adminCheck}
-                onChange={()=>handleChangeCheck("Administrativos")}
-                name="Administrativos"
-                className="checkGroup"
-                aria-label="Checkbox for following text input"
-              />
-              <FormControl
-                value="Administrativos"
-                aria-label="Text input with checkbox"
-              />
-          </InputGroup>)
-          } */}
+        <div className='d-flex justify-content-beetwen'>
+          <article>
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                VISTA
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-3" onClick={()=>setCategory('Home')} >HOME</Dropdown.Item>
+                  <Dropdown.Item href="#/action-1" onClick={()=>setCategory('Salud')}>SALUD</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2" onClick={()=>setCategory('Seguridad')} >SEGURIDAD</Dropdown.Item>
+                  <Dropdown.Item href="#/action-3" onClick={()=>setCategory('Beneficios')} >BENEFICIOS</Dropdown.Item>                
+              </Dropdown.Menu>
+            </Dropdown>
+            { category === 'Home' ?        
+                <Dropdown>
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    HOME
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                      <Dropdown.Item href="#/action-1" onClick={()=>setSubcategory('Para Ti')}>Sección - Para Ti</Dropdown.Item>
+                      <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('Noticias Destacadas')}>Sección - Noticias Destacadas del Mes</Dropdown.Item>
+                      <Dropdown.Item href="#/action-3" onClick={()=>setSubcategory('Cumpleaños')}>Sección - Cumpleaños</Dropdown.Item>
+                      <Dropdown.Item href="#/action-3" onClick={()=>setSubcategory('Otros Reconocimientos')}>Sección - Otros Reconocimientos</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+                :<></>   
+            } 
+            { category === 'Salud' ?        
+                <Dropdown>
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    SALUD
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                      <Dropdown.Item href="#/action-1" onClick={()=>setSubcategory('Vacunación')}>Sección - Cronograma de Vacunación</Dropdown.Item>
+                      <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('Recomendaciones')}>Sección - Recomendaciones</Dropdown.Item>
+                      <Dropdown.Item href="#/action-3" onClick={()=>setSubcategory('Nutrición')}>Sección - Atención Nutricional</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+                :<></>   
+            } 
+            {
+              category === 'Seguridad' ?
+              <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  SEGURIDAD
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1" onClick={()=>setSubcategory('Sin Accidentes')}>Sección - Días sin accidentes</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('Ganadores de Campaña del Medio Ambiente')}>Sección - Ganadores de campaña del Medio Ambiente</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              :<></>
+            }
+            {
+              category === 'Beneficios' ?
+              <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  BENEFICIOS
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1" onClick={()=>setSubcategory('Becas')}>Sección - Becas</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('Fallecimiento')}>Sección - Fallecimiento</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('Autoseguro Médico')}>Sección - Autoseguro Médico Familiar</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('Linajes Peruanos')}>Sección - Linajes Peruanos</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2" onClick={()=>setSubcategory('ICPNA')}>Sección - ICPNA</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              :<></>
+            }
+          </article>
 
-          <InputGroup className="mb-2">
+          <article>
+            <h6>
+              <b>Perfiles</b>
+            </h6>
+           <InputGroup className="mb-2">
             <InputGroup.Checkbox
-              defaultCheck={adminCheck}
+              defaultChecked={manager.value}
               onChange={()=>handleChangeCheck("Administrativos")}
               name="Administrativos"
               className="checkGroup"
@@ -226,47 +269,48 @@ export const ModalEditPostRegister = (props) => {
               value="Administrativos"
               aria-label="Text input with checkbox"
             />
-          </InputGroup>
-          <InputGroup className="mb-3">
+            </InputGroup>
+            <InputGroup className="mb-3">
+              <InputGroup.Checkbox
+                aria-label="Checkbox for following text input"
+                defaultChecked={ejecut.value}
+                onChange={()=>handleChangeCheck("Ejecutivos")}
+                className="checkGroup"
+                name="Ejecutivos"
+              />
+              <FormControl
+                value="Ejecutivos"
+                aria-label="Text input with checkbox"
+              />
+            </InputGroup>
+            <InputGroup className="mb-3">
+              <InputGroup.Checkbox
+                aria-label="Checkbox for following text input"
+                defaultChecked={operat.value}
+                onChange={()=>handleChangeCheck("Operativos")}
+                className="checkGroup"
+                name="Operadores"
+              />
+              <FormControl
+                value="Operadores"
+                aria-label="Text input with checkbox"
+              />
+            </InputGroup>
+            <InputGroup className="mb-3">
             <InputGroup.Checkbox
-              aria-label="Checkbox for following text input"
-              defaultCheck={executiveCheck}
-              onChange={()=>handleChangeCheck("Ejecutivos")}
-              className="checkGroup"
-              name="Ejecutivos"
-            />
-            <FormControl
-              value="Ejecutivos"
-              aria-label="Text input with checkbox"
-            />
-          </InputGroup>
-          <InputGroup className="mb-3">
-            <InputGroup.Checkbox
-              aria-label="Checkbox for following text input"
-              defaultCheck={operatorCheck}
-              onChange={()=>handleChangeCheck("Operadores")}
-              className="checkGroup"
-              name="Operadores"
-            />
-            <FormControl
-              /* ref='administrativos' */ value="Operadores"
-              aria-label="Text input with checkbox"
-            />
-          </InputGroup>
-          <InputGroup className="mb-3">
-            <InputGroup.Checkbox
-              aria-label="Checkbox for following text input"
-              defaultCheck={practiCheck}
-              onChange={()=>handleChangeCheck("Practicantes")}
-              className="checkGroup"
-              name="Practicantes"
-            />
-            <FormControl
-              value="Practicantes"
-              aria-label="Text input with checkbox"
-            />
-          </InputGroup>
-        </article>
+                aria-label="Checkbox for following text input"
+                defaultChecked={practi.value}
+                onChange={()=>handleChangeCheck("Practicantes")}
+                className="checkGroup"
+                name="Practicantes"
+              />
+              <FormControl
+                value="Practicantes"
+                aria-label="Text input with checkbox"
+              />
+            </InputGroup>
+          </article>
+        </div>
         <Modal.Footer>
           <button style={cancel} onClick={handleClose}>
             Cancelar

@@ -34,12 +34,13 @@ export const ModalCreatePost = (props) => {
     const [ content, setContent] = useState('')
     const [ moreContent, setMoreContent] = useState('')
     const [ comment, setComment] = useState('')
-    const [ manager, setManager] = useState({})
-    const [ ejecut, setEjecut] = useState({})
-    const [ operat, setOperat] =  useState({})
-    const [ practi, setPracti] = useState({})
+    const [ manager, setManager] = useState({type: 'Administrativos', value:false })
+    const [ ejecut, setEjecut] = useState({type: 'Ejecutivos', value:false })
+    const [ operat, setOperat] =  useState({type: 'Operativos', value:false })
+    const [ practi, setPracti] = useState({type: 'Practicantes', value:false })
 
   //ESTADO INICIAL DE REGISTRO DE POSTS
+  const publishPost = () =>{
   const initialState = {
     owner: currentUser.email,
     title: title,
@@ -53,11 +54,7 @@ export const ModalCreatePost = (props) => {
     profile: [manager, ejecut,operat, practi],
     img: '',
   }
-
-  const publishPost = async() =>{
-    await createPost(initialState);
-    // console.log(data)
-    console.log(initialState)
+    createPost(initialState);
     props.handleClose();
   } 
 
@@ -87,8 +84,8 @@ export const ModalCreatePost = (props) => {
           <input type="file" name="file" style={{margin:"20px 25px"}}></input>              
         </Modal.Body>
       <article>
-        <p><b>Vista: {category}</b></p>
-        <p><b>Sección: {subcategory}</b></p>
+        {/* <p><b>Vista: {category}</b></p>
+        <p><b>Sección: {subcategory}</b></p> */}
       </article>  
       <div className='d-flex justify-content-beetwen'>
         <article>
@@ -159,7 +156,7 @@ export const ModalCreatePost = (props) => {
             </Dropdown>
             :<></>
           }
-          </article>
+        </article>
         <article>
           <h6><b>Perfiles</b></h6>
           <InputGroup className="mb-2">
@@ -184,7 +181,7 @@ export const ModalCreatePost = (props) => {
         <button style={cancel} onClick={props.handleClose}>
           Cancelar
         </button>
-        <button style={post} /*  onClick={()=>addPost()}  */>Rechazar</button>
+        {/* <button style={post} >Rechazar</button> */}
         <button style={post} onClick={()=>publishPost()}>Publicar</button>
       </Modal.Footer>
     </Modal>
