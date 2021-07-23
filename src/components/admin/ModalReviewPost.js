@@ -2,10 +2,20 @@ import React, {useState, useRef } from 'react'
 import { Modal, Dropdown } from "react-bootstrap";
 import "../../styles/paula.css";
 import iconfoto from "../../images/fotos.png";
+import { storage } from '../../firebase/config';
 
 export const ModalReviewPost = () => {
     const [show, setShow] = useState(false);
-    const [imageSource, setImageSource] = useState(iconfoto);
+    // const [imageSource, setImageSource] = useState(undefined);
+    // const initialStateValue = {description:"", image:imageSource}
+    // const [value, setValue] = useState(initialStateValue)
+    // const uploadImage = async(e) => {
+    //   const image = e.target.images['']
+    //   const storageImage = storage.ref()
+    //   const imageRef = storageImage.child(image.name)
+    //   await imageRef.put(image)
+    //   setImageSource(await imageRef.getDownloadURL())
+    // }
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -53,30 +63,27 @@ export const ModalReviewPost = () => {
     };
     
 let previewImg = useRef(null);
-let inputFile = useRef(null);
+let imageRef= useRef(null);
+
 
 function onChangeFile(){
-
-    let $inputFile = inputFile.current.files[0];
-    console.log($inputFile);
+// console.log(imageRef);
+// console.log(previewImg);
+    let $imageRef = imageRef.current.files[0];
+    // console.log($imageRef);
     let $previewImg = previewImg.current;
     let $readFile = new FileReader();
 
-    // if ($inputFile){
-    //   $readFile.readAsDataURL($inputFile);
-    //   $readFile.onloadend = function(){
-    //     $previewImg.src = $readFile.result;
-    //   };
-    // } else {
-    //   $previewImg.src= "";
-    // }
-
-
-
+    if ($imageRef){
+      $readFile.readAsDataURL($imageRef);
+      $readFile.onloadend = function(){
+        $previewImg.src = $readFile.result;
+      };
+    } else {
+      $previewImg.src= "";
+    }
     console.log("hola")
-
 }
-
     return (
       <>
         <button
@@ -99,12 +106,12 @@ function onChangeFile(){
             </div>
           </Modal.Header>
           <Modal.Body  className="modalDialog add-new-photo first" id="add-photo">            
-            <div className="Upload__form-container-img">
-                <img src={imageSource} alt="" id={previewImg}></img>
+            <div className="Upload__form-container-im">
+                <img src={iconfoto} alt="" ref={previewImg} ></img>
             </div>
             
          <div id="add-photo">
-         <input type="file" ref={inputFile} name="images[]" style={{backgroundColor:"#0D0B6E"}} className="Upload__form-inputfile" onChange={onChangeFile}></input>
+         <input type="file"  ref={imageRef} name="images[]" style={{backgroundColor:"#0D0B6E"}} className="Upload__form-inputfile" onChange={onChangeFile}></input>
          </div>
          </Modal.Body>
           <Dropdown>

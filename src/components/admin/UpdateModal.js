@@ -69,7 +69,6 @@ export const UpdateModal = () => {
             <Dropdown.Toggle id="dropdown-basic" style={mystyle}> 
             Categorías
             </Dropdown.Toggle>
-
             <Dropdown.Menu>
             <Dropdown.Item href="#/action-1" style={categories}>Salud</Dropdown.Item>
             <Dropdown.Item href="#/action-2" style={categories}>Seguridad</Dropdown.Item>
