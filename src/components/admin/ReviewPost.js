@@ -1,10 +1,11 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import { ModalCreatePost } from "./ModalCreatePost";
 // import { Header } from '../home/Header';
 import { HeaderAdmin } from './HeaderAdmin';
-import { getPosts, deletePost } from '../../firebase/firestore'
+import { getPosts } from '../../firebase/firestore'
  import { ModalEditPost } from '../admin/ModalEditPost'
- import { Modal, Button, InputGroup,FormControl } from "react-bootstrap";;
+ import { InputGroup,FormControl } from "react-bootstrap";
+import { ModalDelete } from './ModalDelete';
 
 
  export function ReviewPost() {
@@ -28,19 +29,6 @@ import { getPosts, deletePost } from '../../firebase/firestore'
     getPosts(callback);
   }, []) 
 
-  //----------------MODAL ELMINAR POST-----------------
-  const [show1, setShow1] = useState(false);
-
-  const handleClose1 = () => setShow1(false);
-  const handleShow1 = () => setShow1(true);
-
-  const fneDeletePost = (e) =>{
-    e.preventDefault();
-    const id = e.target.getAttribute('data-id');
-    console.log(id)
-    deletePost(id)
-    setShow1(false)
-  }
 
   return (
     <>
@@ -110,23 +98,16 @@ import { getPosts, deletePost } from '../../firebase/firestore'
                 <td>{post.date}</td>
                 <td>
                   <ModalEditPost
-                      post={post}
+                      post={post} 
                   />
                 </td>
-                <td /* onClick={handleShow1} data-id={post.postId} onClick={fneDeletePost}*/ >
-                <button data-id={post.postId} onClick={fneDeletePost}>🗑</button> </td>
-                {/* <Modal show={show1} onHide={handleClose1}>
-                  <Modal.Body style={{margin: ' 0 auto'}}><b>¿Deseas eliminar la publicación?</b></Modal.Body>
-                  <Modal.Footer>
-                    <Button variant="primary" data-id={post.postId} style={{margin: ' 0 auto', background:'red', borderColor:'red'}} 
-                      onClick={fneDeletePost}>
-                      Eliminar
-                    </Button>
-                    <button data-id={post.postId} onClick={fneDeletePost}>eliminar2</button>
-                  </Modal.Footer>
-                </Modal> */}
+                <td>
+                  <ModalDelete 
+                    postId={post.postId} 
+                  />            
+                </td>
               </tr>
-            )): <>No hay posts </> }
+            )): <>Cargando Publicaciones... </> }
           </tbody>
         </table>
       </section>

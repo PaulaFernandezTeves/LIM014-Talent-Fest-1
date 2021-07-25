@@ -78,11 +78,10 @@
 
 /* HEADER VIEW */
 .meryheader{
-  width: 100vw;
   background-color: #FFCC00;
 }
 .meryimgheader{
-  max-width: 15%;
+  width: 20%;
 }
 .meryimgheader img{
   width: 100%;
@@ -111,7 +110,7 @@
   color: #003366;
   text-decoration: none;
   font-size: 1.2rem;
-  margin-right: 3rem;
+  margin: 0 3rem;
   font-weight: bold;
   border-radius: 50px;
   width: 28%;

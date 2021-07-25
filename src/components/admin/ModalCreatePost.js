@@ -45,25 +45,36 @@ export const ModalCreatePost = (props) => {
     const [ practi, setPracti] = useState({type: 'Practicantes', value:false })
 
   //ESTADO INICIAL DE REGISTRO DE POSTS
-  const publishPost = () =>{
-    
-    const initialState = {
-      owner: currentUser.email,
-      title: title,
-      subtitle: subtitle,
-      content: content,
-      moreContent: moreContent,
-      comment: comment,
-      category: category,
-      subcategory: subcategory,
-      status: "publicado",
-      profile: [manager, ejecut,operat, practi],
-      img: '',
-      date: datePostDB(),
-      orderDate: orderDate(),
-      /* postId: postId, */
-    }
-    createPost(initialState);
+  const initialState = {
+    owner: currentUser.email,
+    title: '',
+    subtitle: '',
+    content: '',
+    moreContent: '',
+    comment: '',
+    category: '',
+    subcategory: '',
+    status: "publicado",
+    profile: [],
+    img: '',
+    date: datePostDB(),
+    orderDate: orderDate(),
+  
+  }
+  const [datos, setDatos] = useState(initialState)
+  console.log(datos)
+
+  const handleInputChange = (event) => {
+    // console.log(event.target.name)
+    // console.log(event.target.value)
+    setDatos({
+      ...datos, date:datePostDB(), orderDate: orderDate(),
+      [event.target.name] : event.target.value
+  })
+}
+
+  const publishPost = () =>{ 
+    createPost(datos);
     //console.log(createPost(initialState))
     props.handleClose();
   } 
@@ -103,15 +114,20 @@ export const ModalCreatePost = (props) => {
         </Modal.Header>
         <Modal.Body  className="modalDialog">
           <h5>Título</h5>   
-          <input onChange={(e) => setTitle(e.target.value)} required ></input>
+            <input onChange={handleInputChange} 
+              type="text" name="title" required ></input>
           <h5>Sub Título</h5> 
-          <input onChange={(e) => setSubtitle(e.target.value)} required ></input>
+            <input onChange={handleInputChange} 
+              type="text" name="subtitle" required ></input>
           <h5>Contenido del Post</h5>
-          <textarea onChange={(e) => setContent(e.target.value)} required ></textarea>
+            <textarea onChange={handleInputChange} 
+              type="text" name="content" required ></textarea>
           <h5>Más información del post</h5>
-          <textarea onChange={(e) => setMoreContent(e.target.value)} required ></textarea>
+            <textarea onChange={handleInputChange} 
+              type="text" name="moreContent" required ></textarea>
           <h5>Comentarios </h5>
-          <textarea onChange={(e) => setComment(e.target.value)}  required ></textarea>        
+            <textarea onChange={handleInputChange} 
+              type="text" name="comment" required ></textarea>        
         </Modal.Body>
 
         <Modal.Body  className="modalDialog add-new-photo first" id="add-photo">            

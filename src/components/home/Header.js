@@ -39,63 +39,63 @@ export const Header = () => {
  
   return (
     <>
-      <header className="meryheader d-flex justify-content-between px-5 pe-5">
-          <figure className="meryimgheader d-flex align-items-center"  style={{marginBottom:'0'}} >
-          <Link to={"/home"} style={merylink}>
-          <i className="fas fa-home" style={{color:'#0D0B6F', fontSize:'30px'}}></i>           
+      <section className="meryheader px-5 p-4 d-flex align-items-center justify-content-between">
+        <article className="d-flex align-items-center">
+          <Link to={"/home"} >
+            <i className="fas fa-home" style={{color:'#0D0B6F', fontSize:'30px'}}></i>           
           </Link>
-        </figure>
-
-        <ul className="d-flex justify-content-between align-self-center" style={{marginBottom:'0',}}>
-          <Link style={merylink}>Cuidado</Link>
-        </ul>
-        <figure className="meryimgheader d-flex align-items-center"  style={{marginBottom:'0'}} >
+          <ul className="d-flex justify-content-between align-self-center" style={{marginBottom:'0',}}>
+            <Link style={merylink}>Cuidado</Link>
+          </ul>
+        </article>
+        <article className="d-flex align-items-center justify-content-end">
           <Link to={"/"} onClick={() => logOut()} style={merylink}>
             Salir
           </Link>
-          <img src={logoheader} alt="logo" className="merylogoheader" />
-        </figure>
-      </header>
+          <figure className="meryimgheader d-flex align-items-center"  style={{marginBottom:'0'}} >  
+            <img src={logoheader} alt="logo" style={{width:'100%'}}/* className="merylogoheader" */ />
+          </figure>
+        </article>       
+      </section>
 
-      <section className="merysubnav">
-        <nav className="px-5 pt-3 pb-2">
-          <ul className="d-flex justify-content-between align-self-center" style={{marginBottom:'0',}} >
-            <li style={meryli} >
-              <Link to="/cuidado/salud" style={merylink}>
+      <section className="merysubnav" >
+        <nav className="px-5 p-4" >
+          <ul className="d-flex justify-content-between align-self-center" style={{marginBottom:'0', paddingLeft:'69px'}} >
+            <li style={meryli}  className='align-self-center'>
+              <Link to="/cuidado/salud" style={merylink} className='align-self-center'>
                 Salud
               </Link>
             </li>
-            <li style={meryli}>
+            <li style={meryli} className='align-self-center'>
               <Link to="/cuidado/seguridad" style={merylink}>
                 Seguridad
               </Link>
             </li>
-            <li style={meryli}>
+            <li style={meryli} className='align-self-center'>
               <Link to="/cuidado/beneficios" style={merylink}>
                 Beneficios
               </Link>
             </li>
-            <InputGroup
-              className="mb-3 me-3 input-group m-auto"
-              id="searchNancy"
+            <InputGroup style={{maxWidth:'25%',}}
+              className="input-group m-auto align-self-center"
               // onChange={(e) => handleChange(e)}
             >
-              <InputGroup.Text className="border-0 bg-transparent text-danger">
+              <InputGroup.Text className="border-0 bg-transparent text-light align-self-center">
                 <i className="fas fa-search"></i>
               </InputGroup.Text>
-              <FormControl
-                className="border-0 bg-white rounded-pill"
+              <FormControl 
+                className="border-0 bg-white rounded-pill align-self-center"
                 placeholder="Encuentra tu producto aquí..."
                 aria-label="Encuentra tu producto aquí..."
                 aria-describedby="basic-addon2"
               />
             </InputGroup>
-            <button className="merylinkjob" style={{maxWidth:'15%',}} onClick={()=> history.push('/mi-trabajo')}>Para mi trabajo</button>
+            <button className="merylinkjob align-self-center" style={{width:'15%',}} onClick={()=> history.push('/mi-trabajo')}>Para mi trabajo</button>
             
             {
               rol === 'admin'
               ?             
-              <Dropdown>
+              <Dropdown className='align-self-center'>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                   Administrador
                 </Dropdown.Toggle>
