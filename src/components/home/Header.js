@@ -82,7 +82,6 @@ export const Header = () => {
                 aria-describedby="basic-addon2"
               />
             </InputGroup>
-<<<<<<< HEAD
             <button className="merylinkjob" style={{maxWidth:'15%',}} onClick={()=> history.push('/mi-trabajo')}>Para mi trabajo</button>
             
             {
@@ -113,32 +112,6 @@ export const Header = () => {
                 </Dropdown.Menu>
               </Dropdown>
             } 
-=======
-            <button className="merylinkjob" style={{maxWidth:'15%',}} onClick={()=> history.push('/mi-trabajo')} fluid>Para mi trabajo</button>
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Administrador
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item >
-                  <Link to='/administrador/usuarios'>Usuarios</Link>                 
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Link to='/administrador/revision-post'>Revisión de Posts</Link>      
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Registrador
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item>
-                  <Link to='/registrador/historial-post'>Posts</Link>                 
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
->>>>>>> b4eccc7b679eeda4e1c2941ad533250fa9b0d125
           </ul>
         </nav>
       </section>
