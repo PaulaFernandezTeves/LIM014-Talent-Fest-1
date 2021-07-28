@@ -102,3 +102,30 @@
 .sectiontwo{
   margin: 10px;
 }
+
+
+/* **** Benefit section****/
+.section-card {
+  display: flex;
+  align-items: center;
+}
+
+.section-card figure {
+  margin: 0;
+}
+
+.section-card figure img {
+  margin: 0;
+  width: 221.633px;
+  height: 221.633px;
+  object-fit: cover;
+  border-radius: 1px;
+}
+
+.card-text {
+  text-align: left;
+}
+
+.section-card-content {
+  margin-left: 20px;
+}

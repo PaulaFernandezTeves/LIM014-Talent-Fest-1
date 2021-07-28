@@ -1,4 +1,4 @@
-import React, { useState, useRef, useStorage} from 'react'
+import React, { useState } from 'react'
 import { Modal, InputGroup, FormControl } from "react-bootstrap";
 import { useAuth } from '../../context/AuthProvider';
 import { createPost, datePostDB, orderDate } from '../../firebase/firestore';
@@ -10,32 +10,32 @@ import iconfoto from "../../images/fotos.png";
 
 export const ModalCreatePost = (props) => {
   
-  //FUNCION CARGAR FOTO
-  const [ref, setRef] = useState(null);
+  // //FUNCION CARGAR FOTO
+  // const [ ref, setRef ] = useState(null);
 
-  //const storage = useStorage();
-  const [Imagen, setImagen] = useState();
-  console.log(Imagen)//undefined - OBJETO
-  const [url, setUrl] = useState()
-  console.log(url)
-  //OBTENIENDO LA IMAGEN
-  const changeImagen = e => {
-    setImagen(e.target.files[0]);
-  }
+  // //const storage = useStorage();
+  // const [Imagen, setImagen] = useState();
+  // console.log(Imagen)//undefined - OBJETO
+  // const [url, setUrl] = useState()
+  // console.log(url)
+  // //OBTENIENDO LA IMAGEN
+  // const changeImagen = e => {
+  //   setImagen(e.target.files[0]);
+  // }
 
-  //FUNCION PARA GUARDAR LA IMAGEN EN FIREBASE
-  const uploadImage = async () => {
-    try {
-      const newRef = storage.ref('images').child(Imagen.name); // nombre del archivo
-      setRef(newRef);
-      await newRef.put(Imagen);
-      const urlImagen = await newRef.getDownloadURL()
-      console.log('la ul de la imagen es' + urlImagen); //URL
-      setUrl(urlImagen)
-    } catch (error) {
-        alert(error);
-    }
-  };
+  // //FUNCION PARA GUARDAR LA IMAGEN EN FIREBASE
+  // const uploadImage = async () => {
+  //   try {
+  //     const newRef = storage.ref('images').child(Imagen.name); // nombre del archivo
+  //     setRef(newRef);
+  //     await newRef.put(Imagen);
+  //     const urlImagen = await newRef.getDownloadURL()
+  //     console.log('la ul de la imagen es' + urlImagen); //URL
+  //     setUrl(urlImagen)
+  //   } catch (error) {
+  //       alert(error);
+  //   }
+  // };
 
   //ESTADO INICIAL DE REGISTRO DE POSTS
   const { currentUser } = useAuth();
@@ -71,8 +71,8 @@ export const ModalCreatePost = (props) => {
     newObject.status= 'publicado'
     newObject.profile= [manager, ejecut, operat, practi ]
 
-    newObject.img = url
-    uploadImage()
+    // newObject.img = url
+    // uploadImage()
 
     createPost(newObject);   
     props.handleClose();
@@ -120,7 +120,7 @@ export const ModalCreatePost = (props) => {
           <div id="add-photo">
             <input type="file" /* ref={imageRef} */ name="images[]" style={{backgroundColor:"#E5E5E5"}} 
               className="Upload__form-inputfile" /* onChange={onChangeFile} */
-               onChange={changeImagen}></input>
+               /* onChange={changeImagen} */></input>
           </div>
         </Modal.Body>
 

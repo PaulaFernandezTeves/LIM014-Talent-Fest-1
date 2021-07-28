@@ -1,177 +1,157 @@
 import React, { useState, useEffect} from 'react';
-import {Header} from '../../home/Header';
-import { Modal, Card, Button } from "react-bootstrap";
-import becas from '../../../images/becas.png';
-import autoseguro from '../../../images/autoseguro.png';
-import linaje from '../../../images/linajeperuano.png';
-import icpna from '../../../images/icpna.png';
-import '../../../styles/paula.css';
-import { useAuth } from '../../../context/AuthProvider';
-import { getUser } from '../../../firebase/firestore';
-
+import { Card, Button } from "react-bootstrap";
+import { useAuth } from "../../../context/AuthProvider";
+import { getPosts } from "../../../firebase/firestore"
+import { Header } from '../../home/Header';
 
 export const Benefit = () => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
-  const { currentUser } = useAuth();
+  const img = "https://i.ibb.co/xjqVx2m/becas.jpg";
+  const { dataUser } = useAuth();
+  console.log(dataUser)
 
-  const [perfil, setPerfil] = useState('');
-  console.log(perfil)
-  
+  const [posts, setPosts] = useState([]);
+
+  const callback = (data) => {
+    setPosts(data);
+  };
+
   useEffect(() => {
-    getUser(currentUser.uid).then((user)=>{
-      console.log(user.data())
-      setPerfil(user.data().perfil)})
-  }, [])
-
+    getPosts(callback);
+  }, []);
 
   return (
     <>
-      <Header />
-
-      {/* BECAS */}
-      {
-        perfil==='Administrativos'|| perfil ==='Operativos' 
-        ?
-        <section className='p-5'>
-        <h2 className='text-center mb-5 azul'>BECAS</h2>
-          <article className='d-flex flex-wrap justify-content-between mx-auto' style={{  maxWidth: '80%' }}>
-                <Card.Text style={{fontWeight:'bold', color:'#874487', fontSize:'1.2rem', textAlign:'center' }}>
-                <img src={becas} alt ="" style={{width:"25rem", height:"23rem", borderRadius:'17px', margin:"0"}} className="photo "></img>
-                </Card.Text> 
-                <div className="description">
-                  <h4>Becas Perú</h4>
-                <p className="text-secondary">
-                "Becas para hijos de nuestro personal con más de 5 años laborando ."
-              </p>
-              </div>
-              <Button variant="primary" onClick={handleShow} style={{backgroundColor: "#0D0B6E", padding:"5px 10px", maxWidth:"20%", height: "fit-content", marginTop:"150px"}}>Ver más</Button>
-              <Modal
-                show={show}
-                onHide={handleClose}
-                backdrop="static"
-                keyboard={false}
-              >
-                <Modal.Body >
-                    En casos de fallecimiento de un familiar directo contamos con algunos beneficios que ayudarán a sobrellevarlo.
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose}>Close</Button>
-                </Modal.Footer>
-              </Modal>              
-          </article>
-        </section>
-      : null
-      }
-
-
-      {/*  FALLECIMIENTO*/}
-      {
-        perfil==='Administrativos'|| perfil ==='Operativos' || perfil ==='Ejecutivos'
-        ?   <section className='p-5' style={{ background: '#ECF2F6'}}>
-              <h2 className='text-center mb-5 azul'>FALLECIMIENTO</h2>
-              <article className='d-flex flex-wrap justify-content-between mx-auto' style={{  maxWidth: '80%' }}>
-                    <Card.Text style={{fontWeight:'bold', color:'#874487', fontSize:'1.2rem', textAlign:'center' }}>
-                    <img src="https://previews.123rf.com/images/gampingdesign/gampingdesign1207/gampingdesign120700140/14805660-ilustraci%C3%B3n-vectorial-de-la-paloma-de-la-paz.jpg" alt ="" style={{width:"25rem", height:"23rem", borderRadius:'17px', margin:"0"}} className="photo "></img>
-                    </Card.Text>  
-                    <div className="description">
-                    <p className="text-secondary">
-                    "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
-                    <br></br>
-                    "lorem"
-                  </p>
+      <Header/>
+      {/* /Becas/ */}
+      { dataUser.perfil === "Administrativos" ||
+      dataUser.perfil === "Operativos" ? (
+        <section className="p-5">
+          <h2 className='text-center mb-5 azul'>BECAS</h2>
+          {posts.map((post) =>
+            post.status === "publicado" && post.subcategory === "Becas" ? (
+              <Card>
+                <Card.Body>
+                  <div className="section-card">
+                    <figure>
+                      <img src={img} alt="img not found" />
+                    </figure>
+                    <div className="section-card-content">
+                      <Card.Title>{post.title}</Card.Title>
+                      <Card.Text>{post.content}</Card.Text>
+                      <Button
+                        variant="primary"
+                        href="https://www.youtube.com/watch?v=zQ41hqlV0Kk"
+                      >
+                        Ver mas
+                      </Button>
+                    </div>
                   </div>
-                  <Button variant="primary" onClick={handleShow} style={{backgroundColor: "#0D0B6E", padding:"5px 10px", maxWidth:"20%", height: "fit-content", marginTop:"150px"}}>Ver más</Button>
-                  <Modal
-                    show={show}
-                    onHide={handleClose}
-                    backdrop="static"
-                    keyboard={false}
-                  >
-                    <Modal.Body md>
-                      I will not close if you click outside me. Don't even try to press
-                      escape key.
-                    </Modal.Body>
-                    <Modal.Footer md>
-                      <Button variant="secondary" onClick={handleClose}>Close</Button>
-                    </Modal.Footer>
-                  </Modal>     
-              </article>
-            </section>
-          : null  
-      }
+                </Card.Body>
+              </Card>
+            ) : (
+              null
+            )
+          )}
+        </section>
+      ) : null}
 
-       {/* LINAHES - TODOS*/}
-      <section className='p-5' style={{ background: '#ECF2F6'}}>
-        <h2 className='text-center mb-5 azul'>LINAJES PERUANOS</h2>
-        <article className='d-flex flex-wrap justify-content-between mx-auto' style={{  maxWidth: '80%' }}>
-              <Card.Text style={{fontWeight:'bold', color:'#874487', fontSize:'1.2rem', textAlign:'center' }}>
-              <img src={linaje} alt ="" style={{width:"25rem", height:"23rem", borderRadius:'17px', margin:"0"}} className="photo "></img>
-              </Card.Text>    
-              <div className="description">
-              <p className="text-secondary">
-              "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
-              <br></br>
-              "lorem"
-            </p>
-            </div>
+      {dataUser.perfil === "Administrativos" ||
+      dataUser.perfil === "Operativos" ||
+      dataUser.perfil === "Ejecutivos" ? (
+        <>
+          <section className="p-5">
+          <h2 className='text-center mb-5 azul'>FALLECIMIENTO</h2>
+            {posts.map((post) =>
+              post.status === "publicado" &&
+              post.subcategory === "Fallecimiento" ? (
+                <Card>
+                  <Card.Body>
+                    <div className="section-card">
+                      <figure>
+                        <img src={img} alt="img not found" />
+                      </figure>
+                      <div className="section-card-content">
+                        <Card.Title>{post.title}</Card.Title>
+                        <Card.Text>{post.content}</Card.Text>
+                        <Button
+                          variant="primary"
+                          href="https://www.youtube.com/watch?v=zQ41hqlV0Kk"
+                        >
+                          Ver mas
+                        </Button>
+                      </div>
+                    </div>
+                  </Card.Body>
+                </Card>
+              ) : (
+                null
+              )
+            )}
+          </section>
+        </>
+      ) : null}
 
-            <Button variant="primary" onClick={handleShow} style={{backgroundColor: "#0D0B6E", padding:"5px 10px", maxWidth:"20%", height: "fit-content", marginTop:"150px"}}>Ver más</Button>
-            <Modal
-              show={show}
-              onHide={handleClose}
-              backdrop="static"
-              keyboard={false}
-            >
-              <Modal.Body >
-                I will not close if you click outside me. Don't even try to press
-                escape key.
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>Close</Button>
-              </Modal.Footer>
-            </Modal>
-          </article>
+      {/* /Linajes peruanos/ */}
+      <section className="p-5">
+      <h2 className='text-center mb-5 azul'>LINAJE PERUANO</h2>
+        {posts.map((post) =>
+          post.status === "publicado" &&
+          post.subcategory === "Linajes Peruanos" ? (
+            <Card>
+              <Card.Body>
+                <div className="section-card">
+                  <figure>
+                    <img src={img} alt="img not found" />
+                  </figure>
+                  <div className="section-card-content">
+                    <Card.Title>{post.title}</Card.Title>
+                    <Card.Text>{post.content}</Card.Text>
+                    <Button
+                      variant="primary"
+                      href="https://www.youtube.com/watch?v=zQ41hqlV0Kk"
+                    >
+                      Ver mas
+                    </Button>
+                  </div>
+                </div>
+              </Card.Body>
+            </Card>
+          ) : (
+            null
+          )
+        )}
       </section>
 
-      {/* ICPNA - TODOS*/}
-      {
-        /* perfil==='Administrativos'|| perfil ==='Operativos' || perfil ==='Ejecutivos' || perfil ==='Practicantes' */
-        /* ? */
-        <section className='p-5'>
-          <h2 className='text-center mb-5 azul'>ICPNA</h2>
-          <article className='d-flex flex-wrap justify-content-between mx-auto' style={{  maxWidth: '80%' }}>
-              <Card.Text style={{fontWeight:'bold', color:'#874487', fontSize:'1.2rem', textAlign:'center' }}>
-              <img src={icpna} alt ="" style={{width:"25rem", height:"23rem", borderRadius:'17px', margin:"0"}} className="photo "></img>
-              </Card.Text>  
-              <div className="description">
-              <p className="text-secondary">
-              "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
-              <br></br>
-              "lorem"
-            </p>
-            </div>
-            <Button variant="primary" onClick={handleShow} style={{backgroundColor: "#0D0B6E", padding:"5px 10px", maxWidth:"20%", height: "fit-content", marginTop:"150px"}}>Ver más</Button>
-            <Modal
-              show={show}
-              onHide={handleClose}
-              backdrop="static"
-              keyboard={false}
-            >
-              <Modal.Body >
-                I will not close if you click outside me. Don't even try to press
-                escape key.
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" style={{backgroundColor: "#0D0B6E"}} onClick={handleClose}>Close</Button>
-              </Modal.Footer>
-            </Modal>    
-            </article>
-          </section>
-         /*  : null */
-      }
+      {/* /Icpna/ */}
+      <section className="p-5">
+      <h2 className='text-center mb-5 azul'>ICPNA</h2>
+        {posts.map((post) =>
+          post.status === "publicado" && post.subcategory === "ICPNA" ? (
+            <Card>
+              <Card.Body>
+                <div className="section-card">
+                  <figure>
+                    <img src={img} alt="img not found" />
+                  </figure>
+                  <div className="section-card-content">
+                    <Card.Title>{post.title}</Card.Title>
+                    <Card.Text>{post.content}</Card.Text>
+                    <Button
+                      variant="primary"
+                      href="https://www.youtube.com/watch?v=zQ41hqlV0Kk"
+                    >
+                      Ver mas
+                    </Button>
+                  </div>
+                </div>
+              </Card.Body>
+            </Card>
+          ) : (
+            null
+          )
+        )}
+      </section>
     </>
-  )
+  );
 }
