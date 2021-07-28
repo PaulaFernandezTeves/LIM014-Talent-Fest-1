@@ -1,5 +1,6 @@
 import { db } from "./config";
 
+
 // FECHAAAAAA
   export const datePostDB = () => {
     const datePost = {
@@ -82,7 +83,7 @@ import { db } from "./config";
             ...doc.data(),
           })     
       );  
-      console.log(posts)
+      //console.log(posts)
       callback(posts);
     });
 

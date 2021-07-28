@@ -18,10 +18,10 @@ import { ModalDelete } from './ModalDelete';
  
   //----------------LLAMANDO POSTS DEL REGISTRADOR-----------------
   const [posts, setPosts] = useState([]);
-  console.log(posts)
+  //console.log(posts)
 
   const callback = (data) => {
-    console.log(data)
+    //console.log(data)
     setPosts(data)
   }
  
@@ -98,9 +98,9 @@ import { ModalDelete } from './ModalDelete';
                 <td>{post.date}</td>
                 <td>
                   <ModalEditPost
-                      post={post} 
+                    post={post} 
                   />
-                </td>
+                </td> 
                 <td>
                   <ModalDelete 
                     postId={post.postId} 

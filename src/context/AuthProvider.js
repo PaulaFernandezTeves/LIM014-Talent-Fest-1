@@ -1,6 +1,7 @@
 import React, {createContext, useContext, useState, useEffect} from 'react';
 import { auth } from '../firebase/config';
 import { loginFb, logoutFb } from '../firebase/auth';
+import { getUser } from '../firebase/firestore';
 import { useHistory } from "react-router-dom";
 
 
@@ -10,14 +11,20 @@ export const useAuth = () => { //con esto podemos USAR todas las fn y estados de
   return useContext(AuthContext);
 };
 
+
 export const AuthProvider = ({ children }) => {
   let history = useHistory();
+
+  const [dataUser, setDataUser] = useState([])
+
+  //console.log(dataUser)// OBJETO COLECCION USER
 
   //FUNCIONES DE AUTH
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("user"))
   );
-
+  console.log(currentUser)// OBJETO CURRENT USER - AUTH
+  
   const login = (email, password) => loginFb(email, password);
   
   const logOut = () => {
@@ -33,9 +40,9 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      console.log('usuario logged', user);
+      //console.log('usuario logged', user);
       if(user) {
-        console.log(user)
+        //console.log(user)
         localStorage.setItem("user", JSON.stringify(user));
         setCurrentUser(user)
       } else {
@@ -45,9 +52,15 @@ export const AuthProvider = ({ children }) => {
     return unsubscribe;
   }, []);
 
+  useEffect(() => {
+    getUser(currentUser.uid).then((user) => {
+      setDataUser(user.data());
+    })
+  }, [])
 
   const value = {
     currentUser,
+    dataUser,
     login,
     logOut,
   } 

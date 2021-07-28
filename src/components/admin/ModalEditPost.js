@@ -31,18 +31,17 @@ export const ModalEditPost = (props) => {
   
   const { post } = props;
   const [datos, setDatos] = useState(post);
-  console.log(post);
+  
+  const handleInputChange = (event) => {
+    setDatos({
+      ...datos,
+      [event.target.name]: event.target.value,
+    });
+  };
 
-   const handleInputChange = (event) => {
-     setDatos({
-       ...datos,
-       [event.target.name]: event.target.value,
-     });
-   };
-
+  const [category, setCategory ] = useState('Escoge una página')
+  const [subcategory, setSubcategory ] = useState('')   
    //FN TRAER VALORES INPUT CHECKBOX
-
-
    const [ manager, setManager] = useState({type: 'Administrativos', value:false })
    const [ ejecut, setEjecut] = useState({type: 'Ejecutivos', value:false })
    const [ operat, setOperat] =  useState({type: 'Operativos', value:false })
@@ -91,8 +90,7 @@ export const ModalEditPost = (props) => {
     setShow(false)
   }
 
-  const publishedPost = () => {
-    
+  const publishedPost = () => {    
     datos.status='publicado'
     datos.profile=[manager, ejecut, operat, practi]
     console.log(post)
@@ -102,7 +100,7 @@ export const ModalEditPost = (props) => {
 
   return (
     <>
-      <Button /* variant="primary" */ onClick={handleShow}>
+      <Button  onClick={handleShow}>
         <i className="fas fa-edit"></i>
       </Button>
 
@@ -183,31 +181,59 @@ export const ModalEditPost = (props) => {
             style={{ margin: "20px 25px" }}
           ></input>
         </Modal.Body>
-        <article>
-          <p>{/* <b>Vista: {category}</b> */}</p>
-          <p>{/* <b>Sección: {subcategory}</b> */}</p>
+        <article className='d-flex justify-content-beetwen'>
+          <select value={category} onChange={(e)=>{setCategory(e.target.value)}} >
+            <option value=''>ESCOGE UNA PÁGINA</option>
+            <option value='Home'>HOME</option>
+            <option value='Salud'>SALUD</option>
+            <option value='Seguridad'>SEGURIDAD</option>
+            <option value='Beneficios'>BENEFICIOS</option>
+          </select>
+          {
+            category==='Home'
+            ? <select value={subcategory} onChange={(e)=>{setSubcategory(e.target.value)}} >
+                <option value=''>ESCOGE UNA SECCIÓN</option>
+                <option value='Para Ti'>Sección - Para ti</option>
+                <option value='Noticias Destacadas'>Sección - Noticias Destacadas</option>
+                <option value='Cumpleaños'>Sección - Cumpleaños</option>
+                <option value='Otros Reconocimientos'>Sección - Otros Reconocimientos</option>
+              </select>
+            : null  
+          }
+          {
+            category==='Salud'
+            ? <select value={subcategory} onChange={(e)=>{setSubcategory(e.target.value)}}>
+                <option value=''>ESCOGE UNA SECCIÓN</option>
+                <option value='Cronograma de vacunación'>Sección - Cronograma de Vacunación</option>
+                <option value='Recomendaciones'>Sección - Recomendaciones</option>
+                <option value='Atención nutricional'>Sección - Atención Nutricional</option>
+              </select>
+            : null  
+          }
+          {
+            category==='Seguridad'
+            ? <select value={subcategory} onChange={(e)=>{setSubcategory(e.target.value)}}>
+                <option value=''>ESCOGE UNA SECCIÓN</option>
+                <option value='Sin Accidentes'>Sección - Días sin accidentes</option>
+                <option value='Ganadores de Campaña del Medio Ambiente'>Sección - Ganadores de campaña del Medio Ambiente</option>
+              </select>
+            : null  
+          }
+          {
+            category==='Beneficios'
+            ? <select value={subcategory} onChange={(e)=>{setSubcategory(e.target.value)}}>
+                <option value=''>ESCOGE UNA SECCIÓN</option>
+                <option value='Sin Accidentes'>Sección - Becas</option>
+                <option value='Fallecimiento'>Sección - Fallecimiento</option>
+                <option value='Autoseguro Médico'>Sección - Autoseguro Médico Familiar</option>
+                <option value='Linajes Peruanos'>Sección - Linajes Peruanos</option>
+                <option value='ICPNA'>Sección - ICPNA</option>
+              </select>
+            : null  
+          }          
         </article>
         <article>
-          <h6>
-            <b>Perfiles</b>
-          </h6>
-          {/* {
-            datos.profile.map((perfil) => 
-            <InputGroup className="mb-2">
-              <InputGroup.Checkbox
-                defaultCheck={adminCheck}
-                onChange={()=>handleChangeCheck("Administrativos")}
-                name="Administrativos"
-                className="checkGroup"
-                aria-label="Checkbox for following text input"
-              />
-              <FormControl
-                value="Administrativos"
-                aria-label="Text input with checkbox"
-              />
-          </InputGroup>)
-          } */}
-
+          <h6><b>Perfiles</b></h6>
           <InputGroup className="mb-2">
             <InputGroup.Checkbox
               defaultChecked={manager.value}

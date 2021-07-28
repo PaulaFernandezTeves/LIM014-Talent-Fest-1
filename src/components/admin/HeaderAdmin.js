@@ -27,7 +27,7 @@ export const HeaderAdmin = () => {
           </Link>
         </figure>
         <ul className="d-flex justify-content-between align-self-center" style={{marginBottom:'0',}}>
-          <Link style={merylink}>¡Hola Luisa!</Link>
+          <Link to='' style={merylink}>¡Hola Luisa!</Link>
         </ul>
         <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic">

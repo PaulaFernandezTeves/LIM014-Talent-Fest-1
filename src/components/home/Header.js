@@ -11,7 +11,7 @@ export const Header = () => {
   let history = useHistory();
  
   const {logOut, currentUser} = useAuth();
-  console.log(currentUser)
+  //console.log(currentUser)
   const meryli = {
     listStyle: "none",
   }
@@ -25,15 +25,15 @@ export const Header = () => {
   }
     //llamando a los usuarios
     const [rol, setRol] = useState('');
-    console.log(rol)
+    //console.log(rol)
     // const callback = (data) => {
     //   setUsers(data)
     // }
   
     useEffect(() => {
-      console.log(currentUser)
+      //console.log(currentUser)
       getUser(currentUser.uid).then((user)=>{
-        console.log(user.data())
+        //console.log(user.data())
         setRol(user.data().rol)})
     }, [])
  
@@ -45,7 +45,7 @@ export const Header = () => {
             <i className="fas fa-home" style={{color:'#0D0B6F', fontSize:'30px'}}></i>           
           </Link>
           <ul className="d-flex justify-content-between align-self-center" style={{marginBottom:'0',}}>
-            <Link style={merylink}>Cuidado</Link>
+            <Link to='' style={merylink}>Cuidado</Link>
           </ul>
         </article>
         <article className="d-flex align-items-center justify-content-end">
