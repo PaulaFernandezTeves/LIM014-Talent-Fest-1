@@ -8,7 +8,7 @@ export const Main = () => {
 
   // const handleClose1 = () => setShow1(false);
   // const handleShow1 = () => setShow1(true);
-
+  /* HACER CAMBIOS ACA DE MODAL PARA DETALLES */
   return (
     <>
       {/* PARA TI */}
@@ -19,7 +19,7 @@ export const Main = () => {
           className="d-flex flex-wrap justify-content-between mx-auto"
           style={{ maxWidth: "70%" }}
         >
-          <Card  onClick={handleShow1}
+          <Card /*  onClick={handleShow1} */
             border="gris3 border-3"
             style={{ width: "14rem", borderRadius: "17px", height: "13rem" }}
             className="mb-4  mx-auto"
