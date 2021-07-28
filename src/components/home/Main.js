@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 import cumpleanos from "../../images/cumpleanos.png";
+import {ModalDetails} from "../admin/ModalDetails"
 
 export const Main = () => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const [show1, setShow1] = useState(false);
+
+  // const handleClose1 = () => setShow1(false);
+  // const handleShow1 = () => setShow1(true);
 
   return (
     <>
@@ -17,7 +19,7 @@ export const Main = () => {
           className="d-flex flex-wrap justify-content-between mx-auto"
           style={{ maxWidth: "70%" }}
         >
-          <Card
+          <Card  onClick={handleShow1}
             border="gris3 border-3"
             style={{ width: "14rem", borderRadius: "17px", height: "13rem" }}
             className="mb-4  mx-auto"
@@ -38,14 +40,7 @@ export const Main = () => {
                 Cronograma de capacitación
               </Card.Text>
               <div>
-                <a
-                  className="briCardBtn"
-                  target="_blank"
-                  href="https://www.formate.pe/informacion-SIDERPERU-cursos-online-gratis-construccion-3196.html"
-                  rel="noreferrer"
-                >
-                  Conoce más<i class="fas fa-arrow-circle-right"></i>
-                </a>
+               {/*  <ModalDetails show1={show1} onHide1={handleClose1}/> */}
               </div>
             </Card.Body>
           </Card>

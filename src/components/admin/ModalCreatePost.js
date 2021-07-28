@@ -136,7 +136,10 @@ export const ModalCreatePost = (props) => {
             category==='Home'
             ? <select value={subcategory} onChange={(e)=>{setSubcategory(e.target.value)}} >
                 <option value=''>ESCOGE UNA SECCIÓN</option>
-                <option value='Para Ti'>Sección - Para ti</option>
+                <option value='Para Ti'>Sección - Para ti - Cronograma de capacitación</option>
+                <option value='Para Ti'>Sección - Para ti - Convocatorias Internas</option>
+                <option value='Para Ti'>Sección - Para ti - Beneficios</option>
+                <option value='Para Ti'>Sección - Para ti - Actividad</option>
                 <option value='Noticias Destacadas'>Sección - Noticias Destacadas</option>
                 <option value='Cumpleaños'>Sección - Cumpleaños</option>
                 <option value='Otros Reconocimientos'>Sección - Otros Reconocimientos</option>
