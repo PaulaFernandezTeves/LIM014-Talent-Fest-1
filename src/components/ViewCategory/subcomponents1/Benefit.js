@@ -34,7 +34,7 @@ export const Benefit = () => {
                 keyboard={false}
               >
                 <Modal.Body >
-                    En casos de fallecimiento de un familiar directo contamos con algunos beneficios que ayudarán a sobrellevarlo.
+                oo
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={handleClose}>Close</Button>
@@ -63,8 +63,7 @@ export const Benefit = () => {
         keyboard={false}
       >
         <Modal.Body >
-        En casos de fallecimiento de un familiar directo contamos con algunos beneficios que ayudarán a sobrellevarlo.
-
+          o
         </Modal.Body>
         <Modal.Footer md>
           <Button variant="secondary" onClick={handleClose}>Close</Button>
@@ -80,9 +79,9 @@ export const Benefit = () => {
               <img src={linaje} alt ="" style={{width:"25rem", height:"23rem", borderRadius:'17px', margin:"0"}} className="photo "></img>
               </Card.Text>    
               <div className="description">
-                  <h4>Fallecimiento de personal</h4>
+                  <h4>Linaje</h4>
                 <p className="text-secondary">
-                En casos de fallecimiento de un familiar directo contamos con algunos beneficios que ayudarán a sobrellevarlo.
+                  descripcion de linaje 
               </p>
               </div>
 
@@ -110,10 +109,9 @@ export const Benefit = () => {
               <img src={icpna} alt ="" style={{width:"25rem", height:"23rem", borderRadius:'17px', margin:"0"}} className="photo "></img>
               </Card.Text>  
               <div className="description">
+              <h4>Cursos de inglés</h4>
               <p className="text-secondary">
-              "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
-              <br></br>
-              "lorem"
+                Estudia inglés para tu futuro!
             </p>
             </div>
             <Button variant="primary" onClick={handleShow} style={{backgroundColor: "#0D0B6E", padding:"5px 10px", maxWidth:"20%", height: "fit-content", marginTop:"150px"}}>Ver más</Button>

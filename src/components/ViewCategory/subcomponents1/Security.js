@@ -4,6 +4,7 @@ import { Card } from "react-bootstrap";
 import ReactPlayer from 'react-player';
 // import "../subcomponents1/Timer"
 import Timer from '../subcomponents1/Timer';
+import '../../../styles/paula.css';
 
 export const Security = () => {
   return (

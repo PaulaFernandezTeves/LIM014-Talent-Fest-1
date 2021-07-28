@@ -21,6 +21,7 @@ import { PrivateRoute } from './components/PrivateRoute';
 import {Health} from './components/ViewCategory/subcomponents1/Health';
 import {Security} from './components/ViewCategory/subcomponents1/Security';
 import { Benefit } from './components/ViewCategory/subcomponents1/Benefit';
+import { HomeDos } from './components/HomeDos';
  
 function App() {
  
@@ -38,6 +39,7 @@ function App() {
             <PrivateRoute path="/administrador/usuarios" component={ListUsers} />
             <PrivateRoute path="/administrador/revision-post" component={ReviewPost} />
             <PrivateRoute path="/registrador/historial-post" component={HistoryPost} />
+            <PrivateRoute path="/homedos" component={HomeDos} />
           </Switch>
         </AuthProvider>
       </Router>

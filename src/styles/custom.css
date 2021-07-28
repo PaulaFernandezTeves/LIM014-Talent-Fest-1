@@ -7350,6 +7350,8 @@ textarea.form-control-lg {
 
 .text-secondary {
   color: #6c757d !important;
+  width: fit-content !important;
+  text-align: center !important;
 }
 
 .text-success {

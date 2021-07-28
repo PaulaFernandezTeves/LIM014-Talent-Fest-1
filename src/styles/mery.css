@@ -78,7 +78,7 @@
 
 /* HEADER VIEW */
 .meryheader{
-  width: 100vw;
+  /* width: 100vw; */
   background-color: #FFCC00;
 }
 .meryimgheader{
@@ -94,7 +94,7 @@
 /* SUBNAV */
 .merysubnav nav{
   background-color: #874487;
-  width: 100vw; 
+  /* width: 100vw;  */
 }
 #searchNancy {
   height: 40px;
