@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
 import { Header } from "./Header";
 import { Card, Button, Modal } from "react-bootstrap";
@@ -16,11 +17,20 @@ export const MyWork = () => {
   const [perfil, setPerfil] = useState('');
   console.log(perfil)
   
+  // useEffect(() => {
+  //   getUser(currentUser.uid).then((user)=>{
+  //     console.log(user.data())
+  //     setPerfil(user.data().perfil)})
+  // }, [])
   useEffect(() => {
-    getUser(currentUser.uid).then((user)=>{
-      console.log(user.data())
-      setPerfil(user.data().perfil)})
-  }, [])
+    if (currentUser) {
+      getUser(currentUser.uid).then((user) => {
+        setPerfil(user.data().perfil);
+      });
+    } else {
+      console.error("no hay current user");
+    }
+  }, [currentUser]);
 
   //MODAL
   const [show, setShow] = useState(false);

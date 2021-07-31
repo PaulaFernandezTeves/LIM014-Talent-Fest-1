@@ -1,7 +1,7 @@
 import { db } from "./config";
 
 
-// FECHAAAAAA
+// FECHA
   export const datePostDB = () => {
     const datePost = {
       month: 'short',
@@ -92,13 +92,7 @@ import { db } from "./config";
     db
       .collection("post")
       .doc(idPost)
-      .update({...payload});
-
-  export const updateStatusPostRegister = ( idPost,  payload ) =>
-    db
-    .collection("post")
-    .doc(idPost)
-    .update({...payload});    
+      .update({...payload});  
 
     export const deletePost = (postId) => {
       return db.collection("post").doc(postId).delete();

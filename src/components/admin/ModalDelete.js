@@ -18,8 +18,8 @@ export const ModalDelete = ({postId}) => {
 
   return (
     <>
-      <Button onClick={handleShow1}>
-        <i className="fas fa-trash"></i>
+      <Button onClick={handleShow1} >
+        <i className="fas fa-trash "></i>
       </Button>
 
       <Modal show={show1} onHide={handleClose1}>

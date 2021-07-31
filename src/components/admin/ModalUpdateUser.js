@@ -6,7 +6,7 @@ export const ModalUpdateUser = (props) => {
 
   //Destructurando props
     const { user } = props;
-    const [persona, setPersona] = useState(user)
+    const [persona/* , setPersona */] = useState(user)
 
   // Modal
   const [show, setShow] = useState(false);

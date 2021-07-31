@@ -1,13 +1,14 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 import { useAuth } from '../../context/AuthProvider';
 import { Dropdown } from "react-bootstrap";
+import { getPosts } from '../../firebase/firestore';
 
 import '../../styles/paula.css';
 
 export const HeaderAdmin = () => {
 
-  const {logOut} = useAuth();
+  const {logOut, dataUser } = useAuth();
  
   const merylink = {
     textDecoration: "none",
@@ -18,18 +19,33 @@ export const HeaderAdmin = () => {
     aligncontent: 'center',
   }
 
+//----------------LLAMANDO POSTS DEL REGISTRADOR-----------------
+  const [posts, setPosts] = useState([]);
+
+  const filtering = posts.filter(obj => 
+    obj.status === 'pendiente' || obj.status === 'rechazado'
+  ).length
+
+  const callback = (data) => {
+    setPosts(data)
+  }
+  
+  useEffect(() => {
+    getPosts(callback);
+  }, []) 
+
   return (
         <>
-        <header className="meryheader d-flex justify-content-between px-5 " style={{background:'#FCAC04', paddingTop:'20px', paddingBottom:'20px'}}>
+        <header className="meryheader d-flex justify-content-between px-5 align-items-center" style={{background:'#FCAC04', paddingTop:'20px', paddingBottom:'20px'}}>
         <figure className="meryimgheader d-flex align-items-center"  style={{marginBottom:'0'}} >
           <Link to={"/home"} style={merylink}>
-          <i className="fas fa-home" style={{color:'#0D0B6F', fontSize:'30px'}}></i>           
+            <i className="fas fa-home" style={{color:'#0D0B6F', fontSize:'30px'}}></i>           
           </Link>
         </figure>
-        <ul className="d-flex justify-content-between align-self-center" style={{marginBottom:'0',}}>
-          <Link to='' style={merylink}>¡Hola Luisa!</Link>
+        <ul className="d-flex justify-content-between align-items-center" style={{marginBottom:'0',}}>
+          <Link to='' style={merylink}>¡Hola {dataUser.email}!</Link>
         </ul>
-        <Dropdown>
+        <Dropdown className='align-items-center'>
           <Dropdown.Toggle variant="success" id="dropdown-basic">
             Administrador
           </Dropdown.Toggle>
@@ -42,8 +58,9 @@ export const HeaderAdmin = () => {
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <figure className="meryimgheader d-flex align-items-center"  style={{marginBottom:'0'}} >
-             <i className="far fa-bell" style={{color:'#0D0B6F', fontSize:'27px', marginRight:'30px', fontWeight:'bold'}}></i>             
+        <figure className="meryimgheader d-flex align-items-center justify-content-center"  style={{marginBottom:'0', marginRight:'30px'}} >      
+            <i className="far fa-bell" style={{color:'#0D0B6F', fontSize:'27px', fontWeight:'bold'}}></i>
+            <b className='rounded-circle' style={{background:'#ECF2F6', width:'21px', color: 'red', paddingLeft:'4px'}}>{filtering}</b> 
         </figure>
         <Link to={"/"} onClick={() => logOut()} style={merylink}>Salir</Link>
         

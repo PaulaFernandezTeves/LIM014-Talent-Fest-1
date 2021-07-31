@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
-//import { Header } from '../home/Header';
 import { HeaderRegistrador } from './HeaderRegistrador';
-import { ModalCreatePostRegister} from './ModalCreatePostRegister';
-import {ModalEditPostRegister} from './ModalEditPostRegister'
-import { getPosts, deletePost } from '../../firebase/firestore'
-import { Modal, Button, InputGroup,FormControl} from "react-bootstrap";
+import { ModalCreatePost } from '../admin/ModalCreatePost';
+import {ModalEditPost} from '../admin/ModalEditPost'
+import { getPosts } from '../../firebase/firestore'
+import { InputGroup,FormControl} from "react-bootstrap";
+import { ModalDelete } from '../admin/ModalDelete';
 
 export const HistoryPost = () => {
 
@@ -12,6 +12,7 @@ export const HistoryPost = () => {
   const [show, setShow] = React.useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   //----------------LLAMANDO POSTS DEL REGISTRADOR-----------------
   const [posts, setPosts] = useState([]);
 
@@ -23,16 +24,6 @@ export const HistoryPost = () => {
     getPosts(callback);
   }, []) 
 
-//----------------MODAL ELMINAR POST-----------------
-  const [show1, setShow1] = useState(false);
-
-  const handleClose1 = () => setShow1(false);
-  const handleShow1 = () => setShow1(true);
-
-  const fneDeletePost = (id) =>{
-    deletePost(id)
-    setShow1(false)
-  }
 
   return (
     <>
@@ -68,7 +59,7 @@ export const HistoryPost = () => {
         </div>
 
 
-        <ModalCreatePostRegister
+        <ModalCreatePost
           show={show}
           setShow={setShow}
           handleClose={handleClose}
@@ -81,6 +72,7 @@ export const HistoryPost = () => {
               <th>Categoría</th>
               <th>Sub Categoría</th>
               <th>Estado</th>
+              <th>Fecha</th>
               <th>Editar</th>
               <th>Eliminar</th>
             </tr>
@@ -98,31 +90,19 @@ export const HistoryPost = () => {
                   :  post.status ==='publicado'
                      ? <td style={{color:  'green'}}><b>{post.status}</b></td>
                     : <td style={{color: 'red'}}><b>{post.status}</b></td>
-                }    
-                {/* <td >{post.profile}</td>  */}           
-                <td style={{background: "white"}}>
-                {
-                  post.status==='publicado' 
-                  ?  <></>
-                  :  
-                    <ModalEditPostRegister 
-                      post={post}
-                    />                
-                }
+                }            
+                
+                <td>{post.date}</td>
+                <td >
+                  <ModalEditPost 
+                    post={post} 
+                  />
+                </td> 
+                <td >
+                  <ModalDelete 
+                    postId={post.postId} 
+                  />            
                 </td>
-                <td onClick={handleShow1}>
-                  <Button style={{backgroundColor:'white', border:'white'}}>
-                    <i className="fas fa-trash text-dark"></i>
-                  </Button>                  
-                </td>
-                <Modal show={show1} onHide={handleClose1}>
-                  <Modal.Body style={{margin: ' 0 auto'}}><b>¿Deseas eliminar la publicación?</b></Modal.Body>
-                  <Modal.Footer>
-                    <Button variant="primary" style={{margin: ' 0 auto', background:'red', borderColor:'red'}} onClick={()=>fneDeletePost(post.postId)}>
-                      <b>Eliminar</b>
-                    </Button>
-                  </Modal.Footer>
-                </Modal>
               </tr>
            )): <>No hay posts </> }
           </tbody>

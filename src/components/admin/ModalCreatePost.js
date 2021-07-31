@@ -10,35 +10,19 @@ import iconfoto from "../../images/fotos.png";
 
 export const ModalCreatePost = (props) => {
   
-  // //FUNCION CARGAR FOTO
-  // const [ ref, setRef ] = useState(null);
+  /**** CARGAR FOTO ****/
+  const [fileUrl, setFileUrl] = useState(null)
 
-  // //const storage = useStorage();
-  // const [Imagen, setImagen] = useState();
-  // console.log(Imagen)//undefined - OBJETO
-  // const [url, setUrl] = useState()
-  // console.log(url)
-  // //OBTENIENDO LA IMAGEN
-  // const changeImagen = e => {
-  //   setImagen(e.target.files[0]);
-  // }
-
-  // //FUNCION PARA GUARDAR LA IMAGEN EN FIREBASE
-  // const uploadImage = async () => {
-  //   try {
-  //     const newRef = storage.ref('images').child(Imagen.name); // nombre del archivo
-  //     setRef(newRef);
-  //     await newRef.put(Imagen);
-  //     const urlImagen = await newRef.getDownloadURL()
-  //     console.log('la ul de la imagen es' + urlImagen); //URL
-  //     setUrl(urlImagen)
-  //   } catch (error) {
-  //       alert(error);
-  //   }
-  // };
+  const onChange = async (e) => {
+    const file = e.target.files[0]
+    const storageRef = storage.ref()
+    const fileRef = storageRef.child(file.name)
+    await fileRef.put(file)
+    setFileUrl(await fileRef.getDownloadURL()); 
+  }
 
   //ESTADO INICIAL DE REGISTRO DE POSTS
-  const { currentUser } = useAuth();
+  const { currentUser, dataUser } = useAuth();
   const [category, setCategory ] = useState('Escoge una página')
   const [subcategory, setSubcategory ] = useState('')   
     
@@ -49,7 +33,6 @@ export const ModalCreatePost = (props) => {
     
 
   //ESTADO INICIAL DE REGISTRO DE POSTS
-
   const [datos, setDatos] = useState()
   //console.log(datos)
 
@@ -62,7 +45,7 @@ export const ModalCreatePost = (props) => {
   }
 
   let newObject;
-  console.log(newObject)
+  //console.log(newObject)
   const publishPost = () => { 
     newObject = datos
     newObject.category= category 
@@ -83,6 +66,26 @@ export const ModalCreatePost = (props) => {
     setOperat({type: 'Operativos', value:false })
     setPracti({type: 'Practicantes', value:false })
   } 
+  const addPendingPost = () => {
+    newObject = datos
+    newObject.category= category 
+    newObject.subcategory=subcategory
+    newObject.owner= currentUser.email
+    newObject.status= 'pendiente'
+    newObject.profile= [manager, ejecut, operat, practi ]
+
+    // newObject.img = url
+    // uploadImage()
+
+    createPost(newObject);   
+    props.handleClose();
+
+    setCategory('Escoge una página')
+    setManager({type: 'Administrativos', value:false })
+    setEjecut({type: 'Ejecutivos', value:false })
+    setOperat({type: 'Operativos', value:false })
+    setPracti({type: 'Practicantes', value:false })
+  }
 
   return (
     <>
@@ -95,7 +98,7 @@ export const ModalCreatePost = (props) => {
         <Modal.Header>
           <h3>Nueva Publicación</h3>  
         </Modal.Header>
-        <Modal.Body  className="modalDialog">
+        <Modal.Body  className="modalDialog pb-0">
           <h5>Título</h5>   
             <input onChange={handleInputChange} className='w-100 mb-4'
               type="text" name="title" required ></input>
@@ -109,11 +112,12 @@ export const ModalCreatePost = (props) => {
             <textarea onChange={handleInputChange} className='w-100 mb-4' 
               type="text" name="moreContent" required ></textarea>
           <h5>Comentarios </h5>
-            <textarea onChange={handleInputChange} className='w-100 mb-4' 
+            <textarea onChange={handleInputChange} className='w-100 mb-3' 
               type="text" name="comment" required ></textarea>        
         </Modal.Body>
 
-        <Modal.Body  className="modalDialog add-new-photo first" id="add-photo">            
+        <Modal.Body  className="modalDialog add-new-photo first  mb-4" id="add-photo">            
+          <h5>Imagen</h5>
           <figure className="Upload__form-container-im"  style={{maxWidth:'45%', height:'45%'}}>
               <img src={iconfoto} alt="" /* ref={previewImg} */ style={{width:'100%', height:'100%' , objectFit:'contain'}}/>
           </figure>            
@@ -122,10 +126,18 @@ export const ModalCreatePost = (props) => {
               className="Upload__form-inputfile" /* onChange={onChangeFile} */
                /* onChange={changeImagen} */></input>
           </div>
+          <div id="add-photo">
+            <input type="file" onChange={onChange} />
+          </div>
         </Modal.Body>
 
-        <article className='d-flex justify-content-beetwen'>
-          <select value={category} onChange={(e)=>{setCategory(e.target.value)}} >
+        <article className='px-3  mb-4'>
+          <h5 className='d-block mb-3'>Página</h5>
+          <div className='px-4 mb-3 d-flex justify-content-around'>
+            <h6 className='azulclaro'><b>Página:</b> {category}</h6>
+            <h6 className='azulclaro'><b>Sección:</b> {subcategory}</h6>
+          </div>
+          <select className='d-block mb-3 mx-5' value={category} onChange={(e)=>{setCategory(e.target.value)}} >
             <option value=''>ESCOGE UNA PÁGINA</option>
             <option value='Home'>HOME</option>
             <option value='Salud'>SALUD</option>
@@ -134,40 +146,47 @@ export const ModalCreatePost = (props) => {
           </select>
           {
             category==='Home'
-            ? <select value={subcategory} onChange={(e)=>{setSubcategory(e.target.value)}} >
+            ?  <>
+              <select className='d-block mb-3 mx-5' value={subcategory} onChange={(e)=>{setSubcategory(e.target.value)}} >
                 <option value=''>ESCOGE UNA SECCIÓN</option>
-                <option value='Para Ti'>Sección - Para ti - Cronograma de capacitación</option>
-                <option value='Para Ti'>Sección - Para ti - Convocatorias Internas</option>
-                <option value='Para Ti'>Sección - Para ti - Beneficios</option>
-                <option value='Para Ti'>Sección - Para ti - Actividad</option>
+                <option value='Para Ti - Cronograma de capacitación'>Sección - Para ti - Cronograma de capacitación</option>
+                <option value='Para Ti - Convocatorias Internas'>Sección - Para ti - Convocatorias Internas</option>
+                <option value='Para Ti - Beneficios'>Sección - Para ti - Beneficios</option>
+                <option value='Para Ti - Actividad'>Sección - Para ti - Actividad</option>
                 <option value='Noticias Destacadas'>Sección - Noticias Destacadas</option>
                 <option value='Cumpleaños'>Sección - Cumpleaños</option>
                 <option value='Otros Reconocimientos'>Sección - Otros Reconocimientos</option>
               </select>
+              </>
             : null  
           }
           {
             category==='Salud'
-            ? <select value={subcategory} onChange={(e)=>{setSubcategory(e.target.value)}}>
-                <option value=''>ESCOGE UNA SECCIÓN</option>
-                <option value='Cronograma de vacunación'>Sección - Cronograma de Vacunación</option>
-                <option value='Recomendaciones'>Sección - Recomendaciones</option>
-                <option value='Atención nutricional'>Sección - Atención Nutricional</option>
-              </select>
+            ?  <>
+                <select className='d-block mb-3 mx-5' value={subcategory} onChange={(e)=>{setSubcategory(e.target.value)}}>
+                  <option value=''>ESCOGE UNA SECCIÓN</option>
+                  <option value='Cronograma de vacunación'>Sección - Cronograma de Vacunación</option>
+                  <option value='Recomendaciones'>Sección - Recomendaciones</option>
+                  <option value='Atención nutricional'>Sección - Atención Nutricional</option>
+                </select>
+              </>
             : null  
           }
           {
             category==='Seguridad'
-            ? <select value={subcategory} onChange={(e)=>{setSubcategory(e.target.value)}}>
+            ? <>
+              <select className='d-block mb-3 mx-5' value={subcategory} onChange={(e)=>{setSubcategory(e.target.value)}}>
                 <option value=''>ESCOGE UNA SECCIÓN</option>
                 <option value='Sin Accidentes'>Sección - Días sin accidentes</option>
                 <option value='Ganadores de Campaña del Medio Ambiente'>Sección - Ganadores de campaña del Medio Ambiente</option>
               </select>
+              </>
             : null  
           }
           {
             category==='Beneficios'
-            ? <select value={subcategory} onChange={(e)=>{setSubcategory(e.target.value)}}>
+            ?  <>
+              <select className='d-block mb-3 mx-5' value={subcategory} onChange={(e)=>{setSubcategory(e.target.value)}}>
                 <option value=''>ESCOGE UNA SECCIÓN</option>
                 <option value='Sin Accidentes'>Sección - Becas</option>
                 <option value='Fallecimiento'>Sección - Fallecimiento</option>
@@ -175,13 +194,14 @@ export const ModalCreatePost = (props) => {
                 <option value='Linajes Peruanos'>Sección - Linajes Peruanos</option>
                 <option value='ICPNA'>Sección - ICPNA</option>
               </select>
+              </>
             : null  
           }          
         </article>
 
-        <article>
-          <h6><b>Perfiles</b></h6>
-          <InputGroup className="mb-2">
+        <article className='px-3'>
+          <h5 className='d-block mb-3'>Perfiles</h5>
+          <InputGroup className="mb-2 ">
             <InputGroup.Checkbox onClick={()=>setManager({type: 'Administrativos', value:true })} aria-label="Checkbox for following text input" />
             <FormControl value='Administrativos' aria-label="Text input with checkbox" />
           </InputGroup>
@@ -199,12 +219,19 @@ export const ModalCreatePost = (props) => {
           </InputGroup>
         </article>
 
-        <Modal.Footer className='d-flex'>
-          <button  onClick={props.handleClose}>
+        <Modal.Footer>
+          <button style={{borderRadius:'11px', padding:'5px 25px', background:'#0D0B6F', border:'#0d6efd', color:'white',  marginBottom:'15px'}} onClick={props.handleClose}>
             Cancelar
           </button>
-          <button >Rechazar</button>
-          <button  onClick={()=>publishPost()}>Publicar</button>
+          {
+            dataUser.rol ==='admin' 
+            ? <>
+               <button style={{borderRadius:'11px', padding:'5px 25px', background:'#FF0000', border:'#0d6efd', color:'white',  marginBottom:'15px'}} >Rechazar</button>
+               <button style={{borderRadius:'11px', padding:'5px 25px', background:'#008000', border:'#0d6efd', color:'white',  marginBottom:'15px'}} onClick={()=>publishPost()}>Publicar</button>
+              </>
+            :  <button style={{borderRadius:'11px', padding:'5px 25px', background:'#E5A812', border:'#0d6efd', color:'white',  marginBottom:'15px'}} onClick={()=>addPendingPost()}>Enviar</button>  
+          }
+         
         </Modal.Footer>
     </Modal>
     </>

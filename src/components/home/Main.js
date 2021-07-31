@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Card } from "react-bootstrap";
 import cumpleanos from "../../images/cumpleanos.png";
-import {ModalDetails} from "../admin/ModalDetails"
+// import {ModalDetails} from "../admin/ModalDetails"
 
 export const Main = () => {
   // const [show1, setShow1] = useState(false);
@@ -24,6 +24,7 @@ export const Main = () => {
             style={{ width: "14rem", borderRadius: "17px", height: "13rem" }}
             className="mb-4  mx-auto"
           >
+            
             <figure className="mx-auto">
               <div className="briFa">
                 <i className="fas fa-user-graduate azulclaro fa-3x"></i>
@@ -103,7 +104,7 @@ export const Main = () => {
                   href="https://campus.siderperu.pe/"
                   rel="noreferrer"
                 >
-                  Conoce más<i class="fas fa-arrow-circle-right"></i>
+                  Conoce más<i className="fas fa-arrow-circle-right"></i>
                 </a>
               </div>
             </Card.Body>
@@ -135,7 +136,7 @@ export const Main = () => {
                   href="https://www.siderperu.com.pe/conocenos/contactenos"
                   rel="noreferrer"
                 >
-                  Conoce más<i class="fas fa-arrow-circle-right"></i>
+                  Conoce más<i className="fas fa-arrow-circle-right"></i>
                 </a>
               </div>
             </Card.Body>

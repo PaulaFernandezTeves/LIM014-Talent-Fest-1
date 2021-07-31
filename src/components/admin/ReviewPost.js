@@ -1,6 +1,5 @@
 import React, { useEffect, useState} from 'react';
 import { ModalCreatePost } from "./ModalCreatePost";
-// import { Header } from '../home/Header';
 import { HeaderAdmin } from './HeaderAdmin';
 import { getPosts } from '../../firebase/firestore'
  import { ModalEditPost } from '../admin/ModalEditPost'
@@ -18,10 +17,8 @@ import { ModalDelete } from './ModalDelete';
  
   //----------------LLAMANDO POSTS DEL REGISTRADOR-----------------
   const [posts, setPosts] = useState([]);
-  //console.log(posts)
 
   const callback = (data) => {
-    //console.log(data)
     setPosts(data)
   }
  
@@ -35,7 +32,6 @@ import { ModalDelete } from './ModalDelete';
       <HeaderAdmin/>
       <section className="container-fluid p-3 w-100 col px-5">
         <h3 className="w-100 text-center my-4 mb-5">Lista de Publicaciones</h3>
-        
         <div className='d-flex justify-content-between'>
           <InputGroup
             className="mb-3 me-3 input-group " style={{background:'#E5E5E5'}}
@@ -54,7 +50,7 @@ import { ModalDelete } from './ModalDelete';
             />
           </InputGroup>   
              
-          <button  style={{borderRadius:'11px', padding:'5px 25px', background:'#0d6efd', border:'#0d6efd', color:'white', float:'right', marginBottom:'15px'}}
+          <button  style={{borderRadius:'11px', padding:'5px 25px', background:'#0D0B6F', border:'#0d6efd', color:'white',  marginBottom:'15px'}}
             className="btn-finalizar d-block mb-4 me-5" 
             id="btnFinaly"
             onClick={handleShow}
@@ -68,8 +64,8 @@ import { ModalDelete } from './ModalDelete';
           handleClose={handleClose}
         />
         <table className="table table-sm table-hover w-100 mt-3 mx-2">
-          <thead>
-            <tr>
+          <thead  style={{background:'#0D0B6F', color:'white', paddingTop:'50px', paddingBottom:'50px'}} >
+            <tr style={{background:'#0D0B6F', color:'white'}} className='py-5'>
               <th>Registrador</th>
               <th>Publicación</th>
               <th>Categoría</th>
@@ -96,12 +92,12 @@ import { ModalDelete } from './ModalDelete';
                 }                  
                 
                 <td>{post.date}</td>
-                <td>
-                  <ModalEditPost
+                <td >
+                  <ModalEditPost 
                     post={post} 
                   />
                 </td> 
-                <td>
+                <td >
                   <ModalDelete 
                     postId={post.postId} 
                   />            

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {createContext, useContext, useState, useEffect} from 'react';
 import { auth } from '../firebase/config';
 import { loginFb, logoutFb } from '../firebase/auth';
@@ -15,9 +16,9 @@ export const useAuth = () => { //con esto podemos USAR todas las fn y estados de
 export const AuthProvider = ({ children }) => {
   let history = useHistory();
 
-  const [dataUser, setDataUser] = useState([])
+  const [dataUser, setDataUser] = useState()
 
-  //console.log(dataUser)// OBJETO COLECCION USER
+  console.log(dataUser)// OBJETO COLECCION USER
 
   //FUNCIONES DE AUTH
   const [currentUser, setCurrentUser] = useState(
@@ -52,11 +53,24 @@ export const AuthProvider = ({ children }) => {
     return unsubscribe;
   }, []);
 
+  // useEffect(() => {
+  //   getUser(currentUser.uid).then((user) => {
+  //     console.log(user)
+  //     setDataUser(user.data());
+  //   })
+  // }, [])
+
   useEffect(() => {
-    getUser(currentUser.uid).then((user) => {
-      setDataUser(user.data());
-    })
-  }, [])
+    if (currentUser !== null) {
+      getUser(currentUser.uid).then((user) => {
+        console.log(user.data())
+        setDataUser(user.data());
+      });
+    } else {
+      console.error("no hay current user");
+    }
+  }, [currentUser]);
+
 
   const value = {
     currentUser,

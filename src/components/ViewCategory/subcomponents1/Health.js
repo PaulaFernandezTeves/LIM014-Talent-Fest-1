@@ -17,9 +17,7 @@ export const Health = () => {
               <h4 className="card-title">Vacunación</h4>
                 <p className="card-text text-secondary">
                   "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
-                </p>
-    
-              {/* </Card.Text> */}        
+                </p>     
           </Card> 
           <Card  style={{ width: '27rem', borderRadius:'17px', height:'25rem'}} className='mb-4'>            
             <img src="https://pbs.twimg.com/media/Etoo7BEXIAAngj_.jpg:large" alt ="" style={{width:"26.5rem", height:"75%"}} className="photo"></img>

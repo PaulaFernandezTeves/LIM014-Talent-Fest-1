@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect} from 'react';
 import logoheader from '../../images/logoheader.png'
 import { Link, useHistory } from "react-router-dom";
@@ -30,12 +31,21 @@ export const Header = () => {
     //   setUsers(data)
     // }
   
+    // useEffect(() => {
+    //   //console.log(currentUser)
+    //   getUser(currentUser.uid).then((user)=>{
+    //     //console.log(user.data())
+    //     setRol(user.data().rol)})
+    // }, [])
     useEffect(() => {
-      //console.log(currentUser)
-      getUser(currentUser.uid).then((user)=>{
-        //console.log(user.data())
-        setRol(user.data().rol)})
-    }, [])
+      if (currentUser) {
+        getUser(currentUser.uid).then((user) => {
+          setRol(user.data().rol);
+        });
+      } else {
+        console.error("no hay current user");
+      }
+    }, [currentUser]);
  
   return (
     <>
