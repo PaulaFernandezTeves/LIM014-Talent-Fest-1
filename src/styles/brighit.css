@@ -1,101 +1,205 @@
-/* nav */
-*{
-  margin: 0px;
-}
-#briSearch{
-  width: 20px;
+.formCreateUser {
+  text-align: left;
 }
 
-#briSlider {
-    height: 400px;
-
+.formCreateUser label {
+  display: block;
+  color: #020121;
+  margin-bottom: 5px;
+  font-size: larger;
+  font-weight: bolder;
 }
 
-#briSlider img{
-  width: 100% ;
-  height: 100%;
-  object-fit:contain; 
-  background-position: center;
-  text-align: center;
-
-
-}
-
-.briFa {
+.formCreateUser .btn-submit {
+  background-color: #003366;
+  border: solid 1.2px #003366;
   margin-top: 20px;
+  padding: 5px;
+  width: 150px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
 }
 
-.briCardBtn{
-  color:#FFCC00;
-  font-weight: bold;
-  background-color: white;
-  border-color: transparent;
+.section input {
+  width: 90%;
+  height: 40px;
+  border: 2px solid #40668c;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 18px;
+  padding: 5px 12px;
 }
 
-.briNoticia{
-  border-top-left-radius: 17px;
-  border-top-right-radius: 17px;
-  padding: 0;
-}
-.video1{
-  padding-top: 35px;
-}
-.briSection{
-  text-align: center;
-  margin-left: 7%;
-  background-color: transparent;
+.section input:hover {
+  border: 2px solid #003366;
 }
 
-.briVideo{
-  object-fit: contain;
-  align-items: center;
-  align-content: center;
-  padding-bottom: 25px;
+.section input:focus {
+  outline: #40668c;
+  /* box-shadow: 1px 7px 15px -5px rgba(16, 119, 228, 0.5); */
+}
 
-} 
-.briVideo div{
-  align-items: center;
+.section {
+  margin-bottom: 10px;
   text-align: center;
 }
 
-/*Timer */
-#Timer {
-  /* display: flex; */
-  background-color: rgb(215, 218, 221);
-	justify-content: center;
-  padding-bottom: 5px;
-  padding-top:5px;
-	margin-bottom: 100px;
-  columns: 4;
+.section-dropdown {
+  display: flex;
+  justify-content: center;
 }
 
-.simply-section {
-	background: rgb(194, 207, 219);
-	width: 20%;
-	height: 100%;
-	margin: 0 30px;
-	border-radius: 5px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-  margin-bottom: 40px;
+.section-dropdown .dropdown-rol {
+  margin-right: 50px;
 }
 
+.section-dropdown p {
+  text-align: center;
+  margin: 5px 0;
+  background-color: #bfccd9;
+  border-radius: 2px;
+  font-weight: bolder;
+}
 
-.simply-amount {
-	display: block;
-	font-size: 50px;
-	font-weight: 700;
+.modal-footer button {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+#title-list {
+  margin: 20px;
+}
+
+/* update users */
+.formUpdateUser {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#btn-submit-update {
+  width: 30%;
+  border-radius: 5px;
+  background-color: #003366;
+  color: white;
+}
+
+.sectiontwo input {
+  border: 2px solid #40668c;
+  border-radius: 5px;
+}
+
+.sectiontwo input:hover {
+  border: 2px solid #003366;
+}
+
+.sectiontwo input:focus {
+  outline: #40668c;
+  /* box-shadow: 1px 7px 15px -5px rgba(16, 119, 228, 0.5); */
+}
+
+.sectiontwo {
+  margin: 10px;
+}
+
+/* ********** **********/
+.section-option {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* ********** Benefit section**********/
+.section-card {
+  display: flex;
   align-items: center;
-	text-align: center;
-  margin-top: 5px;
 }
 
-.simply-word {
-	font-weight: 300;
-	font-size: 30px;
+.section-card figure {
+  margin: 0;
+}
+
+.section-card figure img {
+  margin: 0;
+  width: 221.633px;
+  height: 221.633px;
+  object-fit: cover;
+  border-radius: 1px;
+}
+
+.card-text {
+  text-align: left;
+}
+
+.section-card-content {
+  margin-left: 20px;
+}
+
+/* ********** Health section**********/
+
+.section-content {
+  display: flex;
+  justify-content: space-around;
   align-items: center;
-	text-align: center;
-  margin-bottom: 15px;
-  height: 15px;
+  margin-bottom: 50px;
+  padding: 20px;
+}
+
+.section-content .card {
+  margin-left: 40px;
+}
+
+.figure-healht {
+  margin: 0;
+}
+
+.figure-healht img {
+  margin: 0;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1px;
+}
+
+/* ********** Home section**********/
+
+/***** Para ti *****/
+.section-content-fy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-content-fy .card {
+  margin-right: 20px;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+/***** Carrusel *****/
+
+.carosul-img {
+  margin: 0;
+  object-fit: cover;
+  height: 350px;
+}
+
+.carousel-control-next-icon {
+  background-image: url("https://i.ibb.co/gZmpFwC/arrow-4957487-960-720.png") !important;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("https://i.ibb.co/BL5Pnby/arrow-4957487-960-720.png") !important;
+}
+
+/***** Modal  *****/
+.post-img {
+  margin: 0;
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
 }

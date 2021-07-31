@@ -16,16 +16,17 @@ export const useAuth = () => { //con esto podemos USAR todas las fn y estados de
 export const AuthProvider = ({ children }) => {
   let history = useHistory();
 
-  const [dataUser, setDataUser] = useState()
-
-  console.log(dataUser)// OBJETO COLECCION USER
-
-  //FUNCIONES DE AUTH
+  // FUNCIONES DE AUTH
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("user"))
   );
-  console.log(currentUser)// OBJETO CURRENT USER - AUTH
-  
+  //console.log(currentUser)// OBJETO CURRENT USER - AUTH
+
+  // SETEANDO DATAUSER INICIAL
+  const [dataUser, setDataUser] = useState(currentUser)
+
+  console.log(dataUser)// OBJETO COLECCION USER
+  //---------------------------------------------------------
   const login = (email, password) => loginFb(email, password);
   
   const logOut = () => {
@@ -53,17 +54,9 @@ export const AuthProvider = ({ children }) => {
     return unsubscribe;
   }, []);
 
-  // useEffect(() => {
-  //   getUser(currentUser.uid).then((user) => {
-  //     console.log(user)
-  //     setDataUser(user.data());
-  //   })
-  // }, [])
-
   useEffect(() => {
     if (currentUser !== null) {
       getUser(currentUser.uid).then((user) => {
-        console.log(user.data())
         setDataUser(user.data());
       });
     } else {

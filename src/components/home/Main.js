@@ -1,236 +1,167 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
-import cumpleanos from "../../images/cumpleanos.png";
-// import {ModalDetails} from "../admin/ModalDetails"
+import { getPosts } from "../../firebase/firestore";
+import { ModalHome } from "../modal/ModalHome"
 
 export const Main = () => {
-  // const [show1, setShow1] = useState(false);
 
-  // const handleClose1 = () => setShow1(false);
-  // const handleShow1 = () => setShow1(true);
-  /* HACER CAMBIOS ACA DE MODAL PARA DETALLES */
+  const img = "https://i.ibb.co/xjqVx2m/becas.jpg";
+  const [posts, setPosts] = useState([]);
+
+  const callback = (data) => {
+    setPosts(data);
+  };
+
+  useEffect(() => {
+    getPosts(callback);
+  }, []);
+
+      
+
+  const renderSwitch = (param) => {
+    switch (param) {
+      case "Para Ti - Cronograma de capacitación":
+        return <i className="fas fa-user-graduate azulclaro fa-3x"></i>;
+      case "Para Ti - Convocatorias Internas":
+        return <i className="fas fa-user-friends azulclaro fa-3x"></i>;
+      case "Para Ti - Beneficios":
+        return <i className="far fa-thumbs-up azulclaro fa-3x"></i>;
+      case "Para Ti - Actividad":
+        return <i className="far fa-calendar-alt azulclaro fa-3x"></i>;
+      default:
+        return null;
+    }
+  }
+
   return (
     <>
-      {/* PARA TI */}
-
-      <section className="p-5">
-        <h2 className="text-center mb-5 azul">PARA TI</h2>
-        <article
-          className="d-flex flex-wrap justify-content-between mx-auto"
-          style={{ maxWidth: "70%" }}
-        >
-          <Card /*  onClick={handleShow1} */
-            border="gris3 border-3"
-            style={{ width: "14rem", borderRadius: "17px", height: "13rem" }}
-            className="mb-4  mx-auto"
-          >
-            
-            <figure className="mx-auto">
-              <div className="briFa">
-                <i className="fas fa-user-graduate azulclaro fa-3x"></i>
-              </div>
-            </figure>
-            <Card.Body>
-              <Card.Text
-                style={{
-                  color: "#003366",
-                  fontWeight: "bold",
-                  textAlign: "center",
-                }}
+      {/* Sección Para Ti */}
+      <section className="p-5" style={{ background: "#ECF2F6" }}>
+        <h2 className="text-center azul mb-4">PARA TI</h2>
+        <div className="section-content-fy">
+          {posts.map((post) =>
+            post.status === "publicado" && post.subcategory === "Para Ti - Cronograma de capacitación" ? (
+              <Card
+                style={{ width: "160px", height: "220px" }}
+                key={post.postId}
               >
-                Cronograma de capacitación
-              </Card.Text>
-              <div>
-               {/*  <ModalDetails show1={show1} onHide1={handleClose1}/> */}
-              </div>
-            </Card.Body>
-          </Card>
-          <Card
-            border="gris3 border-3"
-            style={{ width: "14rem", borderRadius: "17px", height: "13rem" }}
-            className="mb-4  mx-auto"
-          >
-            <figure className="mx-auto">
-              <div className="briFa">
-                <i className="fas fa-user-friends azulclaro fa-3x"></i>
-              </div>
-            </figure>
-            <Card.Body>
-              <Card.Text
-                style={{
-                  color: "#003366",
-                  fontWeight: "bold",
-                  textAlign: "center",
-                }}
+                <div className="figure-healht">{renderSwitch(post.subcategory)}</div>
+                <Card.Body>
+                  <Card.Title>{post.title}</Card.Title>
+                  <Card.Text>{post.content}</Card.Text>
+                  <ModalHome post={post} />
+                </Card.Body>
+              </Card>
+            ) : null
+          )}
+          {posts.map((post) =>
+            post.status === "publicado" && post.subcategory === "Para Ti - Convocatorias Internas" ? (
+              <Card
+                style={{ width: "160px", height: "220px" }}
+                key={post.postId}
               >
-                Convocatorias internas
-              </Card.Text>
-              <div>
-                <a
-                  className="briCardBtn"
-                  target="_blank"
-                  href="https://www.siderperu.com.pe/convocatorias-vigentes"
-                  rel="noreferrer"
-                >
-                  Conoce más<i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
-            </Card.Body>
-          </Card>
-          <Card
-            border="gris3 border-3"
-            style={{ width: "14rem", borderRadius: "17px", height: "13rem" }}
-            className="mb-4  mx-auto"
-          >
-            <figure className="mx-auto">
-              <div className="briFa">
-                <i className="far fa-thumbs-up azulclaro fa-3x"></i>
-              </div>
-            </figure>
-            <Card.Body>
-              <Card.Text
-                style={{
-                  color: "#003366",
-                  fontWeight: "bold",
-                  textAlign: "center",
-                }}
+                <div className="figure-healht">{renderSwitch(post.subcategory)}</div>
+                <Card.Body>
+                  <Card.Title>{post.title}</Card.Title>
+                  <Card.Text>{post.content}</Card.Text>
+                  <ModalHome post={post} />
+                </Card.Body>
+              </Card>
+            ) : null
+          )}
+          {posts.map((post) =>
+            post.status === "publicado" && post.subcategory === "Para Ti - Beneficios" ? (
+              <Card
+                style={{ width: "160px", height: "220px" }}
+                key={post.postId}
               >
-                Beneficios
-              </Card.Text>
-              <div>
-                <a
-                  className="briCardBtn"
-                  target="_blank"
-                  href="https://campus.siderperu.pe/"
-                  rel="noreferrer"
-                >
-                  Conoce más<i className="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
-            </Card.Body>
-          </Card>
-          <Card
-            border="gris3 border-3"
-            style={{ width: "14rem", borderRadius: "17px", height: "13rem" }}
-            className="mb-4"
-          >
-            <figure className="mx-auto">
-              <div className="briFa">
-                <i className="far fa-calendar-alt azulclaro fa-3x"></i>
-              </div>
-            </figure>
-            <Card.Body>
-              <Card.Text
-                style={{
-                  color: "#003366",
-                  fontWeight: "bold",
-                  textAlign: "center",
-                }}
+                <div className="figure-healht">{renderSwitch(post.subcategory)}</div>
+                <Card.Body>
+                  <Card.Title>{post.title}</Card.Title>
+                  <Card.Text>{post.content}</Card.Text>
+                  <ModalHome post={post} />
+                </Card.Body>
+              </Card>
+            ) : null
+          )}
+          {posts.map((post) =>
+            post.status === "publicado" && post.subcategory === "Para Ti - Actividad" ? (
+              <Card
+                style={{ width: "160px", height: "220px" }}
+                key={post.postId}
               >
-                Actividad
-              </Card.Text>
-              <div>
-                <a
-                  className="briCardBtn"
-                  target="_blank"
-                  href="https://www.siderperu.com.pe/conocenos/contactenos"
-                  rel="noreferrer"
-                >
-                  Conoce más<i className="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
-            </Card.Body>
-          </Card>
-        </article>
+                <div className="figure-healht">{renderSwitch(post.subcategory)}</div>
+                <Card.Body>
+                  <Card.Title>{post.title}</Card.Title>
+                  <Card.Text>{post.content}</Card.Text>
+                  <ModalHome post={post} />
+                </Card.Body>
+              </Card>
+            ) : null
+          )}
+        </div>
       </section>
 
-      {/* NOTICIAS DESTACADAS DEL MES */}
-      <section style={{ background: "#ECF2F6" }} className="mx-auto">
-        <h2 className="text-center m-5 azul pt-5">
-          NOTICIAS DESTACADAS DEL MES
-        </h2>
-        <article
-          className="d-flex flex-wrap justify-content-between mx-auto"
-          style={{ width: "70%" }}
-        >
-          <Card
-            style={{
-              width: "27rem",
-              borderRadius: "17px",
-              height: "25rem",
-              objectFit: "contain",
-            }}
-            className="mb-4"
-          >
-            {/* <Card.Text style={{fontWeight:'bold', color:'#874487', fontSize:'1.2rem', textAlign:'center' }} className="card-body"> */}
-            <img
-              src="https://3.imimg.com/data3/WD/WX/MY-4426420/ss304-steel-wire-rod-250x250.jpg"
-              alt=""
-              style={{ height: "75%", margin: "0" }}
-              className="briNoticia"
-            />
-            <h4 className="card-title">RÉCORD LAMINACIÓN LARGOS </h4>
-            <p className="card-text text-secondary">
-              "Hemos logrado el récord máximo de producción en comparaciónd e
-              los últimos 4 años."
-            </p>
-
-            {/* </Card.Text> */}
-          </Card>
-          <Card
-            style={{
-              width: "27rem",
-              borderRadius: "17px",
-              height: "25rem",
-              objectFit: "contain",
-            }}
-            className="mb-4"
-          >
-            <img
-              src="https://img.freepik.com/vector-gratis/ilustracion-plana-fiestas-patrias-peru_23-2148968396.jpg?size=626&ext=jpg"
-              alt=""
-              style={{ height: "75%", margin: "0" }}
-              className="briNoticia"
-            />
-            <h4 className="card-title">FIESTAS PATRIAS</h4>
-            <p className="card-text text-secondary">
-              "Celebremos a lo grande nuestro Bicentenario del Perú."
-            </p>
-          </Card>
-        </article>
+      {/* Sección Noticias destacadas del mes */}
+      <section style={{ background: "#b1d2e6" }} className="p-5">
+        <h2 className="text-center azul mb-4">NOTICIAS DESTACADAS DEL MES</h2>
+        <div className="section-content-fy">
+          {posts.map((post) =>
+            post.status === "publicado" &&
+            post.subcategory === "Noticias Destacadas" ? (
+              <Card
+                style={{
+                  width: "288px",
+                  height: "300px",
+                }}
+                key={post.postId}
+              >
+                <figure className="figure-healht">
+                  <img src={img} alt="img not found" />
+                </figure>
+                <Card.Body>
+                  <Card.Title>{post.title}</Card.Title>
+                  <Card.Text>{post.content}</Card.Text>
+                </Card.Body>
+              </Card>
+            ) : null
+          )}
+        </div>
       </section>
 
-      {/* RECONOCIMIENTOS DE LA SEMANA */}
+      {/* Sección Reconocimiento de la semana*/}
       <section className="p-5">
-        <h2 className="text-center mb-5 azul">RECONOCIMIENTOS DE LA SEMANA</h2>
-        <article
-          className="d-flex flex-wrap justify-content-between mx-auto"
-          style={{ maxWidth: "60%" }}
-        >
-          <Card
-            style={{
-              width: "50rem",
-              borderRadius: "17px",
-              height: "25rem",
-              objectFit: "contain",
-            }}
-            className="mb-4 mx-auto"
-          >
-            {/* <Card.Text style={{fontWeight:'bold', color:'#874487', fontSize:'1.2rem', textAlign:'center' }} className="card-body"> */}
-            <img
-              src={cumpleanos}
-              alt=""
-              style={{ height: "75%", margin: "0" }}
-              className="briNoticia"
-            />
-            <h4 className="card-title">"5 años laborando juntos" </h4>
-            <p className="card-text text-secondary">
-              "Nos sentimos orgullosos de ser parte de este gran equipo"
-            </p>
+        <h2 className="text-center azul mb-4">RECONOCIMIENTOS DE LA SEMANA</h2>
+        <div className="section-content-fy">
+          {posts.map((post) =>
+            post.status === "publicado" && post.subcategory === "Cumpleaños" ? (
+              <Card style={{ width: "18rem" }} key={post.postId}>
+                <figure className="figure-healht">
+                  <img src={img} alt="img not found" />
+                </figure>
+                <Card.Body>
+                  <Card.Title>{post.title}</Card.Title>
+                  <Card.Text>{post.content}</Card.Text>
+                </Card.Body>
+              </Card>
+            ) : null
+          )}
 
-            {/* </Card.Text> */}
-          </Card>
-        </article>
+          {posts.map((post) =>
+            post.status === "publicado" &&
+            post.subcategory === "Otros Reconocimientos" ? (
+              <Card style={{ width: "18rem" }} key={post.postId}>
+                <figure className="figure-healht">
+                  <img src={img} alt="img not found" />
+                </figure>
+                <Card.Body>
+                  <Card.Title>{post.title}</Card.Title>
+                  <Card.Text>{post.content}</Card.Text>
+                </Card.Body>
+              </Card>
+            ) : null
+          )}
+        </div>
       </section>
     </>
   );
