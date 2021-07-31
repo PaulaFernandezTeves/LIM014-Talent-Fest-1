@@ -1,27 +1,25 @@
-import React, { useEffect, useState} from 'react';
-import { ModalCreatePost } from "./ModalCreatePost";
-import { HeaderAdmin } from './HeaderAdmin';
+import React, {useState, useEffect} from 'react';
+import { HeaderRegistrador } from './HeaderRegistrador';
+import { ModalCreatePost } from '../admin/ModalCreatePost';
+import {ModalEditPost} from '../admin/ModalEditPost'
 import { getPosts } from '../../firebase/firestore'
- import { ModalEditPost } from '../admin/ModalEditPost'
- import { InputGroup,FormControl } from "react-bootstrap";
-import { ModalDelete } from './ModalDelete';
+import { InputGroup,FormControl} from "react-bootstrap";
+import { ModalDelete } from '../admin/ModalDelete';
 
+export const HistoryPost = () => {
 
- export function ReviewPost() {
- 
   //-------------------- SETTEO PARA MODAL ---------------------
   const [show, setShow] = React.useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
- 
   //----------------LLAMANDO POSTS DEL REGISTRADOR-----------------
   const [posts, setPosts] = useState([]);
 
   const callback = (data) => {
     setPosts(data)
   }
- 
+
   useEffect(() => {
     getPosts(callback);
   }, []) 
@@ -29,9 +27,10 @@ import { ModalDelete } from './ModalDelete';
 
   return (
     <>
-      <HeaderAdmin/>
+      <HeaderRegistrador />
       <section className="container-fluid p-3 w-100 col px-5">
         <h3 className="w-100 text-center my-4 mb-5">Lista de Publicaciones</h3>
+        
         <div className='d-flex justify-content-between'>
           <InputGroup
             className="mb-3 me-3 input-group " style={{background:'#E5E5E5'}}
@@ -48,23 +47,25 @@ import { ModalDelete } from './ModalDelete';
               aria-label="Buscar"
               aria-describedby="basic-addon2"
             />
-          </InputGroup>   
-             
-          <button  style={{borderRadius:'11px', padding:'5px 25px', background:'#0D0B6F', border:'#0d6efd', color:'white',  marginBottom:'15px'}}
-            className="btn-finalizar d-block mb-4 me-5" 
-            id="btnFinaly"
-            onClick={handleShow}
-          >
-            <b>Crear Post</b>
+          </InputGroup>
+
+          <button style={{borderRadius:'11px', padding:'5px 25px', background:'#0D0B6F', border:'#0d6efd', color:'white',  marginBottom:'15px'}}
+              className="btn-finalizar d-block mb-4 me-5" 
+              id="btnFinaly"
+              onClick={handleShow}
+            >
+              <b><i className="fas fa-plus pe-2"></i>Crear Post</b>          
           </button>
         </div>
+
+
         <ModalCreatePost
           show={show}
           setShow={setShow}
           handleClose={handleClose}
         />
         <table className="table table-sm table-hover w-100 mt-3 mx-2">
-          <thead  style={{background:'#0D0B6F', color:'white', paddingTop:'50px', paddingBottom:'50px'}} >
+          <thead style={{background:'#0D0B6F', color:'white', paddingTop:'50px', paddingBottom:'50px'}} >
             <tr style={{background:'#0D0B6F', color:'white'}} className='py-5'>
               <th>Registrador</th>
               <th>Publicación</th>
@@ -77,19 +78,19 @@ import { ModalDelete } from './ModalDelete';
             </tr>
           </thead>
           <tbody>
-            { posts.length> 0 ? posts.map((post, index) => (
+          { posts.length> 0 ? posts.map((post, index) => (
               <tr key={index}>
                 <td>{post.owner}</td>
                 <td>📑{post.title}</td>
                 <td>{post.category}</td>
-                <td>{post.subcategory}</td>
+                <td>{post.subcategory}</td> 
                 {
                   post.status ==='pendiente' 
                   ? <td style={{color: '#B8860B'}}><b>{post.status}</b></td>
                   :  post.status ==='publicado'
                      ? <td style={{color:  'green'}}><b>{post.status}</b></td>
                     : <td style={{color: 'red'}}><b>{post.status}</b></td>
-                }                  
+                }            
                 
                 <td>{post.date}</td>
                 <td >
@@ -103,10 +104,10 @@ import { ModalDelete } from './ModalDelete';
                   />            
                 </td>
               </tr>
-            )): <>Cargando Publicaciones... </> }
+           )): <>No hay posts </> }
           </tbody>
         </table>
       </section>
     </>
-  );
+  )
 }

@@ -1,0 +1,205 @@
+.formCreateUser {
+  text-align: left;
+}
+
+.formCreateUser label {
+  display: block;
+  color: #020121;
+  margin-bottom: 5px;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.formCreateUser .btn-submit {
+  background-color: #003366;
+  border: solid 1.2px #003366;
+  margin-top: 20px;
+  padding: 5px;
+  width: 150px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.section input {
+  width: 90%;
+  height: 40px;
+  border: 2px solid #40668c;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 18px;
+  padding: 5px 12px;
+}
+
+.section input:hover {
+  border: 2px solid #003366;
+}
+
+.section input:focus {
+  outline: #40668c;
+  /* box-shadow: 1px 7px 15px -5px rgba(16, 119, 228, 0.5); */
+}
+
+.section {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.section-dropdown {
+  display: flex;
+  justify-content: center;
+}
+
+.section-dropdown .dropdown-rol {
+  margin-right: 50px;
+}
+
+.section-dropdown p {
+  text-align: center;
+  margin: 5px 0;
+  background-color: #bfccd9;
+  border-radius: 2px;
+  font-weight: bolder;
+}
+
+.modal-footer button {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+#title-list {
+  margin: 20px;
+}
+
+/* update users */
+.formUpdateUser {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#btn-submit-update {
+  width: 30%;
+  border-radius: 5px;
+  background-color: #003366;
+  color: white;
+}
+
+.sectiontwo input {
+  border: 2px solid #40668c;
+  border-radius: 5px;
+}
+
+.sectiontwo input:hover {
+  border: 2px solid #003366;
+}
+
+.sectiontwo input:focus {
+  outline: #40668c;
+  /* box-shadow: 1px 7px 15px -5px rgba(16, 119, 228, 0.5); */
+}
+
+.sectiontwo {
+  margin: 10px;
+}
+
+/* ********** **********/
+.section-option {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* ********** Benefit section**********/
+.section-card {
+  display: flex;
+  align-items: center;
+}
+
+.section-card figure {
+  margin: 0;
+}
+
+.section-card figure img {
+  margin: 0;
+  width: 221.633px;
+  height: 221.633px;
+  object-fit: cover;
+  border-radius: 1px;
+}
+
+.card-text {
+  text-align: left;
+}
+
+.section-card-content {
+  margin-left: 20px;
+}
+
+/* ********** Health section**********/
+
+.section-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 50px;
+  padding: 20px;
+}
+
+.section-content .card {
+  margin-left: 40px;
+}
+
+.figure-healht {
+  margin: 0;
+}
+
+.figure-healht img {
+  margin: 0;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1px;
+}
+
+/* ********** Home section**********/
+
+/***** Para ti *****/
+.section-content-fy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-content-fy .card {
+  margin-right: 20px;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+/***** Carrusel *****/
+
+.carosul-img {
+  margin: 0;
+  object-fit: cover;
+  height: 350px;
+}
+
+.carousel-control-next-icon {
+  background-image: url("https://i.ibb.co/gZmpFwC/arrow-4957487-960-720.png") !important;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("https://i.ibb.co/BL5Pnby/arrow-4957487-960-720.png") !important;
+}
+
+/***** Modal  *****/
+.post-img {
+  margin: 0;
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+}

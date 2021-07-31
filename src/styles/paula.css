@@ -1,0 +1,57 @@
+/* ADMINISTRADOR*/
+#add-photo-container input {
+  background-color: "#0D0B6E";
+}
+
+.search-box
+{   position: relative;
+    display:block;
+    height: 58.62px;
+    width: 330px;
+    margin: 10px;
+    padding:10px 10px;
+    background-color:rgba(196, 196, 196, 0.45);
+    border-radius: 3px;
+    border: 1px solid #E3B309;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.style-nav{
+  display:flex;
+  /* flex-flow:row wrap;
+  align-items: center; */
+  justify-content: center;
+  margin-top: 50px  0;
+  }
+
+  #keyword{
+    margin: 0 20px 0 0;
+  }
+
+  /* SALUD*/
+  #add-photo-container input {
+    display: none;
+}
+
+.photo {
+  border-top-left-radius: 17px;
+  border-top-right-radius: 17px;
+}
+
+.card-text, .card-title{
+  text-align: center;
+  margin-top: 10px;
+}
+
+.description {
+  right: 100px;  
+  justify-content: flex-end;
+    margin-right: 20px;
+    margin-top: 150px;
+    padding-right: 190px;
+}
+
+.btn-sucess{
+  margin-right: 300px;
+}
