@@ -24,7 +24,7 @@ export const Health = () => {
         <div className="section-content">
           {posts.map((post) =>
             post.status === "publicado" &&
-            post.subcategory === "Cronograma De Vacunación" ? (
+            post.subcategory === "Cronograma de vacunación" ? (
               <Card style={{ width: "22rem" }} key={post.posId}>
                 <figure className="figure-healht">
                   <img src={img} alt="img not found" />
@@ -64,7 +64,7 @@ export const Health = () => {
         <div className="section-content">
           {posts.map((post) =>
             post.status === "publicado" &&
-            post.subcategory === "Atención Nutricional" ? (
+            post.subcategory === "Atención nutricional" ? (
               <Card style={{ width: "22rem" }} key={post.posId}>
                 <figure className="figure-healht">
                   <img src={img} alt="img not found" />

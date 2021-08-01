@@ -99,12 +99,17 @@
   /* box-shadow: 1px 7px 15px -5px rgba(16, 119, 228, 0.5); */
 }
 
-.sectiontwo{
+.sectiontwo {
   margin: 10px;
 }
 
+/* ********** **********/
+.section-option {
+  display: flex;
+  justify-content: space-around;
+}
 
-/* **** Benefit section****/
+/* ********** Benefit section**********/
 .section-card {
   display: flex;
   align-items: center;
@@ -128,4 +133,137 @@
 
 .section-card-content {
   margin-left: 20px;
+}
+
+/* ********** Health section**********/
+
+.section-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 50px;
+  padding: 20px;
+}
+
+.section-content .card {
+  margin-left: 40px;
+}
+
+.figure-healht {
+  margin: 0;
+}
+
+.figure-healht img {
+  margin: 0;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1px;
+}
+
+/* ********** Home section**********/
+
+/***** Para ti *****/
+.section-content-fy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-content-fy .card {
+  margin-right: 20px;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+/***** Carrusel *****/
+
+.carosul-img {
+  margin: 0;
+  object-fit: cover;
+  height: 350px;
+}
+
+.carousel-control-next-icon {
+  background-image: url("https://i.ibb.co/gZmpFwC/arrow-4957487-960-720.png") !important;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("https://i.ibb.co/BL5Pnby/arrow-4957487-960-720.png") !important;
+}
+
+/***** Modal  *****/
+.post-img {
+  margin: 0;
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+}
+
+/* ********** Security section********* */
+.flexible-video {
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%;
+  background: blue;
+  position: relative;
+}
+
+.youtube-video {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.Event-list {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.container-experiencia {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.event {
+  margin: 1%;
+  width: 48%;
+  flex-shrink: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.event-imageContainer {
+  margin: 0;
+}
+
+.event-detail {
+  background: #ecf2f6;
+  margin: 40px;
+  margin-top: -40px;
+  padding: 20px;
+  position: relative;
+  text-align: center;
+}
+
+.event-description {
+  text-align: left;
+}
+
+.event-url {
+  border: 1px solid #a232b7;
+  padding: 5px 20px;
+  color: #a232b7;
+  font-weight: bold;
+  border-radius: 5px;
 }

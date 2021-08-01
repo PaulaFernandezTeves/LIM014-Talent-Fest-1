@@ -4,6 +4,7 @@ import './styles/mery.css';
 import './styles/brighit.css';
 import './styles/paula.css';
 import './styles/briceyda.css';
+import './styles/mediaquery.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Login } from './components/Login';
 import { Home } from './components/Home';

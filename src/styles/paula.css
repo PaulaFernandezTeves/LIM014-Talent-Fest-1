@@ -3,35 +3,23 @@
   background-color: "#0D0B6E";
 }
 
-.search-box
-{   position: relative;
-    display:block;
-    height: 58.62px;
-    width: 330px;
-    margin: 10px;
-    padding:10px 10px;
-    background-color:rgba(196, 196, 196, 0.45);
-    border-radius: 3px;
-    border: 1px solid #E3B309;
-    box-sizing: border-box;
-    cursor: pointer;
+.search-box {
+  position: relative;
+  display: block;
+  height: 58.62px;
+  width: 330px;
+  margin: 10px;
+  padding: 10px 10px;
+  background-color: rgba(196, 196, 196, 0.45);
+  border-radius: 3px;
+  border: 1px solid #E3B309;
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
-.style-nav{
-  display:flex;
-  /* flex-flow:row wrap;
-  align-items: center; */
-  justify-content: center;
-  margin-top: 50px  0;
-  }
-
-  #keyword{
-    margin: 0 20px 0 0;
-  }
-
-  /* SALUD*/
-  #add-photo-container input {
-    display: none;
+/* SALUD*/
+#add-photo-container input {
+  display: none;
 }
 
 .photo {
@@ -39,19 +27,94 @@
   border-top-right-radius: 17px;
 }
 
-.card-text, .card-title{
+.card-text,
+.card-title {
   text-align: center;
   margin-top: 10px;
 }
 
 .description {
-  right: 100px;  
+  right: 100px;
   justify-content: flex-end;
-    margin-right: 20px;
-    margin-top: 150px;
-    padding-right: 190px;
+  margin-right: 20px;
+  /* margin-top: 150px; */
+  padding-right: 190px;
 }
 
-.btn-sucess{
+.btn-sucess {
   margin-right: 300px;
+}
+
+h4 {
+  width: fit-content !important;
+  text-align: center !important;
+}
+
+.text-secondary {
+  width: fit-content !important;
+  text-align: center !important;
+}
+
+
+
+/*NAVBAR*/
+.icon {
+  max-width: 200px;
+}
+
+#searchNancy {
+  height: 40px;
+  width: 356px;
+  border-radius: 20px;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.navbar {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  background-color: #FFCC00;
+
+}
+
+.nav-menu {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-gap: 10px;
+  list-style: none;
+  text-align: center;
+  width: 70vw;
+  justify-content: end;
+  margin-right: 2rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  justify-content: center;
+}
+
+.nav-links {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+
+.fa-bars {
+  color: rgb(13, 11, 110);
+}
+
+.nav-links-mobile {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
 }

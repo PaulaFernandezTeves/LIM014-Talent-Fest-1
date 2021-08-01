@@ -53,10 +53,8 @@ export const ModalCreatePost = (props) => {
     newObject.owner= currentUser.email
     newObject.status= 'publicado'
     newObject.profile= [manager, ejecut, operat, practi ]
-
-    // newObject.img = url
-    // uploadImage()
-
+    newObject.image = fileUrl;
+    
     createPost(newObject);   
     props.handleClose();
 
@@ -73,9 +71,8 @@ export const ModalCreatePost = (props) => {
     newObject.owner= currentUser.email
     newObject.status= 'pendiente'
     newObject.profile= [manager, ejecut, operat, practi ]
+     newObject.image = fileUrl;
 
-    // newObject.img = url
-    // uploadImage()
 
     createPost(newObject);   
     props.handleClose();
@@ -120,12 +117,18 @@ export const ModalCreatePost = (props) => {
           <h5>Imagen</h5>
           <figure className="Upload__form-container-im"  style={{maxWidth:'45%', height:'45%'}}>
               <img src={iconfoto} alt="" /* ref={previewImg} */ style={{width:'100%', height:'100%' , objectFit:'contain'}}/>
-          </figure>            
-          <div id="add-photo">
-            <input type="file" /* ref={imageRef} */ name="images[]" style={{backgroundColor:"#E5E5E5"}} 
-              className="Upload__form-inputfile" /* onChange={onChangeFile} */
-               /* onChange={changeImagen} */></input>
+          </figure>
+          {/*Link de video*/}
+          <div>
+            <h5>Link de video</h5>
+            <input
+              onChange={handleInputChange}
+              className='w-100 mb-4'
+              type="text"
+              name="video"
+            />
           </div>
+          {/*Subir Foto*/}
           <div id="add-photo">
             <input type="file" onChange={onChange} />
           </div>
@@ -188,7 +191,7 @@ export const ModalCreatePost = (props) => {
             ?  <>
               <select className='d-block mb-3 mx-5' value={subcategory} onChange={(e)=>{setSubcategory(e.target.value)}}>
                 <option value=''>ESCOGE UNA SECCIÓN</option>
-                <option value='Sin Accidentes'>Sección - Becas</option>
+                <option value='Becas'>Sección - Becas</option>
                 <option value='Fallecimiento'>Sección - Fallecimiento</option>
                 <option value='Autoseguro Médico'>Sección - Autoseguro Médico Familiar</option>
                 <option value='Linajes Peruanos'>Sección - Linajes Peruanos</option>
