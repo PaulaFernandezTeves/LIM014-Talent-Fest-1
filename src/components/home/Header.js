@@ -6,6 +6,7 @@ import { FormControl, InputGroup } from "react-bootstrap";
 import { Dropdown } from "react-bootstrap";
 import { getUser } from '../../firebase/firestore'
 import '../../styles/paula.css';
+import '../../styles/mediaQuerys.css';
 
  
 export const Header = () => {
@@ -27,6 +28,9 @@ export const Header = () => {
     marginRight: "3rem",
     fontWeight: "bold",
     aligncontent: 'center',
+    display: 'flex',
+    justifyContent: 'space-between',
+    paddingRight: '5px',
   }
     //llamando a los usuarios
     const [rol, setRol] = useState('');
@@ -49,8 +53,8 @@ export const Header = () => {
         </div>
         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
           <li className='nav-item'>
-          <Link to={"/home"} >
-            <i className="fas fa-home" onClick={closeMobileMenu} style={merylink}></i>      
+          <Link to={"/home"} style={merylink}>
+            <i className="fas fa-home" onClick={closeMobileMenu} style={{color:'#0D0B6F', fontSize:'30px'}}></i>      
             </Link>
           </li>
           <li className='nav-item'>

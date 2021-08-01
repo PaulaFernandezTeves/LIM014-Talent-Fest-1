@@ -3,8 +3,8 @@
   background-color: "#0D0B6E";
 }
 
-.search-box
-{   position: relative;
+.search-box {  
+    position: relative;
     display:block;
     height: 58.62px;
     width: 330px;
@@ -36,7 +36,7 @@
   right: 100px;  
   justify-content: flex-end;
     margin-right: 20px;
-    margin-top: 150px;
+    /* margin-top: 150px; */
     padding-right: 190px;
 }
 .btn-sucess{
@@ -53,12 +53,7 @@ h4 {
   text-align: center !important;
 }
 
-@media (max-width:768px) {
-  .meryheader {
-    height: 50px;
-  }
 
-}
 
 /*NAVBAR*/
 
@@ -73,56 +68,6 @@ h4 {
   background: transparent;
   border: none;
   outline: none;
-}
-
-
-@media (max-width:768px) {
-  .icon {
-    position: fixed;
-      top: -2.5px;
-      right: 480px;
-      height: 80px;
-      width: 50%;
-  }
-  
-
-  #dropdown-basics{
-    display: block;
-    text-align: center;
-    margin: 2rem auto;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #fff;
-    font-size: 1.5rem;
-    position: relative;
-    right: 250px;
-  }
-
-
-  #dropdown-basic{
-    display: block;
-    text-align: center;
-    margin: 3rem auto;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #fff;
-    font-size: 1.5rem;
-    position: relative;
-    right: 550px;
-    margin-top: 90px;
-  }
-  
-  .fa-search{
-  right: 50px;
-  }
-
-}
-
-@media (max-width:812px) {
-  .secondnav {
-    margin-right: 30px;
-    font-size: 15px;
-  }
 }
 
 .navbar {
@@ -159,14 +104,9 @@ h4 {
   padding: 0.5rem 1rem;
 }
 
-.nav-links:hover {
-  background-color: #1888ff;
-  border-radius: 4px;
-  transition: all 0.2s ease-out;
-}
 
 .fa-bars {
-  color: #fff;
+  color: rgb(13, 11, 110);
 }
 
 .nav-links-mobile {
@@ -177,99 +117,9 @@ h4 {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .NavbarItems {
-    position: relative;
-  }
-
-  .nav-menu {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 90vh;
-    position: absolute;
-    top: 80px;
-    left: -100%;
-    opacity: 1;
-    transition: all 0.5s ease;
-  }
-
-  .nav-menu.active {
-    background: #242222;
-    left: 0;
-    opacity: 1;
-    transition: all 0.5s ease;
-    z-index: 1;
-  }
-
-  .nav-links {
-    text-align: center;
-    padding: 2rem;
-    width: 100%;
-    display: table;
-  }
-
-  .nav-links:hover {
-    background-color: #1888ff;
-    border-radius: 0;
-  }
 
 
-  .menu-icon {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-100%, 60%);
-    font-size: 1.8rem;
-    cursor: pointer;
-  }
-
-  .fa-times {
-    color: #fff;
-    font-size: 2rem;
-  }
-
-  .nav-links-mobile {
-    display: block;
-    text-align: center;
-    padding: 1.5rem;
-    margin: 2rem auto;
-    border-radius: 4px;
-    width: 80%;
-    background: #1888ff;
-    text-decoration: none;
-    color: #fff;
-    font-size: 1.5rem;
-  }
-
-  .nav-links-mobile:hover {
-    background: #fff;
-    color: #1888ff;
-    transition: 250ms;
-  }
-
-  button {
-    display: none;
-  }
-}
-
-/* SALUD */
 
 
-@media screen and (max-width: 768px) {
-  .photo {
-      max-width: 10rem;
-      max-height: 8rem; 
-  }
-  .description {
-    max-width: 10rem;
-    max-height: 8rem; 
-    margin-top: auto;
-  }
-  .text-secondary {
-    width: fit-content;
-  }
-}
 
 

@@ -1,0 +1,164 @@
+@media (max-width:768px) {
+    .meryheader {
+      height: 50px;
+    }
+    .icon {
+        position: fixed;
+          top: -2.5px;
+          right: 480px;
+          height: 80px;
+          width: 50%;
+      }
+      
+    
+      #dropdown-basics{
+        display: block;
+        text-align: center;
+        margin: 2rem auto;
+        border-radius: 4px;
+        text-decoration: none;
+        color: #fff;
+        font-size: 1.5rem;
+        position: relative;
+        right: 250px;
+      }
+    
+    
+      #dropdown-basic{
+        display: block;
+        text-align: center;
+        margin: 3rem auto;
+        border-radius: 4px;
+        text-decoration: none;
+        color: #fff;
+        font-size: 1.5rem;
+        position: relative;
+        right: 550px;
+        margin-top: 90px;
+      }
+      
+      .fa-search{
+      right: 50px;
+      }
+    
+    
+    
+      /*HEADERADMIN*/
+      #dropdown-Basic{
+        display: block;
+        text-align: center;
+        margin: 3rem auto;
+        border-radius: 4px;
+        text-decoration: none;
+        color: #fff;
+        font-size: 1.5rem;
+        position: relative;
+        right: 630px;
+        margin-top: 90px;
+      }
+    
+    .fa-bell{
+      position: fixed;
+      top: -2.5px;
+      right: 480px;
+      height: 80px;
+      width: 50%;
+      margin-top: 30px;
+      /* right: 50px; */
+    }
+    .NavbarItems {
+        position: relative;
+      }
+    
+      .nav-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 90vh;
+        position: absolute;
+        top: 80px;
+        left: -100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+      }
+    
+      .nav-menu.active {
+        background: #242222;
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 1;
+      }
+    
+      .nav-links {
+        text-align: center;
+        padding: 2rem;
+        /* width: 100%; */
+      }
+    
+      .nav-links:hover {
+        background-color: #1888ff;
+        border-radius: 0;
+      }
+    
+    
+      .menu-icon {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 60%);
+        font-size: 1.8rem;
+        cursor: pointer;
+      }
+    
+      .fa-times {
+        color: #fff;
+        font-size: 2rem;
+      }
+    
+      .nav-links-mobile {
+        display: block;
+        text-align: center;
+        padding: 1.5rem;
+        margin: 2rem auto;
+        border-radius: 4px;
+        width: 80%;
+        background: #1888ff;
+        text-decoration: none;
+        color: #fff;
+        font-size: 1.5rem;
+      }
+    
+      .nav-links-mobile:hover {
+        background: #fff;
+        color: #1888ff;
+        transition: 250ms;
+      }
+    
+      button {
+        display: none;
+      }   
+
+      /* SALUD */
+      .photo {
+        max-width: 10rem;
+        max-height: 8rem; 
+    }
+    .description {
+      max-width: 10rem;
+      max-height: 8rem; 
+      margin-top: auto;
+    }
+    .text-secondary {
+      width: fit-content;
+    }
+}
+
+@media (max-width:812px) {
+    .secondnav {
+      margin-right: 30px;
+      font-size: 15px;
+    }
+  }
+  
