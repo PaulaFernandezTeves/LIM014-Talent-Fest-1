@@ -9,9 +9,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Login } from './components/Login';
 import { Home } from './components/Home';
 import { MyWork } from './components/home/MyWork';
+// import { Care } from './components/ViewCategory/Care';
+import { ReviewPost } from "./components/admin/ReviewPost";
 import { AuthProvider } from './context/AuthProvider';
 import { ListUsers } from './components/admin/ListUsers';
-import { ReviewPost } from './components/admin/ReviewPost';
 import { HistoryPost } from './components/registrador/HistoryPost';
 import {
   BrowserRouter as Router,
