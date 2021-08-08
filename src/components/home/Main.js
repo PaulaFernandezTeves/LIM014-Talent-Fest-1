@@ -16,7 +16,9 @@ export const Main = () => {
     getPosts(callback);
   }, []);
 
-      
+  console.log(posts)    
+
+
 
   const renderSwitch = (param) => {
     switch (param) {

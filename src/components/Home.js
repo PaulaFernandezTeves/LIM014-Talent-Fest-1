@@ -5,6 +5,8 @@ import { Main } from './home/Main';
 import { Footer } from './home/Footer'
 
 export const Home = () => {
+
+  
   return (
     <>
       <Header />

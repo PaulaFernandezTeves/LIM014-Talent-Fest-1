@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useAuth } from '../../context/AuthProvider';
 import { FormControl, InputGroup } from "react-bootstrap";
 import { Dropdown } from "react-bootstrap";
-import { getUser } from '../../firebase/firestore'
+import { getUser, getPosts } from '../../firebase/firestore'
 
  
 export const Header = () => {
@@ -37,11 +37,33 @@ export const Header = () => {
       }
     }, [currentUser]);
 
-    const [click, setClick] = useState(false);
+    const [posts, setPosts] = useState([]);
 
-    const handleClick = () => setClick(!click);
-    const closeMobileMenu = () => setClick(false);
- 
+    const callback = (data) => {
+      setPosts(data);
+    };
+  
+    useEffect(() => {
+      getPosts(callback);
+    }, []);
+    
+
+
+const handleChange = (e) => {
+  const value = e.target.value;
+  const cb = (posts) => {
+    const firstView = posts.filter(
+      (post) => post.title.toLowerCase().indexOf(value.toLowerCase()) > -1
+    );
+    setPosts(firstView);
+  };
+
+  getPosts(cb);
+};
+
+console.log(posts)
+
+
   return (
     <>
       <section className="meryheader px-5 p-4 d-flex align-items-center justify-content-between">
@@ -147,7 +169,7 @@ export const Header = () => {
             <InputGroup
               style={{ maxWidth: "25%" }}
               className="input-group m-auto align-self-center"
-              // onChange={(e) => handleChange(e)}
+              onChange={(e) => handleChange(e)}
             >
               <InputGroup.Text className="border-0 bg-transparent text-light align-self-center">
                 <i className="fas fa-search"></i>
